@@ -1,63 +1,87 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { PersonaNav } from "@/components/persona-nav";
 import HealthGauge from "@/components/charts/health-gauge";
 import { WeeklyBarChart } from "@/components/charts/weekly-bar-chart";
+import { InsightCard } from "@/components/insight-card";
 import {
   alertVolumeByWeek,
   customerHealthScores,
   personaIncidents,
-  topRecurringAlertTypes,
 } from "@/features/dashboard/persona-data";
 import type { PersonaIncident } from "@/features/dashboard/persona-data";
+import { fetchGeoDistribution, fetchWeeklyTrends, fetchCustomerMetrics } from "@/lib/api";
+import { DistributionBarChart } from "./charts/distribution-bar-chart";
 
 type SlaRisk = "High" | "Medium" | "Low";
 
 const RISK_COLOR: Record<SlaRisk, string> = {
-  High: "#ef4444",
-  Medium: "#f59e0b",
-  Low: "#22c55e",
+  High: "var(--critical)",
+  Medium: "var(--warning)",
+  Low: "var(--good)",
 };
 
 const HEALTH_COLOR = (score: number) =>
-  score >= 75 ? "#22c55e" : score >= 50 ? "#f59e0b" : "#ef4444";
+  score >= 75 ? "var(--good)" : score >= 50 ? "var(--warning)" : "var(--critical)";
+
+const SEV_COLOR: Record<string, string> = {
+  critical: "#ef4444",
+  high: "#f59e0b",
+  medium: "#3b82f6",
+  low: "#22c55e",
+};
 
 export function ExecutiveDashboard() {
   const [selectedOrg, setSelectedOrg] = useState<string | null>(null);
+  const [geoData, setGeoData] = useState<any[]>([]);
+  const [weeklyData, setWeeklyData] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [allHealth, setAllHealth] = useState<any[]>(customerHealthScores(personaIncidents));
 
-  const allHealth = useMemo(() => customerHealthScores(personaIncidents), []);
-  const topTypes = useMemo(() => topRecurringAlertTypes(personaIncidents, 6), []);
-  const weekly = useMemo(() => alertVolumeByWeek(personaIncidents), []);
+  const weekly = useMemo(() => (weeklyData.length > 0 ? weeklyData : alertVolumeByWeek(personaIncidents)), [weeklyData]);
+
+  useEffect(() => {
+    Promise.all([
+      fetchGeoDistribution().then(setGeoData).catch(console.error),
+      fetchWeeklyTrends().then(setWeeklyData).catch(console.error),
+      fetchCustomerMetrics().then((data: any) => {
+        if (data.customers && data.customers.length > 0) {
+          setAllHealth(data.customers);
+        }
+      }).catch(console.error),
+    ]).finally(() => setLoading(false));
+  }, []);
 
   const portfolioAvg = Math.round(
-    allHealth.reduce((s, h) => s + h.score, 0) / Math.max(allHealth.length, 1)
+    allHealth.reduce((s: number, h: any) => s + h.score, 0) / Math.max(allHealth.length, 1)
   );
 
-  const highRisk = allHealth.filter((h) => h.slaRisk === "High").length;
-  const lowRisk = allHealth.filter((h) => h.slaRisk === "Low").length;
-  const totalActive = allHealth.reduce((s, h) => s + h.openCount, 0);
-  const totalVolume = weekly.reduce((s, w) => s + w.volume, 0);
+  const highRiskCount = allHealth.filter((h: any) => h.slaRisk === "High").length;
+  const medRiskCount = allHealth.filter((h: any) => h.slaRisk === "Medium").length;
+  const totalAlerts = allHealth.reduce((s: number, h: any) => s + (h.total || 0), 0);
+  const portfolioHealthTone = portfolioAvg >= 75 ? "good" : portfolioAvg >= 50 ? "warning" : "critical";
 
-  const selectedHealth = allHealth.find((h) => h.org === selectedOrg) ?? null;
+  const selectedHealth = allHealth.find((h: any) => h.org === selectedOrg) ?? null;
   const selectedIncidents: PersonaIncident[] = selectedOrg
     ? personaIncidents.filter((i) => i.customer === selectedOrg)
     : [];
 
   const riskCounts: Record<SlaRisk, number> = { High: 0, Medium: 0, Low: 0 };
   allHealth.forEach((h) => {
-    riskCounts[h.slaRisk as SlaRisk] = (riskCounts[h.slaRisk as SlaRisk] ?? 0) + 1;
+    const risk = (h.slaRisk as SlaRisk) || "Low";
+    riskCounts[risk] = (riskCounts[risk] ?? 0) + 1;
   });
 
   return (
     <main className="dashboard-root">
       <div className="background-grid" />
       <header className="hero">
-        <p className="eyebrow">Executive / Account Manager View</p>
-        <h1>Portfolio Health &amp; Risk</h1>
+        <p className="eyebrow">Executive / Strategic Intelligence</p>
+        <h1>Portfolio Health & Risk</h1>
         <p>
-          Pan-customer health scores, SLA risk distribution, and alert trends. Click any
-          org to drill down.
+          Global multi-tenant health score aggregation with real-time SLA risk monitoring across{" "}
+          {allHealth.length} organizations.
         </p>
       </header>
 
@@ -65,136 +89,154 @@ export function ExecutiveDashboard() {
 
       {/* KPIs */}
       <section className="kpi-grid persona-kpis">
-        <div className="insight-card tone-good">
-          <span className="insight-label">Portfolio Avg Health</span>
-          <span className="insight-value">{portfolioAvg}%</span>
-        </div>
-        <div className="insight-card tone-critical">
-          <span className="insight-label">High SLA Risk Orgs</span>
-          <span className="insight-value">{highRisk}</span>
-        </div>
-        <div className="insight-card tone-warning">
-          <span className="insight-label">Total Active Alerts</span>
-          <span className="insight-value">{totalActive}</span>
-        </div>
-        <div className="insight-card">
-          <span className="insight-label">Tracked Orgs</span>
-          <span className="insight-value">{allHealth.length}</span>
-        </div>
-        <div className="insight-card">
-          <span className="insight-label">Alert Volume (all weeks)</span>
-          <span className="insight-value">{totalVolume}</span>
-        </div>
-        <div className="insight-card tone-good">
-          <span className="insight-label">Low Risk Orgs</span>
-          <span className="insight-value">{lowRisk}</span>
-        </div>
+        <InsightCard
+          label="Portfolio Health"
+          value={loading ? "…" : `${portfolioAvg}%`}
+          tone={portfolioHealthTone}
+          delta="Aggregated average"
+        />
+        <InsightCard label="High Risk" value={highRiskCount} tone="critical" delta="Immediate action" />
+        <InsightCard label="Medium Risk" value={medRiskCount} tone="warning" delta="Monitor closely" />
+        <InsightCard label="Active Portfolio" value={allHealth.length} tone="neutral" delta="Tracked organizations" />
+        <InsightCard label="Total Alerts" value={totalAlerts.toLocaleString()} tone="neutral" delta="Warehouse volume" />
+        <InsightCard
+          label="Weekly Velocity"
+          value={weekly.reduce((s: number, w: any) => s + w.volume, 0)}
+          tone="neutral"
+          delta="Recent ingestion rate"
+        />
       </section>
 
-      {/* Gauge grid */}
-      <section className="chart-card" style={{ marginBottom: 16 }}>
-        <div className="table-head" style={{ marginBottom: 12 }}>
-          <h3>Organization Health Gauges</h3>
-          <span>Click to drill down</span>
+      {/* Health Matrix */}
+      <section className="glass-panel" style={{ marginBottom: 20, padding: 24, background: "rgba(255,255,255,0.01)" }}>
+        <div className="table-head" style={{ marginBottom: 28 }}>
+          <h3 className="premium-accent" style={{ fontSize: "1.2rem" }}>Global Entity Health Scores</h3>
+          <span style={{ fontSize: 13, color: "var(--text-muted)" }}>
+            {loading ? "Loading warehouse data…" : `${allHealth.length} Organizations Monitored`}
+          </span>
         </div>
-        <div className="gauge-grid">
-          {allHealth.map((h) => (
+        <div className="gauge-grid-premium">
+          {allHealth.map((h: any) => (
             <div
               key={h.org}
-              className={`gauge-cell${selectedOrg === h.org ? " gauge-selected" : ""}`}
-              onClick={() =>
-                setSelectedOrg(selectedOrg === h.org ? null : h.org)
-              }
+              className={`gauge-card-premium ${selectedOrg === h.org ? "selected" : ""}`}
+              onClick={() => setSelectedOrg(selectedOrg === h.org ? null : h.org)}
             >
-              <HealthGauge
-                value={h.score}
-                label={`${h.score}%`}
-                color={HEALTH_COLOR(h.score)}
-              />
-              <div className="gauge-org-label" title={h.org}>
-                {h.org.length > 22 ? h.org.slice(0, 22) + "..." : h.org}
+              <div className="gauge-outer">
+                <HealthGauge
+                  value={h.score}
+                  label={`${h.score}%`}
+                  color={HEALTH_COLOR(h.score)}
+                />
+              </div>
+              <div className="gauge-info">
+                <div className="gauge-org-name" title={h.org}>{h.org}</div>
+                <div className="gauge-risk-tag" style={{ color: RISK_COLOR[h.slaRisk as SlaRisk] }}>
+                  {h.slaRisk} Risk
+                </div>
+                {/* Mini severity bar */}
+                {(h.critical != null || h.total) && (
+                  <div style={{ display: "flex", gap: 2, marginTop: 6, height: 3, width: "100%", borderRadius: 2, overflow: "hidden" }}>
+                    {h.critical > 0 && <div style={{ flex: h.critical, background: SEV_COLOR.critical }} />}
+                    {h.high > 0 && <div style={{ flex: h.high, background: SEV_COLOR.high }} />}
+                    {h.medium > 0 && <div style={{ flex: h.medium, background: SEV_COLOR.medium }} />}
+                    {h.low > 0 && <div style={{ flex: h.low, background: SEV_COLOR.low }} />}
+                  </div>
+                )}
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Drill-down */}
+      {/* Drill-down Section */}
       {selectedHealth && (
-        <section
-          className="chart-card drill-panel"
-          style={{
-            marginBottom: 16,
-            borderColor: HEALTH_COLOR(selectedHealth.score) + "55",
-          }}
-        >
-          <div className="table-head">
-            <h3>{selectedHealth.org}</h3>
-            <span
-              style={{
-                color: RISK_COLOR[(selectedHealth.slaRisk as SlaRisk) ?? "Low"],
-                fontWeight: 700,
-              }}
-            >
-              {selectedHealth.slaRisk} SLA Risk
-            </span>
-          </div>
-          <div className="drill-kpis">
-            <div className="drill-kpi">
+        <section className="drill-panel-premium slide-up">
+          <div className="drill-header">
+            <div className="drill-title">
+              <h2 className="premium-accent">{selectedHealth.org}</h2>
               <span
-                className="drill-kpi-val"
-                style={{ color: HEALTH_COLOR(selectedHealth.score) }}
+                className="badge-risk-premium"
+                style={{
+                  background: RISK_COLOR[selectedHealth.slaRisk as SlaRisk] + "22",
+                  color: RISK_COLOR[selectedHealth.slaRisk as SlaRisk],
+                  borderColor: RISK_COLOR[selectedHealth.slaRisk as SlaRisk] + "44",
+                }}
               >
-                {selectedHealth.score}%
+                {selectedHealth.slaRisk} SLA RISK
               </span>
-              <span className="drill-kpi-label">Health Score</span>
             </div>
-            <div className="drill-kpi">
-              <span className="drill-kpi-val" style={{ color: "#ef4444" }}>
-                {selectedHealth.openCount}
-              </span>
-              <span className="drill-kpi-label">Open Alerts</span>
+            <button className="drill-close" onClick={() => setSelectedOrg(null)}>✕</button>
+          </div>
+
+          <div className="drill-stats">
+            <div className="drill-stat-box">
+              <div className="stat-label">Health Index</div>
+              <div className="stat-value" style={{ color: HEALTH_COLOR(selectedHealth.score) }}>{selectedHealth.score}%</div>
             </div>
-            <div className="drill-kpi">
-              <span className="drill-kpi-val" style={{ color: "#22c55e" }}>
-                {selectedHealth.resolvedCount}
-              </span>
-              <span className="drill-kpi-label">Resolved</span>
+            <div className="drill-stat-box">
+              <div className="stat-label">Total Alerts</div>
+              <div className="stat-value">{selectedHealth.total?.toLocaleString() ?? 0}</div>
             </div>
-            <div className="drill-kpi">
-              <span className="drill-kpi-val">{selectedHealth.avgMttr} min</span>
-              <span className="drill-kpi-label">Avg MTTR</span>
+            <div className="drill-stat-box">
+              <div className="stat-label">Open Signals</div>
+              <div className="stat-value" style={{ color: "var(--critical)" }}>{selectedHealth.openCount}</div>
+            </div>
+            <div className="drill-stat-box">
+              <div className="stat-label">Resolution Rate</div>
+              <div className="stat-value" style={{ color: "var(--good)" }}>
+                {Math.round((selectedHealth.resolvedCount / Math.max(selectedHealth.openCount + selectedHealth.resolvedCount, 1)) * 100)}%
+              </div>
             </div>
           </div>
-          <div className="table-wrap">
+
+          {/* Severity breakdown for selected org */}
+          {(selectedHealth.critical != null) && (
+            <div style={{ display: "flex", gap: 12, margin: "16px 0", flexWrap: "wrap" }}>
+              {(["critical", "high", "medium", "low"] as const).map((sev) => {
+                const val = selectedHealth[sev] ?? 0;
+                return (
+                  <div key={sev} style={{ flex: "1 1 80px", textAlign: "center", padding: "12px 8px", background: "rgba(255,255,255,0.03)", borderRadius: 8, borderTop: `3px solid ${SEV_COLOR[sev]}` }}>
+                    <div style={{ fontSize: 22, fontWeight: 800, color: SEV_COLOR[sev] }}>{val}</div>
+                    <div style={{ fontSize: 10, color: "var(--text-muted)", textTransform: "capitalize", marginTop: 4 }}>{sev}</div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+
+          <div className="table-wrap premium-scroll" style={{ maxHeight: 300 }}>
             <table>
               <thead>
                 <tr>
-                  <th>ID</th>
-                  <th>Title</th>
+                  <th>Incident Identifier</th>
+                  <th>Intelligence Title</th>
                   <th>Severity</th>
                   <th>Source</th>
-                  <th>Status</th>
+                  <th>Current State</th>
                 </tr>
               </thead>
               <tbody>
                 {selectedIncidents.map((inc) => (
-                  <tr key={inc.id}>
-                    <td style={{ fontFamily: "monospace", fontSize: 12 }}>{inc.id}</td>
-                    <td>{inc.title}</td>
+                  <tr key={inc.id} className="feed-row-premium">
+                    <td style={{ fontFamily: "monospace", fontSize: 12, opacity: 0.6 }}>{inc.id.split("-")[0]}...</td>
+                    <td style={{ fontWeight: 500 }}>{inc.title}</td>
                     <td>
-                      <span
-                        className={`sev-badge ${inc.severity.toLowerCase()}`}
-                      >
+                      <span className={`sev-badge ${inc.severity.toLowerCase()}`} style={{ transform: "scale(0.85)" }}>
                         {inc.severity}
                       </span>
                     </td>
-                    <td>
-                      <span className="source-badge">{inc.source}</span>
-                    </td>
-                    <td>{inc.status}</td>
+                    <td><span className="source-badge-premium">{inc.source}</span></td>
+                    <td><span style={{ fontSize: 13, opacity: 0.8 }}>{inc.status}</span></td>
                   </tr>
                 ))}
+                {selectedIncidents.length === 0 && (
+                  <tr>
+                    <td colSpan={5} style={{ textAlign: "center", padding: 40, color: "var(--text-muted)" }}>
+                      No recent events for this organization.
+                    </td>
+                  </tr>
+                )}
               </tbody>
             </table>
           </div>
@@ -203,78 +245,59 @@ export function ExecutiveDashboard() {
 
       <section className="main-grid">
         <div className="left-column">
-          {/* Org scorecard */}
-          <article className="table-card">
-            <div className="table-head">
-              <h3>Organization Scorecard</h3>
-              <span>Sorted by health (worst first)</span>
+          {/* Scorecard */}
+          <article className="glass-panel" style={{ padding: 0 }}>
+            <div className="table-head" style={{ padding: "20px 24px" }}>
+              <h3 className="premium-accent">Organization Intelligence Scorecard</h3>
+              <span style={{ fontSize: 13, color: "var(--text-muted)" }}>Ordered by priority</span>
             </div>
-            <div className="table-wrap">
-              <table>
+            <div className="table-wrap premium-scroll">
+              <table className="scorecard-table-premium">
                 <thead>
                   <tr>
                     <th>Organization</th>
                     <th>Health</th>
-                    <th>SLA Risk</th>
-                    <th>Open</th>
-                    <th>Resolved</th>
-                    <th>MTTR</th>
+                    <th>SLA</th>
+                    <th style={{ textAlign: "center" }}>Alerts</th>
+                    <th style={{ textAlign: "center" }}>Open</th>
+                    <th>Severity</th>
                   </tr>
                 </thead>
                 <tbody>
                   {[...allHealth]
                     .sort((a, b) => a.score - b.score)
-                    .map((h) => (
+                    .map((h: any) => (
                       <tr
                         key={h.org}
-                        className={selectedOrg === h.org ? "row-selected" : ""}
-                        style={{ cursor: "pointer" }}
-                        onClick={() =>
-                          setSelectedOrg(
-                            selectedOrg === h.org ? null : h.org
-                          )
-                        }
+                        className={`clickable-row ${selectedOrg === h.org ? "active" : ""}`}
+                        onClick={() => setSelectedOrg(selectedOrg === h.org ? null : h.org)}
                       >
-                        <td
-                          style={{
-                            maxWidth: 180,
-                            overflow: "hidden",
-                            textOverflow: "ellipsis",
-                            whiteSpace: "nowrap",
-                          }}
-                        >
-                          {h.org}
-                        </td>
-                        <td style={{ minWidth: 100 }}>
-                          <div
-                            style={{
-                              display: "flex",
-                              alignItems: "center",
-                              gap: 8,
-                            }}
-                          >
-                            <span style={{ color: HEALTH_COLOR(h.score), fontWeight: 700 }}>
-                              {h.score}%
-                            </span>
-                            <div className="progress-track" style={{ flex: 1 }}>
-                              <div
-                                className="progress-fill"
-                                style={{
-                                  width: `${h.score}%`,
-                                  background: HEALTH_COLOR(h.score),
-                                }}
-                              />
+                        <td style={{ fontWeight: 600, fontSize: 13, maxWidth: 180, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }} title={h.org}>{h.org}</td>
+                        <td style={{ minWidth: 120 }}>
+                          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                            <span style={{ color: HEALTH_COLOR(h.score), fontWeight: 700, minWidth: 32, fontSize: 14 }}>{h.score}%</span>
+                            <div className="progress-track" style={{ flex: 1, height: 4 }}>
+                              <div className="progress-fill" style={{ width: `${h.score}%`, background: HEALTH_COLOR(h.score) }} />
                             </div>
                           </div>
                         </td>
                         <td>
-                          <span style={{ color: RISK_COLOR[(h.slaRisk as SlaRisk) ?? "Low"] }}>
-                            {h.slaRisk}
+                          <span style={{ color: RISK_COLOR[h.slaRisk as SlaRisk], fontWeight: 500, fontSize: 11 }}>
+                            {h.slaRisk.toUpperCase()}
                           </span>
                         </td>
-                        <td style={{ color: "#ef4444" }}>{h.openCount}</td>
-                        <td style={{ color: "#22c55e" }}>{h.resolvedCount}</td>
-                        <td>{h.avgMttr} min</td>
+                        <td style={{ textAlign: "center", fontSize: 13 }}>{h.total ?? "—"}</td>
+                        <td style={{ textAlign: "center", color: h.openCount > 0 ? "var(--critical)" : "inherit", fontSize: 13 }}>{h.openCount}</td>
+                        <td>
+                          {(h.critical != null) && (
+                            <div style={{ display: "flex", gap: 4, fontSize: 10 }}>
+                              {h.critical > 0 && <span style={{ color: SEV_COLOR.critical }}>{h.critical}C</span>}
+                              {h.high > 0 && <span style={{ color: SEV_COLOR.high }}>{h.high}H</span>}
+                              {h.medium > 0 && <span style={{ color: SEV_COLOR.medium }}>{h.medium}M</span>}
+                              {h.low > 0 && <span style={{ color: SEV_COLOR.low }}>{h.low}L</span>}
+                            </div>
+                          )}
+                        </td>
                       </tr>
                     ))}
                 </tbody>
@@ -284,75 +307,55 @@ export function ExecutiveDashboard() {
         </div>
 
         <div className="right-column">
-          {/* Weekly volume */}
-          <WeeklyBarChart title="Weekly Alert Volume" data={weekly} barColor="#00a8ff" />
-
-          {/* SLA Risk distribution */}
-          <article className="table-card">
-            <div className="table-head">
-              <h3>SLA Risk Distribution</h3>
+          {/* Volume Trend */}
+          <article className="glass-panel" style={{ padding: 24 }}>
+            <div className="table-head" style={{ marginBottom: 20 }}>
+              <h3 className="premium-accent">Portfolio Ingestion Volume</h3>
             </div>
-            <div style={{ padding: "8px 0 4px", display: "flex", flexDirection: "column", gap: 12 }}>
-              {(["High", "Medium", "Low"] as SlaRisk[]).map((risk) => {
-                const cnt = riskCounts[risk] ?? 0;
-                const pct = allHealth.length
-                  ? Math.round((cnt / allHealth.length) * 100)
-                  : 0;
-                return (
-                  <div key={risk}>
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        fontSize: 13,
-                        marginBottom: 4,
-                      }}
-                    >
-                      <span style={{ color: RISK_COLOR[risk] }}>{risk} Risk</span>
-                      <span style={{ color: "var(--text-muted)" }}>
-                        {cnt} orgs ({pct}%)
-                      </span>
-                    </div>
-                    <div className="progress-track">
-                      <div
-                        className="progress-fill"
-                        style={{ width: `${pct}%`, background: RISK_COLOR[risk] }}
-                      />
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+            <WeeklyBarChart title="" data={weekly} barColor="var(--primary)" />
           </article>
 
-          {/* Top alert types */}
-          <article className="table-card">
-            <div className="table-head">
-              <h3>Top Recurring Alert Types</h3>
+          {/* Geo Distribution */}
+          <article className="glass-panel" style={{ padding: 24, marginTop: 16 }}>
+            <div className="table-head" style={{ marginBottom: 20 }}>
+              <h3 className="premium-accent">Global Distribution</h3>
+              <span style={{ fontSize: 12, color: "var(--text-muted)" }}>Warehouse · Top countries</span>
             </div>
-            <div style={{ padding: "4px 0" }}>
-              {topTypes.map((t) => {
-                const pct = topTypes[0]?.count
-                  ? Math.round((t.count / topTypes[0].count) * 100)
-                  : 0;
+            <DistributionBarChart
+              data={geoData
+                .reduce((acc: any[], curr: any) => {
+                  const existing = acc.find((a: any) => a.country === curr.country);
+                  if (existing) existing.count += curr.count;
+                  else acc.push({ country: curr.country, count: curr.count });
+                  return acc;
+                }, [])
+                .sort((a: any, b: any) => b.count - a.count)
+                .slice(0, 8)}
+              xKey="country"
+              yKey="count"
+              barColor="var(--good)"
+              title=""
+            />
+          </article>
+
+          {/* SLA Distribution */}
+          <article className="glass-panel" style={{ padding: 24, marginTop: 16 }}>
+            <div className="table-head" style={{ marginBottom: 20 }}>
+              <h3 className="premium-accent">SLA Risk Profile</h3>
+              <span style={{ fontSize: 12, color: "var(--text-muted)" }}>{allHealth.length} orgs assessed</span>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+              {(["High", "Medium", "Low"] as SlaRisk[]).map((risk) => {
+                const cnt = riskCounts[risk] ?? 0;
+                const pct = allHealth.length ? Math.round((cnt / allHealth.length) * 100) : 0;
                 return (
-                  <div key={t.name} style={{ marginBottom: 10 }}>
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        fontSize: 13,
-                        marginBottom: 4,
-                      }}
-                    >
-                      <span>{t.name}</span>
-                      <span style={{ color: "var(--text-muted)" }}>{t.count}x</span>
+                  <div key={risk}>
+                    <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, marginBottom: 8 }}>
+                      <span style={{ color: RISK_COLOR[risk], fontWeight: 600 }}>{risk} Risk</span>
+                      <span style={{ color: "var(--text-muted)" }}>{cnt} Orgs ({pct}%)</span>
                     </div>
-                    <div className="progress-track">
-                      <div
-                        className="progress-fill"
-                        style={{ width: `${pct}%`, background: "#a78bfa" }}
-                      />
+                    <div className="progress-track" style={{ height: 8 }}>
+                      <div className="progress-fill" style={{ width: `${pct}%`, background: RISK_COLOR[risk] }} />
                     </div>
                   </div>
                 );

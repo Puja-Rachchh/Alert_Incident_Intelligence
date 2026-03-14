@@ -1,0 +1,163 @@
+=====================================================
+RESOLUTION DOC: RES-2025-001
+Incident Reference: INC-2025-001
+Service: web-prod-01
+Category: Memory Leak / CPU Exhaustion
+=====================================================
+
+PROBLEM: Node.js application memory leak caused sustained CPU > 95% due to unclosed database connections.
+
+PERMANENT FIX APPLIED:
+1. Updated database connection pool configuration:
+   - Set max connections: 20 (was unlimited)
+   - Set idle timeout: 30 seconds
+   - Set connection timeout: 5 seconds
+   - Enabled connection health checks every 60 seconds
+
+2. Code changes (connection-pool.js):
+   - Added try/finally blocks to ensure connections are always returned to pool
+   - Implemented connection wrapper with automatic release on scope exit
+   - Added logging for connection pool metrics (active, idle, waiting)
+
+3. Infrastructure changes:
+   - Added CPU auto-scaling rule: scale up when CPU > 70% for 5 minutes
+   - Added memory monitoring alert: warn at 80%, critical at 90%
+   - Implemented graceful shutdown to drain connections before restart
+
+4. Monitoring additions:
+   - Dashboard: Node.js connection pool metrics in Grafana
+   - Alert: Connection pool utilization > 80% → warn, > 95% → critical
+   - Alert: Active connections growing without release for > 5 minutes
+
+VALIDATION:
+- Load tested with 2x normal traffic for 4 hours — no memory growth
+- Connection pool metrics remained stable (15-18 active connections)
+- CPU stayed below 45% under peak load
+
+=====================================================
+RESOLUTION DOC: RES-2025-002
+Incident Reference: INC-2025-002
+Service: db-replica-03
+Category: Database Replication / Query Performance
+=====================================================
+
+PROBLEM: Unindexed analytical query caused replication lag > 120 seconds on read replica.
+
+PERMANENT FIX APPLIED:
+1. Database index additions:
+   - Added index on orders.created_at: CREATE INDEX idx_orders_created_at ON orders(created_at)
+   - Added composite index: CREATE INDEX idx_orders_created_status ON orders(created_at, status)
+   - Index creation done online with pt-online-schema-change to avoid locking
+
+2. Query governance:
+   - Implemented max execution time: SET GLOBAL max_execution_time=300000 (5 min)
+   - Created dedicated analytics replica (db-analytics-01) for heavy queries
+   - Routed analytics dashboard to use db-analytics-01 instead of db-replica-03
+
+3. Monitoring additions:
+   - Alert: Replication lag > 30 seconds → warn, > 60 seconds → critical
+   - Alert: Query execution time > 3 minutes on replicas
+   - Dashboard: Slow query log analysis in Grafana
+
+VALIDATION:
+- Same analytical query now completes in 12 seconds (was 3+ hours)
+- Replication lag stable at < 2 seconds during peak hours
+- Analytics workload isolated to dedicated replica
+
+=====================================================
+RESOLUTION DOC: RES-2025-003
+Incident Reference: INC-2025-003
+Service: api-gateway
+Category: TLS Certificate / Security
+=====================================================
+
+PROBLEM: Expired internal TLS certificate caused 60% HTTP 502 errors on API gateway.
+
+PERMANENT FIX APPLIED:
+1. Certificate management automation:
+   - Deployed cert-manager on Kubernetes cluster
+   - Configured automatic renewal for all internal certificates (renew 30 days before expiry)
+   - Set up certificate issuer using internal CA with auto-approval
+
+2. Monitoring and alerting:
+   - Alert: Certificate expiring within 30 days → P3 notification
+   - Alert: Certificate expiring within 7 days → P2 escalation to Security team
+   - Alert: Certificate expired → P1 immediate page
+   - Dashboard: Certificate inventory with expiry dates
+
+3. Process improvements:
+   - Created certificate inventory spreadsheet (now automated)
+   - Added certificate renewal to monthly infrastructure checklist
+   - Implemented mutual TLS health checks between all internal services
+
+VALIDATION:
+- All 47 internal certificates now managed by cert-manager
+- Test renewal completed successfully on staging environment
+- Zero certificate-related incidents since implementation
+
+=====================================================
+RESOLUTION DOC: RES-2025-004
+Incident Reference: INC-2025-004
+Service: redis-cache-01
+Category: Cache Configuration / Deployment
+=====================================================
+
+PROBLEM: Cache key generation bug caused hit ratio to drop from 92% to 40%.
+
+PERMANENT FIX APPLIED:
+1. Cache key strategy:
+   - Replaced timestamp-based keys with version-hash-based keys
+   - Cache key format: {service}:{entity}:{id}:{version_hash}
+   - Version hash changes only when schema or business logic changes
+   - Implemented cache key unit tests to prevent regression
+
+2. Deployment safeguards:
+   - Added cache hit ratio check to canary deployment pipeline
+   - If hit ratio drops > 20% during canary → automatic rollback
+   - Cache key changes now require explicit sign-off in pull request checklist
+
+3. Monitoring additions:
+   - Alert: Cache hit ratio < 80% → warn (investigate)
+   - Alert: Cache hit ratio < 60% → critical (likely deployment issue)
+   - Dashboard: Real-time cache hit/miss ratio per service
+
+VALIDATION:
+- Cache hit ratio stable at 91-94% for 30 days after fix
+- Canary deployment tested with intentional cache key change — correctly triggered rollback
+- No cache-related incidents since implementation
+
+=====================================================
+RESOLUTION DOC: RES-2025-005
+Incident Reference: INC-2025-005
+Service: log-server-01
+Category: Disk Space / Log Management
+=====================================================
+
+PROBLEM: Debug logging left enabled after troubleshooting caused disk usage to reach 91%.
+
+PERMANENT FIX APPLIED:
+1. Log management:
+   - Reduced log retention from 90 days to 30 days
+   - Enabled gzip compression for rotated logs (saves ~80% space)
+   - Configured logrotate to run daily instead of weekly
+   - Set max log file size to 100MB before rotation
+
+2. Debug logging governance:
+   - Implemented automatic debug log disable after 24 hours
+   - Debug logging now requires a "TTL" parameter: enable_debug(ttl_hours=4)
+   - Created script to audit and disable orphaned debug logging across all services
+
+3. Centralized logging migration:
+   - Migrated application logs to ELK Stack (Elasticsearch, Logstash, Kibana)
+   - Local disk now only stores last 24 hours of logs as buffer
+   - Long-term retention handled by Elasticsearch with lifecycle policies
+
+4. Monitoring:
+   - Alert: Disk usage > 70% → warn
+   - Alert: Disk usage > 85% → critical
+   - Alert: Log growth rate > 2x normal → investigate
+
+VALIDATION:
+- Disk usage reduced from 91% to 35% after cleanup and migration
+- Log growth stable at ~2GB/day (was ~15GB/day with debug enabled)
+- ELK Stack handling 30-day retention with automatic archival

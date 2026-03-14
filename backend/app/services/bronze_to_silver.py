@@ -24,15 +24,28 @@ def is_duplicate(cur, fingerprint: str, occurred_at):
     window_end = occurred_at + timedelta(minutes=5)
     cur.execute(
         """
-        SELECT 1
+        SELECT alert_id
         FROM silver_alerts
         WHERE fingerprint = %s
           AND occurred_at BETWEEN %s AND %s
+        ORDER BY occurred_at DESC
         LIMIT 1
         """,
         (fingerprint, window_start, window_end),
     )
-    return cur.fetchone() is not None
+    row = cur.fetchone()
+    return row[0] if row else None
+
+
+def increment_duplicate_count(cur, alert_id):
+    cur.execute(
+        """
+        UPDATE silver_alerts
+        SET duplicate_count = duplicate_count + 1
+        WHERE alert_id = %s
+        """,
+        (alert_id,),
+    )
 
 
 def insert_silver(cur, bronze_id: int, rec: dict, duplicate_flag: bool):
@@ -48,6 +61,8 @@ def insert_silver(cur, bronze_id: int, rec: dict, duplicate_flag: bool):
             customer_name,
             device_name,
             host,
+            host_country,
+            host_state,
             alert_category,
             is_duplicate,
             is_resolution,
@@ -58,7 +73,7 @@ def insert_silver(cur, bronze_id: int, rec: dict, duplicate_flag: bool):
             extra_data,
             bronze_id
         ) VALUES (
-            %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s::jsonb, %s::jsonb, %s
+            %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s::jsonb, %s::jsonb, %s
         )
         """,
         (
@@ -71,6 +86,8 @@ def insert_silver(cur, bronze_id: int, rec: dict, duplicate_flag: bool):
             rec["customer_name"],
             rec.get("device_name"),
             rec.get("host"),
+            rec.get("host_country"),
+            rec.get("host_state"),
             rec.get("alert_category"),
             duplicate_flag,
             rec["is_resolution"],
@@ -118,11 +135,14 @@ def run(limit: int = 500):
             for bronze_id, source_system, raw_payload, _content_type in rows:
                 try:
                     rec = normalize_record(source_system=source_system, raw_payload=raw_payload)
-                    duplicate_flag = is_duplicate(cur, rec["fingerprint"], rec["occurred_at"])
-                    if duplicate_flag:
-                        duplicates += 1
+                    existing_alert_id = is_duplicate(cur, rec["fingerprint"], rec["occurred_at"])
 
-                    insert_silver(cur, bronze_id, rec, duplicate_flag)
+                    if existing_alert_id:
+                        increment_duplicate_count(cur, existing_alert_id)
+                        duplicates += 1
+                    else:
+                        insert_silver(cur, bronze_id, rec, False)
+
                     mark_processed(cur, bronze_id)
                     processed += 1
                 except Exception as exc:

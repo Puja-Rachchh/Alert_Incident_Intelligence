@@ -36,7 +36,9 @@ def _create_schema(con: duckdb.DuckDBPyConnection) -> None:
             device_key INTEGER PRIMARY KEY,
             device_name VARCHAR,
             host VARCHAR,
-            UNIQUE(device_name, host)
+            host_country VARCHAR,
+            host_state VARCHAR,
+            UNIQUE(device_name, host, host_country, host_state)
         );
 
         CREATE SEQUENCE IF NOT EXISTS seq_dim_device START 1;
@@ -73,10 +75,16 @@ def _create_schema(con: duckdb.DuckDBPyConnection) -> None:
             is_duplicate BOOLEAN,
             is_resolution BOOLEAN,
             fingerprint VARCHAR,
-            description VARCHAR
+            description VARCHAR,
+            duplicate_count INTEGER DEFAULT 1
         );
         """
     )
+    # Migration: Check if duplicate_count exists in fact_alert_events
+    cols = con.execute("PRAGMA table_info('fact_alert_events')").df()
+    if 'duplicate_count' not in cols['name'].values:
+        print("Migrating DuckDB: Adding duplicate_count to fact_alert_events")
+        con.execute("ALTER TABLE fact_alert_events ADD COLUMN duplicate_count INTEGER DEFAULT 1")
 
 
 def _get_or_create_source_key(con: duckdb.DuckDBPyConnection, source_system: str) -> int:
@@ -109,21 +117,21 @@ def _get_or_create_customer_key(con: duckdb.DuckDBPyConnection, customer_name: s
     ).fetchone()[0]
 
 
-def _get_or_create_device_key(con: duckdb.DuckDBPyConnection, device_name: str, host: str) -> int:
+def _get_or_create_device_key(con: duckdb.DuckDBPyConnection, device_name: str, host: str, country: str, state: str) -> int:
     row = con.execute(
-        "SELECT device_key FROM dim_device WHERE device_name = ? AND host = ?",
-        [device_name, host],
+        "SELECT device_key FROM dim_device WHERE device_name = ? AND host = ? AND host_country = ? AND host_state = ?",
+        [device_name, host, country, state],
     ).fetchone()
     if row:
         return row[0]
 
     con.execute(
-        "INSERT INTO dim_device VALUES (nextval('seq_dim_device'), ?, ?)",
-        [device_name, host],
+        "INSERT INTO dim_device VALUES (nextval('seq_dim_device'), ?, ?, ?, ?)",
+        [device_name, host, country, state],
     )
     return con.execute(
-        "SELECT device_key FROM dim_device WHERE device_name = ? AND host = ?",
-        [device_name, host],
+        "SELECT device_key FROM dim_device WHERE device_name = ? AND host = ? AND host_country = ? AND host_state = ?",
+        [device_name, host, country, state],
     ).fetchone()[0]
 
 
@@ -199,6 +207,8 @@ def load_silver_to_warehouse(limit: int = 50000) -> None:
                     customer_name,
                     COALESCE(device_name, '') AS device_name,
                     COALESCE(host, '') AS host,
+                    COALESCE(host_country, '') AS host_country,
+                    COALESCE(host_state, '') AS host_state,
                     alert_name,
                     COALESCE(alert_category, 'unknown') AS alert_category,
                     occurred_at,
@@ -207,7 +217,8 @@ def load_silver_to_warehouse(limit: int = 50000) -> None:
                     is_duplicate,
                     is_resolution,
                     fingerprint,
-                    COALESCE(description, '') AS description
+                    COALESCE(description, '') AS description,
+                    duplicate_count
                 FROM silver_alerts
                 ORDER BY occurred_at ASC
                 LIMIT %s
@@ -226,6 +237,8 @@ def load_silver_to_warehouse(limit: int = 50000) -> None:
                 customer_name,
                 device_name,
                 host,
+                host_country,
+                host_state,
                 alert_name,
                 alert_category,
                 occurred_at,
@@ -235,16 +248,29 @@ def load_silver_to_warehouse(limit: int = 50000) -> None:
                 is_resolution,
                 fingerprint,
                 description,
+                duplicate_count,
             ) = row
 
             alert_id_str = str(alert_id)
-            if _fact_exists(con, alert_id_str):
+            
+            # Upsert logic for duplicate_count
+            existing = con.execute(
+                "SELECT duplicate_count FROM fact_alert_events WHERE alert_id = ?", [alert_id_str]
+            ).fetchone()
+
+            if existing:
+                if existing[0] != duplicate_count:
+                    con.execute(
+                        "UPDATE fact_alert_events SET duplicate_count = ? WHERE alert_id = ?",
+                        [duplicate_count, alert_id_str]
+                    )
+                    inserted += 1 # Counting updates as well for progress tracking
                 skipped += 1
                 continue
 
             source_key = _get_or_create_source_key(con, source_system)
             customer_key = _get_or_create_customer_key(con, customer_name)
-            device_key = _get_or_create_device_key(con, device_name, host)
+            device_key = _get_or_create_device_key(con, device_name, host, host_country, host_state)
             alert_type_key = _get_or_create_alert_type_key(con, alert_name, alert_category)
             time_key = _get_or_create_time_key(con, occurred_at)
 
@@ -263,8 +289,9 @@ def load_silver_to_warehouse(limit: int = 50000) -> None:
                     is_duplicate,
                     is_resolution,
                     fingerprint,
-                    description
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    description,
+                    duplicate_count
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """,
                 [
                     alert_id_str,
@@ -280,6 +307,7 @@ def load_silver_to_warehouse(limit: int = 50000) -> None:
                     is_resolution,
                     fingerprint,
                     description,
+                    duplicate_count,
                 ],
             )
             inserted += 1
