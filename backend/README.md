@@ -43,3 +43,37 @@ From sim folder:
 pip install requests schedule
 python simulator.py seed
 ```
+
+## 5) Run Bronze -> Silver normalization
+
+From backend folder:
+
+```
+python -m app.services.bronze_to_silver
+```
+
+This reads pending rows from bronze_alerts, normalizes source payloads into silver_alerts,
+marks duplicates in a 5-minute fingerprint window, and updates bronze processing status.
+
+## 6) Load Silver -> Warehouse (DuckDB)
+
+From backend folder:
+
+```
+python -m app.services.silver_to_warehouse
+```
+
+This loads canonical silver_alerts rows into a local star schema warehouse at:
+
+data/warehouse/alerts.duckdb
+
+## 7) Directly connect DuckDB to PostgreSQL
+
+From backend folder:
+
+```
+python -m app.services.connect_duckdb_postgres
+```
+
+This uses DuckDB's postgres extension to ATTACH the live PostgreSQL database as
+schema pg_alerts inside DuckDB, so you can query postgres tables directly from DuckDB.

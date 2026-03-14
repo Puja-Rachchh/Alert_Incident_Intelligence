@@ -114,3 +114,23 @@ CREATE TABLE dq_failures (
     raw_value       TEXT,
     created_at      TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
+
+-- TICKETS: operator/user-created issues from queries or incidents
+CREATE TABLE tickets (
+    ticket_id            UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    ticket_number        BIGSERIAL UNIQUE,
+    title                TEXT NOT NULL,
+    description          TEXT NOT NULL,
+    requester            TEXT,
+    priority             VARCHAR(20) NOT NULL DEFAULT 'medium',
+    status               VARCHAR(20) NOT NULL DEFAULT 'open',
+    source_query         TEXT,
+    related_incident_id  UUID,
+    metadata             JSONB,
+    created_at           TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at           TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX idx_tickets_status ON tickets (status);
+CREATE INDEX idx_tickets_priority ON tickets (priority);
+CREATE INDEX idx_tickets_created_at ON tickets (created_at DESC);
