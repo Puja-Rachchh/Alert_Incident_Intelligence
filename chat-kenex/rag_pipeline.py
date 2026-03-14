@@ -1,4 +1,5 @@
 import os
+import re
 import time
 from typing import List
 
@@ -60,23 +61,55 @@ Provide numbered, actionable steps to resolve the issue immediately.
 
 ⚠️ ESCALATION ADVICE
 - Should this be escalated? [Yes / No / Monitor]
-- If Yes → Escalate to: [team name or role]
+- If Yes → Escalate to: [team name from context]
 - Urgency level: [P1 Critical / P2 High / P3 Medium / P4 Low]
 - Reason: [one sentence justification]
 
 ---
 
 📚 RELATED PAST INCIDENTS
-List up to 3 similar past incidents from the retrieved context.
-Format: "Incident ID | Service | Brief description | How it was resolved"
+List similar past incidents ONLY from the retrieved context.
+Format each as: "Incident ID | Service | Brief description | How it was resolved"
+If no related incidents found in context, write: "No matching incidents found in knowledge base."
 
 ---
 
-RULES:
-- Never use technical jargon without a brief explanation
-- If retrieved context is insufficient, clearly say: "Limited historical data — manual investigation recommended"
-- Keep the entire response under 400 words
-- Always prioritize speed of resolution over completeness
+EXAMPLE RESPONSE (for reference on formatting):
+
+---
+
+🔴 INCIDENT SUMMARY
+Server web-prod-01 is experiencing sustained CPU usage above 95% for 15 minutes. The production web server hosting the customer-facing application is severely degraded, with response times increasing from 200ms to 5+ seconds. This is a P1 Critical incident affecting approximately 12,000 users.
+
+---
+
+🔍 ROOT CAUSE ANALYSIS
+- Primary cause: Memory leak in Node.js application due to unclosed database connection pool (based on INC-2025-001)
+- Contributing factors: No auto-scaling rules configured for CPU > 80%
+- Confidence level: High — exact same alert pattern matches INC-2025-001
+
+---
+
+🛠️ RESOLUTION STEPS
+1. SSH into the server and identify the top CPU-consuming process: `top -bn1 | head -20`
+2. Restart the application service: `sudo systemctl restart node-app`
+3. Verify CPU drops below 30% within 2 minutes
+4. Check application response times in Grafana dashboard to confirm recovery
+
+---
+
+⚠️ ESCALATION ADVICE
+- Should this be escalated? Yes
+- Escalate to: Platform Engineering team
+- Urgency level: P1 Critical
+- Reason: Customer-facing application is severely degraded with active revenue impact
+
+---
+
+📚 RELATED PAST INCIDENTS
+INC-2025-001 | web-prod-01 | CPU spike to 95% due to memory leak | Restarted app + fixed connection pool
+
+---
 
 Retrieved Context:
 {context}"""
@@ -155,9 +188,20 @@ def setup_pinecone(index_name: str | None = None):
     return pc.Index(index_name)
 
 
-# ── Ingest Pipeline ─────────────────────────────────────────────
+def clear_pinecone_index(index_name: str | None = None):
+    """Delete all vectors from the index (for re-ingestion)."""
+    index_name = index_name or PINECONE_INDEX_NAME
+    pc = Pinecone(api_key=PINECONE_API_KEY)
+    if pc.has_index(index_name):
+        idx = pc.Index(index_name)
+        idx.delete(delete_all=True)
+        print(f"[INFO] Cleared all vectors from '{index_name}'")
+        time.sleep(3)
+
+
+# ── Ingest Pipeline (Enhanced) ──────────────────────────────────
 def ingest_documents(data_dir: str, index_name: str | None = None) -> str:
-    """Full ingest pipeline: load → split → embed → store in Pinecone."""
+    """Full ingest pipeline: load → split → enrich → embed → store."""
     index_name = index_name or PINECONE_INDEX_NAME
 
     # Load & split
@@ -197,9 +241,10 @@ class HuggingFaceChatLLM(BaseChatModel):
     """Custom LangChain ChatModel using HuggingFace InferenceClient."""
 
     client: Any = None
-    model_id: str = "Qwen/Qwen2.5-1.5B-Instruct"
-    temperature: float = 0.5
-    max_tokens: int = 1024
+    model_id: str = "Qwen/Qwen2.5-72B-Instruct"
+    temperature: float = 0.2       # Lower = more factual, less creative
+    max_tokens: int = 2048         # More room for full structured responses
+    top_p: float = 0.9             # Nucleus sampling for coherence
 
     class Config:
         arbitrary_types_allowed = True
@@ -235,6 +280,7 @@ class HuggingFaceChatLLM(BaseChatModel):
             messages=hf_messages,
             max_tokens=self.max_tokens,
             temperature=self.temperature,
+            top_p=self.top_p,
         )
 
         content = response.choices[0].message.content
@@ -243,25 +289,33 @@ class HuggingFaceChatLLM(BaseChatModel):
         )
 
 
-# ── RAG Chain ────────────────────────────────────────────────────
+# ── RAG Chain (Enhanced) ─────────────────────────────────────────
 def get_rag_chain(index_name: str | None = None):
-    """Build and return a ready‑to‑use RAG chain with HuggingFace LLM."""
+    """Build and return a high-accuracy RAG chain."""
     index_name = index_name or PINECONE_INDEX_NAME
 
-    # Retriever
+    # Retriever — upgraded with MMR and more results
     embedding = get_embeddings()
     vectorstore = PineconeVectorStore.from_existing_index(
         index_name=index_name,
         embedding=embedding,
     )
     retriever = vectorstore.as_retriever(
-        search_type="similarity", search_kwargs={"k": 3}
+        search_type="mmr",              # Maximal Marginal Relevance for diverse results
+        search_kwargs={
+            "k": 5,                     # Retrieve top 5 (was 3)
+            "fetch_k": 15,              # Fetch 15 candidates, pick best 5
+            "lambda_mult": 0.7,         # Balance relevance (1.0) vs diversity (0.0)
+        },
     )
 
-    # LLM — try models in order of preference
+    # LLM — try models in order of capability (largest first)
     models_to_try = [
-        "Qwen/Qwen2.5-1.5B-Instruct",
-        "HuggingFaceH4/zephyr-7b-beta",
+        "Qwen/Qwen2.5-72B-Instruct",                 # Best quality
+        "meta-llama/Llama-3.3-70B-Instruct",          # Strong fallback
+        "mistralai/Mistral-Small-24B-Instruct-2501",  # Good mid-range
+        "HuggingFaceH4/zephyr-7b-beta",               # Reliable fallback
+        "Qwen/Qwen2.5-1.5B-Instruct",                 # Last resort
     ]
 
     llm = None
@@ -271,7 +325,7 @@ def get_rag_chain(index_name: str | None = None):
             # Smoke test
             candidate.invoke("Hello")
             llm = candidate
-            print(f"[INFO] Using HuggingFace model: {model_id}")
+            print(f"[INFO] ✅ Using HuggingFace model: {model_id}")
             break
         except Exception as e:
             print(f"[WARN] Model {model_id} failed: {str(e)[:120]}")
@@ -290,7 +344,7 @@ def get_rag_chain(index_name: str | None = None):
     question_answer_chain = create_stuff_documents_chain(llm, prompt)
     rag_chain = create_retrieval_chain(retriever, question_answer_chain)
 
-    print("[INFO] RAG chain initialized with HuggingFace LLM")
+    print("[INFO] RAG chain initialized with enhanced pipeline")
     return rag_chain
 
 

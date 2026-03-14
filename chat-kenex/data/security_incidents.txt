@@ -1,0 +1,117 @@
+=====================================================
+INCIDENT REPORT: INC-2025-009
+Date: 2025-10-28
+Severity: P1 Critical
+Service: auth-service (Authentication Service)
+=====================================================
+
+ALERT: Brute force attack detected on authentication service. 50,000+ failed login attempts in the last 10 minutes from 200+ unique IP addresses.
+
+DESCRIPTION:
+At 06:00 UTC, the security monitoring system detected a distributed brute force attack targeting the
+authentication endpoint /api/auth/login. Over 50,000 failed login attempts were recorded from
+approximately 200 unique IP addresses across multiple geographic regions. The attack was using a
+credential stuffing technique with likely stolen credentials from a third-party breach.
+
+ROOT CAUSE:
+The authentication service lacked rate limiting on the login endpoint. While the service had account
+lockout after 5 failed attempts, the attackers were distributing attempts across thousands of different
+accounts, staying under the per-account lockout threshold. The distributed nature of the attack (200+
+IPs) bypassed simple IP-based blocking.
+
+RESOLUTION:
+1. Identified the attack: Analyzed auth logs showing 50K+ failures with pattern of distributed IPs
+2. Implemented emergency IP-based rate limiting: iptables -A INPUT -p tcp --dport 443 -m limit --limit 10/minute -j ACCEPT
+3. Deployed WAF rule to block known-bad user agents: Added Cloudflare WAF rule
+4. Enabled CAPTCHA on login after 3 failed attempts per IP: Updated auth-service config
+5. Blocked the top 50 most aggressive IPs: firewall-cmd --add-rich-rule='rule family=ipv4 source address=<IP> reject'
+6. Verified attack traffic dropped by 95% within 5 minutes
+
+IMPACT:
+- Duration: 25 minutes (detection to mitigation)
+- 12 user accounts compromised (password resets forced)
+- No data exfiltration detected
+
+LESSONS LEARNED:
+- Implement progressive rate limiting (per-IP AND global)
+- Deploy bot detection (CAPTCHA, device fingerprinting)
+- Enable real-time anomaly detection on login patterns
+- Implement MFA for all user accounts
+
+=====================================================
+INCIDENT REPORT: INC-2025-010
+Date: 2025-11-20
+Severity: P1 Critical
+Service: cdn-edge (CDN Edge Servers)
+=====================================================
+
+ALERT: DDoS attack detected. Incoming traffic at 15Gbps, 10x above normal baseline. CDN edge servers at capacity.
+
+DESCRIPTION:
+At 19:30 UTC, CDN edge servers detected a volumetric DDoS attack with traffic peaking at 15Gbps
+(normal baseline is 1.5Gbps). The attack consisted primarily of UDP flood targeting the main website
+domain. CDN edge servers were absorbing the attack but reaching capacity limits, causing increased
+latency for legitimate users.
+
+ROOT CAUSE:
+A UDP reflection/amplification attack using NTP servers as amplifiers. The attackers spoofed the
+source IP of the target and sent monlist requests to open NTP servers, resulting in amplified traffic
+directed at the CDN edge. The attack originated from approximately 5,000 compromised devices.
+
+RESOLUTION:
+1. Identified attack type: Analyzed traffic — 90% UDP packets on port 123 (NTP)
+2. Enabled DDoS mitigation mode on CDN: Cloudflare "Under Attack" mode activated
+3. Configured UDP rate limiting on edge: Rate limited NTP traffic to 100Mbps
+4. Activated upstream ISP scrubbing: Contacted ISP for traffic scrubbing at their edge
+5. Implemented GeoIP filtering: Blocked traffic from regions not serving legitimate users
+6. Attack traffic scrubbed within 10 minutes, legitimate traffic unaffected
+
+IMPACT:
+- Duration: 40 minutes (until full mitigation)
+- Increased latency: 200ms → 800ms for legitimate users during attack
+- No data loss or service outage
+
+LESSONS LEARNED:
+- Pre-configure DDoS runbooks with CDN provider
+- Implement always-on DDoS mitigation for production services
+- Set up traffic anomaly alerting at 2x baseline
+- Maintain relationships with upstream ISPs for emergency scrubbing
+
+=====================================================
+INCIDENT REPORT: INC-2025-011
+Date: 2025-12-10
+Severity: P2 High
+Service: secrets-vault (HashiCorp Vault)
+=====================================================
+
+ALERT: Unauthorized access attempt detected on secrets-vault. 15 failed authentication attempts using revoked service tokens in 5 minutes.
+
+DESCRIPTION:
+At 02:00 UTC, HashiCorp Vault audit logs showed 15 authentication attempts using service tokens that
+had been revoked 48 hours ago during a routine token rotation. The requests originated from an internal
+IP address (10.0.5.47) belonging to a decommissioned staging server.
+
+ROOT CAUSE:
+The decommissioned staging server (staging-old-03) was not properly removed from the network during
+decommissioning. It still had cached Vault tokens from before the rotation. An automated job on the
+server (cron job for secret refresh) was still running, attempting to authenticate with the old tokens.
+While the access was not malicious, it indicated a gap in the decommissioning process.
+
+RESOLUTION:
+1. Identified the source: Vault audit log grep for failed auth — all from 10.0.5.47
+2. Confirmed server identity: nslookup 10.0.5.47 — staging-old-03
+3. Disabled network access for the server: Switch port shutdown on sw-staging-01 port 12
+4. Verified no successful authentications occurred with revoked tokens
+5. Audited all other decommissioned servers for similar issues
+6. Updated decommissioning checklist to include Vault token revocation and network isolation
+
+IMPACT:
+- No data compromise (tokens were properly revoked, all attempts failed)
+- Security team investigation: 2 hours
+- Identified 3 other decommissioned servers with similar issues
+
+LESSONS LEARNED:
+- Include Vault token cleanup in server decommissioning checklist
+- Implement automated network isolation for decommissioned servers
+- Set up alerts for authentication attempts from decommissioned server IPs
+- Regular audit of active Vault tokens vs. known active servers

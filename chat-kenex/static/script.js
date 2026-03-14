@@ -3,6 +3,7 @@ const chatMessages = document.getElementById("chat-messages");
 const alertInput = document.getElementById("alert-input");
 const btnSend = document.getElementById("btn-send");
 const btnIngest = document.getElementById("btn-ingest");
+const btnExport = document.getElementById("btn-export");
 const btnClear = document.getElementById("btn-clear");
 const statusDot = document.getElementById("status-dot");
 const statusText = document.getElementById("status-text");
@@ -37,6 +38,18 @@ function removeWelcome() {
     if (welcome) welcome.remove();
 }
 
+function saveChatHistory() {
+    localStorage.setItem("sreCopilotChatHistory", chatMessages.innerHTML);
+}
+
+function loadChatHistory() {
+    const history = localStorage.getItem("sreCopilotChatHistory");
+    if (history) {
+        chatMessages.innerHTML = history;
+        scrollToBottom();
+    }
+}
+
 // ── Format AI Response ────────────────────────────────────────────
 function formatResponse(text) {
     // Replace section headers with styled HTML
@@ -59,6 +72,26 @@ function formatResponse(text) {
     return html;
 }
 
+// ── Confidence Badge Builder ──────────────────────────────────────
+function buildConfidenceBadge(confidence, contextCount, docTypes, services) {
+    const labels = {
+        high: { text: "High Confidence", icon: "🟢" },
+        medium: { text: "Medium Confidence", icon: "🟡" },
+        low: { text: "Low Confidence", icon: "🔴" },
+    };
+    const info = labels[confidence] || labels["low"];
+
+    let metaHtml = `<span class="confidence-badge confidence-${confidence}">${info.icon} ${info.text}</span>`;
+    metaHtml += `<span class="context-count">${contextCount} context doc${contextCount !== 1 ? 's' : ''} retrieved</span>`;
+
+    if (services && services.length > 0) {
+        const svcTags = services.map(s => `<span class="service-tag">${escapeHtml(s)}</span>`).join("");
+        metaHtml += `<div class="meta-services">${svcTags}</div>`;
+    }
+
+    return `<div class="response-meta">${metaHtml}</div>`;
+}
+
 // ── Add Messages ──────────────────────────────────────────────────
 function addUserMessage(text) {
     removeWelcome();
@@ -73,6 +106,10 @@ function addUserMessage(text) {
 }
 
 function addAssistantMessage(text, sources = []) {
+    saveChatHistory();
+}
+
+function addAssistantMessage(text, sources = [], confidence = null, contextCount = 0, docTypes = [], services = []) {
     // Remove loading indicator
     const loader = chatMessages.querySelector(".message.loading");
     if (loader) loader.remove();
@@ -80,6 +117,13 @@ function addAssistantMessage(text, sources = []) {
     const div = document.createElement("div");
     div.className = "message assistant";
 
+    // Build confidence/meta section
+    let metaHtml = "";
+    if (confidence) {
+        metaHtml = buildConfidenceBadge(confidence, contextCount, docTypes, services);
+    }
+
+    // Build sources section
     let sourcesHtml = "";
     if (sources.length > 0) {
         const tags = sources.map(s => `<span class="source-tag">${escapeHtml(s)}</span>`).join("");
@@ -94,12 +138,14 @@ function addAssistantMessage(text, sources = []) {
     div.innerHTML = `
         <div class="message-avatar">🛡️</div>
         <div class="message-bubble">
+            ${metaHtml}
             ${formatResponse(text)}
             ${sourcesHtml}
         </div>
     `;
     chatMessages.appendChild(div);
     scrollToBottom();
+    saveChatHistory();
 }
 
 function addLoadingMessage() {
@@ -111,7 +157,7 @@ function addLoadingMessage() {
             <div class="loading-dots">
                 <span></span><span></span><span></span>
             </div>
-            <span style="font-size:12px;color:var(--text-muted);">Analysing alert — retrieving context...</span>
+            <span style="font-size:12px;color:var(--text-muted);">Analysing alert — retrieving context from knowledge base...</span>
         </div>
     `;
     chatMessages.appendChild(div);
@@ -147,7 +193,14 @@ async function sendQuery(query) {
             throw new Error(data.error || "Server error");
         }
 
-        addAssistantMessage(data.answer, data.sources || []);
+        addAssistantMessage(
+            data.answer,
+            data.sources || [],
+            data.confidence || null,
+            data.context_count || 0,
+            data.doc_types || [],
+            data.services || []
+        );
         setStatus("ok", "Ready");
     } catch (err) {
         // Remove loader
@@ -203,6 +256,33 @@ alertInput.addEventListener("keydown", (e) => {
 
 btnIngest.addEventListener("click", ingestDocuments);
 
+btnExport.addEventListener("click", () => {
+    // Find the last assistant message
+    const assistantMessages = document.querySelectorAll('.message.assistant .message-bubble');
+    if (assistantMessages.length === 0) {
+        showToast("No analysis to export yet.", "info");
+        return;
+    }
+
+    const lastMessage = assistantMessages[assistantMessages.length - 1];
+    
+    // Extract raw text, format slightly for markdown
+    let rawText = lastMessage.innerText;
+    
+    // Create a blob and download
+    const blob = new Blob([rawText], { type: 'text/markdown' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `incident-analysis-${new Date().toISOString().slice(0, 10)}.md`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    
+    showToast("Exported to Markdown", "success");
+});
+
 btnClear.addEventListener("click", () => {
     chatMessages.innerHTML = `
         <div class="welcome-message">
@@ -217,6 +297,7 @@ btnClear.addEventListener("click", () => {
             </div>
         </div>
     `;
+    saveChatHistory();
     showToast("Chat cleared", "info");
 });
 
@@ -233,3 +314,6 @@ alertInput.addEventListener("input", () => {
     alertInput.style.height = "auto";
     alertInput.style.height = Math.min(alertInput.scrollHeight, 120) + "px";
 });
+
+// Load history on startup
+window.addEventListener('DOMContentLoaded', loadChatHistory);
