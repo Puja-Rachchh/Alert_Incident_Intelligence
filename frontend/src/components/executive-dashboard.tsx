@@ -60,6 +60,8 @@ export function ExecutiveDashboard() {
   const highRiskCount = allHealth.filter((h: any) => h.slaRisk === "High").length;
   const medRiskCount = allHealth.filter((h: any) => h.slaRisk === "Medium").length;
   const totalAlerts = allHealth.reduce((s: number, h: any) => s + (h.total || 0), 0);
+  const totalNoiseSuppressed = allHealth.reduce((s: number, h: any) => s + (h.dedupSuppressed || 0), 0);
+  const avgNoisePct = allHealth.length > 0 ? Math.round(allHealth.reduce((s: number, h: any) => s + (h.noiseReductionPct || 0), 0) / allHealth.length) : 0;
   const portfolioHealthTone = portfolioAvg >= 75 ? "good" : portfolioAvg >= 50 ? "warning" : "critical";
 
   const selectedHealth = allHealth.find((h: any) => h.org === selectedOrg) ?? null;
@@ -96,15 +98,10 @@ export function ExecutiveDashboard() {
           delta="Aggregated average"
         />
         <InsightCard label="High Risk" value={highRiskCount} tone="critical" delta="Immediate action" />
-        <InsightCard label="Medium Risk" value={medRiskCount} tone="warning" delta="Monitor closely" />
         <InsightCard label="Active Portfolio" value={allHealth.length} tone="neutral" delta="Tracked organizations" />
         <InsightCard label="Total Alerts" value={totalAlerts.toLocaleString()} tone="neutral" delta="Warehouse volume" />
-        <InsightCard
-          label="Weekly Velocity"
-          value={weekly.reduce((s: number, w: any) => s + w.volume, 0)}
-          tone="neutral"
-          delta="Recent ingestion rate"
-        />
+        <InsightCard label="Noise Reduced" value={`${avgNoisePct}%`} tone="good" delta={`${totalNoiseSuppressed.toLocaleString()} events suppressed`} />
+        <InsightCard label="Avg MTTR" value={`${Math.round(allHealth.reduce((s: number, h: any) => s + (h.avgMttr || 0), 0) / Math.max(allHealth.length, 1))}m`} tone="warning" delta="Mean time to resolve" />
       </section>
 
       {/* Health Matrix */}
@@ -131,12 +128,25 @@ export function ExecutiveDashboard() {
               </div>
               <div className="gauge-info">
                 <div className="gauge-org-name" title={h.org}>{h.org}</div>
-                <div className="gauge-risk-tag" style={{ color: RISK_COLOR[h.slaRisk as SlaRisk] }}>
-                  {h.slaRisk} Risk
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", width: "100%", marginTop: 2 }}>
+                  <div className="gauge-risk-tag" style={{ color: RISK_COLOR[h.slaRisk as SlaRisk], fontSize: 10 }}>
+                    {h.slaRisk} Risk
+                  </div>
+                  {h.noiseReductionPct > 0 && (
+                    <div style={{ fontSize: 9, color: "var(--good)", fontWeight: 600 }}>
+                      {h.noiseReductionPct}% noise ↓
+                    </div>
+                  )}
+                </div>
+                {/* Mini stats row */}
+                <div style={{ display: "flex", gap: 6, marginTop: 6, width: "100%", fontSize: 9, color: "var(--text-muted)" }}>
+                  <span>{h.total ?? 0} alerts</span>
+                  <span>·</span>
+                  <span>{h.avgMttr ?? 0}m MTTR</span>
                 </div>
                 {/* Mini severity bar */}
                 {(h.critical != null || h.total) && (
-                  <div style={{ display: "flex", gap: 2, marginTop: 6, height: 3, width: "100%", borderRadius: 2, overflow: "hidden" }}>
+                  <div style={{ display: "flex", gap: 2, marginTop: 4, height: 3, width: "100%", borderRadius: 2, overflow: "hidden" }}>
                     {h.critical > 0 && <div style={{ flex: h.critical, background: SEV_COLOR.critical }} />}
                     {h.high > 0 && <div style={{ flex: h.high, background: SEV_COLOR.high }} />}
                     {h.medium > 0 && <div style={{ flex: h.medium, background: SEV_COLOR.medium }} />}
@@ -177,6 +187,14 @@ export function ExecutiveDashboard() {
             <div className="drill-stat-box">
               <div className="stat-label">Total Alerts</div>
               <div className="stat-value">{selectedHealth.total?.toLocaleString() ?? 0}</div>
+            </div>
+            <div className="drill-stat-box">
+              <div className="stat-label">Noise Reduced</div>
+              <div className="stat-value" style={{ color: "var(--good)" }}>{selectedHealth.noiseReductionPct ?? 0}%</div>
+            </div>
+            <div className="drill-stat-box">
+              <div className="stat-label">MTTR</div>
+              <div className="stat-value">{selectedHealth.avgMttr ?? 0}m</div>
             </div>
             <div className="drill-stat-box">
               <div className="stat-label">Open Signals</div>

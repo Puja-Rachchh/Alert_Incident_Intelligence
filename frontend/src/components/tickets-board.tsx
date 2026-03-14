@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { personaIncidents } from "@/features/dashboard/persona-data";
 import {
   activeTicketsBySeverity,
@@ -12,6 +12,7 @@ import type { Ticket, TicketStatus } from "@/features/tickets/ticket-engine";
 import type { Severity } from "@/features/dashboard/types";
 import { PersonaNav } from "@/components/persona-nav";
 import { DistributionBarChart } from "@/components/charts/distribution-bar-chart";
+import { fetchTickets } from "@/lib/api";
 
 // --- Helpers ------------------------------------------------------------------
 const SEV_COLORS: Record<Severity, string> = {
@@ -46,14 +47,53 @@ function timeAgo(iso: string): string {
   return "< 1h ago";
 }
 
+function shortId(id: string): string {
+  return id.length > 12 ? id.slice(0, 8) + "…" : id;
+}
+
 // --- Component ----------------------------------------------------------------
 export function TicketsBoard() {
-  const allTickets = useMemo(() => generateTickets(personaIncidents), []);
-  const [tickets, setTickets] = useState<Ticket[]>(allTickets);
+  const fallbackTickets = useMemo(() => generateTickets(personaIncidents), []);
+  const [tickets, setTickets] = useState<Ticket[]>(fallbackTickets);
+  const [loading, setLoading] = useState(true);
 
   const [statusFilter, setStatusFilter] = useState<TicketStatus | "all">("all");
   const [sevFilter, setSevFilter] = useState<Severity | "all">("all");
   const [selectedId, setSelectedId] = useState<string | null>(null);
+
+  // Fetch warehouse tickets on mount
+  useEffect(() => {
+    fetchTickets(2000)
+      .then((data: any[]) => {
+        if (data && data.length > 0) {
+          // Map API tickets to the Ticket type expected by local engine functions
+          const mapped: Ticket[] = data.map((t: any) => ({
+            id: t.id,
+            alertId: t.alertId,
+            severity: t.severity as Severity,
+            title: t.title,
+            alertType: t.alertType,
+            source: t.source,
+            customer: t.customer,
+            device: t.device || "",
+            deviceIp: t.deviceIp,
+            description: t.description,
+            createdAt: t.createdAt,
+            resolvedAt: t.resolvedAt,
+            status: t.status as TicketStatus,
+            playbook: [],
+            similarPrior: [],
+            autoReviewReason: t.autoReviewReason,
+            recurrenceCount: t.recurrenceCount || 1,
+            highConfidence: t.highConfidence || false,
+            duplicateSuppressed: t.duplicateSuppressed || false,
+          }));
+          setTickets(mapped);
+        }
+      })
+      .catch(console.error)
+      .finally(() => setLoading(false));
+  }, []);
 
   const kpis = useMemo(() => computeKpis(tickets), [tickets]);
   const alertTypeDist = useMemo(() => ticketsByAlertType(tickets), [tickets]);
@@ -92,8 +132,9 @@ export function TicketsBoard() {
         <p className="eyebrow">Automatic Ticket Tracker</p>
         <h1>Alert Intelligence Tickets</h1>
         <p>
-          Tickets are auto-generated from incoming alerts. Known issues are flagged for one-click approval.
-          No manual ticket creation required.
+          {loading
+            ? "Loading warehouse tickets…"
+            : `${tickets.length.toLocaleString()} tickets auto-generated from warehouse alerts. Each alert_id = ticket_id.`}
         </p>
       </header>
 
@@ -103,28 +144,29 @@ export function TicketsBoard() {
       <section className="kpi-grid persona-kpis">
         <div className="insight-card tone-warning">
           <span className="insight-label">Total Tickets</span>
-          <span className="insight-value">{kpis.total}</span>
+          <span className="insight-value">{kpis.total.toLocaleString()}</span>
+          <span className="insight-delta">1 alert = 1 ticket</span>
         </div>
         <div className="insight-card tone-critical">
           <span className="insight-label">Open</span>
-          <span className="insight-value">{kpis.open}</span>
+          <span className="insight-value">{kpis.open.toLocaleString()}</span>
         </div>
         <div className="insight-card tone-warning">
           <span className="insight-label">Investigating</span>
-          <span className="insight-value">{kpis.investigating}</span>
+          <span className="insight-value">{kpis.investigating.toLocaleString()}</span>
         </div>
         <div className="insight-card" style={{ borderColor: "#a78bfa" }}>
           <span className="insight-label" style={{ color: "#a78bfa" }}>Auto-Review Ready</span>
-          <span className="insight-value">{kpis.autoReview}</span>
+          <span className="insight-value">{kpis.autoReview.toLocaleString()}</span>
           <span className="insight-delta">{kpis.autoReviewRate}% auto-identified</span>
         </div>
         <div className="insight-card tone-good">
           <span className="insight-label">Resolved</span>
-          <span className="insight-value">{kpis.resolved}</span>
+          <span className="insight-value">{kpis.resolved.toLocaleString()}</span>
         </div>
         <div className="insight-card tone-critical">
           <span className="insight-label">Critical Open</span>
-          <span className="insight-value">{kpis.criticalOpen}</span>
+          <span className="insight-value">{kpis.criticalOpen.toLocaleString()}</span>
         </div>
       </section>
 
@@ -169,7 +211,7 @@ export function TicketsBoard() {
           ))}
         </select>
         <span style={{ marginLeft: "auto", color: "var(--text-muted)", fontSize: 13 }}>
-          {visible.length} ticket{visible.length !== 1 ? "s" : ""}
+          {visible.length.toLocaleString()} ticket{visible.length !== 1 ? "s" : ""}
         </span>
       </div>
 
@@ -183,7 +225,7 @@ export function TicketsBoard() {
               onClick={() => setSelectedId(selectedId === t.id ? null : t.id)}
             >
               <div className="ticket-row-header">
-                <span className="ticket-id">{t.id}</span>
+                <span className="ticket-id" title={t.id}>{shortId(t.id)}</span>
                 <span
                   className="status-badge"
                   style={{ background: STATUS_COLOR[t.status] + "22", color: STATUS_COLOR[t.status], border: `1px solid ${STATUS_COLOR[t.status]}55` }}
@@ -203,7 +245,7 @@ export function TicketsBoard() {
                 {t.customer}
               </div>
               {t.status === "auto-review" && (
-                <div className="auto-review-pill">AI: Similar incidents found - one-click approval available</div>
+                <div className="auto-review-pill">AI: {t.recurrenceCount}x recurrence — one-click approval available</div>
               )}
               {t.duplicateSuppressed && (
                 <div className="dedup-pill">Duplicate suppressed by source</div>
@@ -212,7 +254,7 @@ export function TicketsBoard() {
           ))}
           {visible.length === 0 && (
             <div style={{ padding: 32, textAlign: "center", color: "var(--text-muted)" }}>
-              No tickets match the current filters.
+              {loading ? "Loading warehouse tickets…" : "No tickets match the current filters."}
             </div>
           )}
         </div>
@@ -234,7 +276,9 @@ export function TicketsBoard() {
 
               <div className="detail-header">
                 <div>
-                  <div style={{ fontSize: 13, color: "var(--text-muted)", marginBottom: 4 }}>{selected.id}</div>
+                  <div style={{ fontSize: 11, color: "var(--text-muted)", marginBottom: 4, fontFamily: "monospace", wordBreak: "break-all" }}>
+                    Ticket: {selected.id}
+                  </div>
                   <h2 style={{ margin: 0, fontSize: 18 }}>{selected.title}</h2>
                 </div>
                 <div style={{ display: "flex", gap: 8 }}>
@@ -254,6 +298,7 @@ export function TicketsBoard() {
               <div className="detail-section">
                 <h4>Alert Details</h4>
                 <div className="detail-grid">
+                  <span className="detail-label">Alert ID</span><span className="detail-val" style={{ fontFamily: "monospace", fontSize: 11, wordBreak: "break-all" }}>{selected.alertId}</span>
                   <span className="detail-label">Source</span><span className="detail-val">{selected.source}</span>
                   <span className="detail-label">Customer</span><span className="detail-val">{selected.customer}</span>
                   <span className="detail-label">Device</span><span className="detail-val">{selected.device}</span>
@@ -268,18 +313,20 @@ export function TicketsBoard() {
               {/* Description */}
               <div className="detail-section">
                 <h4>Alert Description</h4>
-                <p style={{ fontSize: 13, color: "var(--text-muted)", lineHeight: 1.6, margin: 0 }}>{selected.description}</p>
+                <p style={{ fontSize: 13, color: "var(--text-muted)", lineHeight: 1.6, margin: 0, whiteSpace: "pre-line" }}>{selected.description}</p>
               </div>
 
-              {/* Playbook */}
-              <div className="detail-section">
-                <h4>Resolution Playbook</h4>
-                <ol className="playbook-list">
-                  {selected.playbook.map((step, i) => (
-                    <li key={i}>{step}</li>
-                  ))}
-                </ol>
-              </div>
+              {/* Playbook (if available) */}
+              {selected.playbook.length > 0 && (
+                <div className="detail-section">
+                  <h4>Resolution Playbook</h4>
+                  <ol className="playbook-list">
+                    {selected.playbook.map((step, i) => (
+                      <li key={i}>{step}</li>
+                    ))}
+                  </ol>
+                </div>
+              )}
 
               {/* Similar prior incidents */}
               {selected.similarPrior.length > 0 && (
@@ -319,8 +366,12 @@ export function TicketsBoard() {
             </>
           ) : (
             <div className="detail-empty">
-              <div style={{ fontSize: 32, marginBottom: 12 }}>Select a ticket</div>
-              <p>Click any ticket on the left to view full details, resolution playbook, and similar prior incidents.</p>
+              <div style={{ fontSize: 32, marginBottom: 12 }}>📋</div>
+              <div style={{ fontSize: 18, fontWeight: 600, marginBottom: 8 }}>Select a ticket</div>
+              <p>Click any ticket on the left to view full details, alert description, and resolution actions.</p>
+              <p style={{ fontSize: 12, color: "var(--text-muted)", marginTop: 12 }}>
+                {tickets.length.toLocaleString()} warehouse alerts → {tickets.length.toLocaleString()} tickets
+              </p>
             </div>
           )}
         </div>

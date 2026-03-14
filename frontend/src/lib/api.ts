@@ -38,3 +38,9 @@ export async function fetchOperationalTrends() {
   const data = await resp.json();
   return data.trends;
 }
+
+export async function fetchTickets(limit = 200) {
+  const resp = await fetch(`${API_BASE_URL}/api/v1/tickets?limit=${limit}`);
+  const data = await resp.json();
+  return data.tickets;
+}
