@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KenexAI - PDF Document Agent</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <!-- Animated background -->
+    <div class="bg-grid"></div>
+
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon">K</div>
+                    <span class="logo-text">KenexAI</span>
+                </div>
+            </div>
+            <div class="sidebar-info">
+                <div class="info-card">
+                    <div class="info-icon">📄</div>
+                    <div class="info-text">
+                        <span class="info-title">Document Agent</span>
+                        <span class="info-sub">Ask anything about your PDFs</span>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">🧠</div>
+                    <div class="info-text">
+                        <span class="info-title">Powered by HuggingFace</span>
+                        <span class="info-sub">Open Source AI + RAG Pipeline</span>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">🔍</div>
+                    <div class="info-text">
+                        <span class="info-title">Smart Search</span>
+                        <span class="info-sub">Pinecone Vector Store</span>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar-footer">
+                <div class="status-badge" id="statusBadge">
+                    <span class="status-dot"></span>
+                    <span>Connected</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="chat-main">
+            <!-- Header -->
+            <header class="chat-header">
+                <div class="header-left">
+                    <button class="menu-btn" id="menuBtn">☰</button>
+                    <h1>PDF Document Agent</h1>
+                </div>
+                <div class="header-right">
+                    <button class="clear-btn" id="clearBtn" title="Clear chat">
+                        <span>🗑️</span> Clear
+                    </button>
+                </div>
+            </header>
+
+            <!-- Chat Messages -->
+            <div class="chat-messages" id="chatMessages">
+                <!-- Welcome message -->
+                <div class="welcome-container" id="welcomeContainer">
+                    <div class="welcome-icon">🤖</div>
+                    <h2>Welcome to KenexAI</h2>
+                    <p>I'm your PDF Document Agent. Ask me anything about your uploaded documents!</p>
+                    <div class="suggestion-chips">
+                        <button class="chip" onclick="sendSuggestion('What are the projects?')">📋 What are the projects?</button>
+                        <button class="chip" onclick="sendSuggestion('What are the technical skills?')">💻 Technical skills?</button>
+                        <button class="chip" onclick="sendSuggestion('What is the education background?')">🎓 Education background?</button>
+                        <button class="chip" onclick="sendSuggestion('Tell me about the internship experience')">💼 Internship experience?</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="chat-input-container">
+                <div class="chat-input-wrapper">
+                    <textarea
+                        id="chatInput"
+                        placeholder="Ask a question about your documents..."
+                        rows="1"
+                        maxlength="2000"
+                    ></textarea>
+                    <button class="send-btn" id="sendBtn" title="Send message">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </button>
+                </div>
+                <p class="input-hint">Press Enter to send • Shift+Enter for new line</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
