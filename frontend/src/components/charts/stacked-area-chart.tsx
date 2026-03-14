@@ -11,22 +11,19 @@ import {
   ResponsiveContainer
 } from "recharts";
 
+import { SOURCE_COLORS } from "@/features/dashboard/types";
+
 interface DataPoint {
   day: string;
   Auvik: number;
   Meraki: number;
   "N-Central": number;
+  Ctgan: number;
 }
 
 interface Props {
   data: DataPoint[];
 }
-
-const SOURCE_COLORS: Record<string, string> = {
-  Auvik: "#3b82f6",
-  Meraki: "#06b6d4",
-  "N-Central": "#8b5cf6"
-};
 
 export default function StackedAreaChart({ data }: Props) {
   return (
@@ -48,7 +45,7 @@ export default function StackedAreaChart({ data }: Props) {
           labelStyle={{ color: "var(--text-primary)" }}
         />
         <Legend wrapperStyle={{ fontSize: 12 }} />
-        {(["Auvik", "Meraki", "N-Central"] as const).map((src) => (
+        {(["Auvik", "Meraki", "N-Central", "Ctgan"] as const).map((src) => (
           <Area
             key={src}
             type="monotone"

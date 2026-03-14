@@ -784,7 +784,8 @@ export function schemaValidationSummary(records: PersonaIncident[]): { valid: nu
 export function sourceBreakdown(
   records: PersonaIncident[]
 ): Array<{ source: SourceSystem; count: number; valid: number; invalid: number; avgCompleteness: number }> {
-  return (["Auvik", "Meraki", "N-Central"] as SourceSystem[]).map((source) => {
+  const sources = [...new Set(records.map(r => r.source))];
+  return (sources as SourceSystem[]).map((source) => {
     const items = records.filter((r) => r.source === source);
     const valid = items.filter((i) => i.schemaValid).length;
     const avgCompleteness =
@@ -811,20 +812,23 @@ export function alertTypeDistribution(records: PersonaIncident[]): Array<{ alert
 export function alertsByDayAndSource(
   records: PersonaIncident[],
   days = 14
-): Array<{ day: string; Auvik: number; Meraki: number; "N-Central": number }> {
+): Array<{ day: string;[key: string]: any }> {
   const BASE = new Date("2026-02-13T08:00:00.000Z");
-  const bins = new Map<string, { Auvik: number; Meraki: number; "N-Central": number }>();
+  const bins = new Map<string, any>();
+  const sources = [...new Set(records.map(r => r.source))];
 
   for (let i = days - 1; i >= 0; i -= 1) {
     const d = new Date(BASE);
     d.setDate(BASE.getDate() - i);
-    bins.set(d.toISOString().slice(5, 10), { Auvik: 0, Meraki: 0, "N-Central": 0 });
+    const emptyBin: any = {};
+    sources.forEach(s => emptyBin[s] = 0);
+    bins.set(d.toISOString().slice(5, 10), emptyBin);
   }
 
   records.forEach((r) => {
     const key = r.createdAt.slice(5, 10);
     const bin = bins.get(key);
-    if (bin) bin[r.source] += 1;
+    if (bin) bin[r.source] = (bin[r.source] || 0) + 1;
   });
 
   return [...bins.entries()].map(([day, counts]) => ({ day, ...counts }));
@@ -833,7 +837,8 @@ export function alertsByDayAndSource(
 export function resolutionRateBySource(
   records: PersonaIncident[]
 ): Array<{ source: SourceSystem; resolved: number; open: number }> {
-  return (["Auvik", "Meraki", "N-Central"] as SourceSystem[]).map((source) => {
+  const sources = [...new Set(records.map(r => r.source))];
+  return (sources as SourceSystem[]).map((source) => {
     const items = records.filter((r) => r.source === source);
     return {
       source,

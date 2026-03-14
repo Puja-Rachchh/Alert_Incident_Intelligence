@@ -29,6 +29,8 @@ CREATE TABLE silver_alerts (
     customer_name       TEXT        NOT NULL,
     device_name         TEXT,
     host                TEXT,
+    host_country        TEXT,
+    host_state          TEXT,
     alert_category      VARCHAR(30),
     is_duplicate        BOOLEAN     NOT NULL DEFAULT FALSE,
     is_resolution       BOOLEAN     NOT NULL DEFAULT FALSE,

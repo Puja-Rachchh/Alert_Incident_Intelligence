@@ -42,39 +42,16 @@ def chat():
         result = chain.invoke({"input": query})
         answer = result.get("answer", "No response generated.")
 
-        # Extract source documents + metadata for transparency
+        # Extract source documents for transparency
         sources = []
-        doc_types = set()
-        services = set()
-        context_docs = result.get("context", [])
-
-        for doc in context_docs:
+        for doc in result.get("context", []):
             src = doc.metadata.get("source", "Unknown")
             sources.append(os.path.basename(src))
-            # Collect enriched metadata
-            if doc.metadata.get("doc_type"):
-                doc_types.add(doc.metadata["doc_type"])
-            if doc.metadata.get("service") and doc.metadata["service"] != "Unknown":
-                services.add(doc.metadata["service"])
-
         sources = list(set(sources))
-
-        # Determine confidence based on context quality
-        num_context = len(context_docs)
-        if num_context >= 4:
-            confidence = "high"
-        elif num_context >= 2:
-            confidence = "medium"
-        else:
-            confidence = "low"
 
         return jsonify({
             "answer": answer,
             "sources": sources,
-            "confidence": confidence,
-            "context_count": num_context,
-            "doc_types": list(doc_types),
-            "services": list(services),
         })
     except Exception as e:
         print(f"[ERROR] Chat: {e}")

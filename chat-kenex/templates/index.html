@@ -27,10 +27,6 @@
                     <span class="btn-icon">📥</span>
                     <span>Ingest Documents</span>
                 </button>
-                <button id="btn-export" class="btn btn-export" title="Export latest analysis to Markdown">
-                    <span class="btn-icon">📄</span>
-                    <span>Export to MD</span>
-                </button>
                 <button id="btn-clear" class="btn btn-clear" title="Clear chat history">
                     <span class="btn-icon">🗑️</span>
                     <span>Clear Chat</span>
@@ -54,42 +50,6 @@
                     </button>
                     <button class="quick-alert" data-alert="ALERT: Disk usage on log-server-01 at 92%. Risk of service outage if not addressed.">
                         🟡 Disk Full
-                    </button>
-                    <button class="quick-alert" data-alert="ALERT: DNS resolution failures across multiple services. 40% of internal queries failing on dns-resolver-01.">
-                        🔴 DNS Failure
-                    </button>
-                    <button class="quick-alert" data-alert="ALERT: Brute force attack detected. 50,000+ failed login attempts in 10 minutes from 200+ IPs on auth-service.">
-                        🔴 Brute Force
-                    </button>
-                    <button class="quick-alert" data-alert="ALERT: TLS certificate on api-gateway expired. Internal services returning HTTP 502 Bad Gateway errors at 60% rate.">
-                        🔴 TLS Cert Expired
-                    </button>
-                    <button class="quick-alert" data-alert="ALERT: DDoS attack detected. Incoming traffic at 15Gbps, 10x above normal. CDN edge servers reaching capacity limits.">
-                        🔴 DDoS Attack
-                    </button>
-                    <button class="quick-alert" data-alert="ALERT: Memory usage on web-prod-02 at 94%. Node.js heap growing without release. OOM kill imminent.">
-                        🔴 Memory Leak
-                    </button>
-                    <button class="quick-alert" data-alert="ALERT: Load balancer lb-prod-01 dropping 30% of connections. 3 of 8 backend servers failing health checks.">
-                        🟠 LB Health Fail
-                    </button>
-                    <button class="quick-alert" data-alert="ALERT: Kubernetes pod app-service-7f8d restarting in CrashLoopBackOff. OOMKilled 5 times in last 10 minutes.">
-                        🔴 K8s OOM Crash
-                    </button>
-                    <button class="quick-alert" data-alert="ALERT: Network partition detected between rack-A and rack-B. 50% packet loss on inter-rack switch sw-rack-b-01.">
-                        🟠 Network Partition
-                    </button>
-                    <button class="quick-alert" data-alert="ALERT: Unauthorized access attempt on secrets-vault. 15 auth attempts using revoked tokens from decommissioned server 10.0.5.47.">
-                        🟡 Vault Breach
-                    </button>
-                    <button class="quick-alert" data-alert="ALERT: Database connection pool exhausted on db-primary-01. Active connections at 100/100. New queries queuing with 30s timeout.">
-                        🟠 DB Pool Full
-                    </button>
-                    <button class="quick-alert" data-alert="ALERT: AWS RDS Multi-AZ failover executed but application reconnect to db-primary-01 failing.">
-                        🔴 AWS RDS Failover
-                    </button>
-                    <button class="quick-alert" data-alert="ALERT: GKE pods stuck in Pending state. Cluster Autoscaler failing to provision new nodes.">
-                        🟠 GKE Scale Fail
                     </button>
                 </div>
             </div>

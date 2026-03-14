@@ -9,6 +9,40 @@ import schedule
 BASE_URL = "http://localhost:8001"
 HEALTH_PATH = "/health"
 
+# 25+ countries with representative states/regions
+GEOGRAPHIC_DATA = {
+    "United States": ["California", "Texas", "New York", "Florida", "Illinois"],
+    "Canada": ["Ontario", "Quebec", "British Columbia", "Alberta"],
+    "United Kingdom": ["England", "Scotland", "Wales", "Northern Ireland"],
+    "Australia": ["New South Wales", "Victoria", "Queensland", "Western Australia"],
+    "Germany": ["Bavaria", "Berlin", "Hamburg", "Hesse"],
+    "France": ["Île-de-France", "Provence-Alpes-Côte d'Azur", "Nouvelle-Aquitaine"],
+    "India": ["Maharashtra", "Karnataka", "Tamil Nadu", "Delhi", "Gujarat"],
+    "Japan": ["Tokyo", "Osaka", "Hokkaido", "Kyoto"],
+    "Brazil": ["São Paulo", "Rio de Janeiro", "Minas Gerais"],
+    "Mexico": ["Mexico City", "Jalisco", "Nuevo León"],
+    "South Africa": ["Gauteng", "Western Cape", "KwaZulu-Natal"],
+    "Spain": ["Madrid", "Catalonia", "Andalusia"],
+    "Italy": ["Lombardy", "Lazio", "Campania"],
+    "Netherlands": ["North Holland", "South Holland", "Utrecht"],
+    "Switzerland": ["Zurich", "Bern", "Geneva"],
+    "Sweden": ["Stockholm", "Västra Götaland", "Skåne"],
+    "Norway": ["Oslo", "Viken", "Vestland"],
+    "Denmark": ["Capital Region", "Central Denmark", "Southern Denmark"],
+    "Singapore": ["Central Region", "West Region", "East Region"],
+    "South Korea": ["Seoul", "Gyeonggi", "Busan"],
+    "Ireland": ["Dublin", "Cork", "Galway"],
+    "New Zealand": ["Auckland", "Wellington", "Canterbury"],
+    "United Arab Emirates": ["Dubai", "Abu Dhabi", "Sharjah"],
+    "Israel": ["Tel Aviv", "Jerusalem", "Haifa"],
+    "Belgium": ["Brussels", "Flanders", "Wallonia"]
+}
+
+def get_random_geo():
+    country = random.choice(list(GEOGRAPHIC_DATA.keys()))
+    state = random.choice(GEOGRAPHIC_DATA[country])
+    return country, state
+
 
 def ensure_backend_healthy():
     try:
@@ -106,6 +140,8 @@ def make_auvik_payload(alert_type=None, company=None, device=None,
     days_ago = random.randint(0, 730)  # up to 2 years
     random_dt = datetime.now(timezone.utc) - timedelta(days=days_ago, seconds=random.randint(0, 86400))
     now = random_dt.isoformat().replace("+00:00", "Z")
+    
+    country, state = get_random_geo()
 
     return {
         "entityId": str(uuid.uuid4()),
@@ -124,6 +160,8 @@ def make_auvik_payload(alert_type=None, company=None, device=None,
         "alertSeverityString": alert_type["alertSeverityString"],
         "alertSeverity": alert_type["alertSeverity"],
         "companyId": company["companyId"],
+        "host_country": country,
+        "host_state": state,
     }
 
 
@@ -196,6 +234,8 @@ def make_meraki_payload(alert_type=None, network=None, device=None, dupe_of=None
     occurred = now - timedelta(seconds=random.randint(15, 30))
 
     base_alert_id = dupe_of or str(random.randint(600000000000000000, 699999999999999999))
+    
+    country, state = get_random_geo()
 
     return {
         "app_key": "0a0505127ff98963f1ad4a500b0075dd",
@@ -218,6 +258,8 @@ def make_meraki_payload(alert_type=None, network=None, device=None, dupe_of=None
         "alertLevel": alert_type["alertLevel"],
         "occurredAt": occurred.isoformat().replace("+00:00", "Z"),
         "host": device["deviceName"],
+        "host_country": country,
+        "host_state": state,
     }
 
 
@@ -316,6 +358,8 @@ def make_ncentral_payload(customer=None, device=None, service_name=None,
     trigger_id = random.randint(100000000, 999999999)
     quant = svc["quant"]()
     task = svc["task"]
+    
+    country, state = get_random_geo()
 
     xml = f"""<?xml version="1.0" encoding="UTF-8"?><notification>
   <ActiveNotificationTriggerID>{trigger_id}</ActiveNotificationTriggerID>
@@ -332,6 +376,8 @@ def make_ncentral_payload(customer=None, device=None, service_name=None,
   <QuantitativeNewState>{quant}</QuantitativeNewState>
   <ServiceOrganizationName>DYOPATH</ServiceOrganizationName>
   <RemoteControlLink>https://ncod524.n-able.com:443/deepLinkAction.do</RemoteControlLink>
+  <HostCountry>{country}</HostCountry>
+  <HostState>{state}</HostState>
 </notification>"""
     return xml
 

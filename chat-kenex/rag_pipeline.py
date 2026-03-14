@@ -24,50 +24,38 @@ PINECONE_INDEX_NAME = os.getenv("PINECONE_INDEX_NAME", "alertchat")
 os.environ["PINECONE_API_KEY"] = PINECONE_API_KEY or ""
 os.environ["HUGGINGFACEHUB_API_TOKEN"] = HUGGINGFACE_API_TOKEN or ""
 
-# ── SRE System Prompt (Enhanced with few-shot + guardrails) ──────
-SYSTEM_PROMPT = """You are an expert SRE AI Copilot for an Alert Incident Intelligence platform.
+# ── SRE System Prompt ─────────────────────────────────────────────
+SYSTEM_PROMPT = """You are an intelligent SRE AI Copilot for an Alert Incident Intelligence platform.
 Your job is to help IT teams quickly understand, diagnose, and resolve system incidents.
 
 You will receive:
 - A triggered alert from monitoring tools (servers, apps, network, or security)
 - Relevant context retrieved from past incidents, runbooks, and resolution docs
 
-CRITICAL RULES:
-1. ONLY use information from the Retrieved Context below. Do NOT invent incidents, commands, or data.
-2. If the retrieved context does not contain relevant information, clearly state:
-   "⚠️ Limited historical data available for this alert type — manual investigation recommended."
-3. When citing past incidents, use ONLY incident IDs that appear in the context.
-4. Keep the entire response under 500 words.
-5. Always prioritize speed of resolution over completeness.
-6. Never use technical jargon without a brief explanation.
-
-Your response MUST always follow this EXACT structure:
+Your response MUST always follow this exact structure:
 
 ---
 
 🔴 INCIDENT SUMMARY
 Write 2-3 clear sentences explaining what is happening, which system is affected,
-and how serious it appears to be. Include the severity assessment (P1-P4).
+and how serious it appears to be. Use simple language for general IT staff.
 
 ---
 
 🔍 ROOT CAUSE ANALYSIS
-Based ONLY on the retrieved context, provide:
-  - Primary cause: [most probable reason from similar past incidents]
-  - Contributing factors: [any secondary issues identified in context]
-  - Confidence level: [High / Medium / Low]
-    * High = exact same alert pattern found in past incidents
-    * Medium = similar but not identical pattern found
-    * Low = no closely matching incidents in context
+Provide the most likely root cause based on the alert and retrieved context.
+Format:
+  - Primary cause: [most probable reason]
+  - Contributing factors: [any secondary issues]
+  - Confidence level: [High / Medium / Low] — explain why
 
 ---
 
 🛠️ RESOLUTION STEPS
-Provide numbered, actionable steps. Include exact commands from runbooks when available.
-1. First action (with exact command if found in context)
+Provide numbered, actionable steps to resolve the issue immediately.
+1. First action (with exact command or UI step if possible)
 2. Second action
-3. Third action
-4. Verification step — how to confirm the issue is resolved
+3. Verification step — how to confirm the issue is resolved
 
 ---
 
@@ -159,100 +147,23 @@ def load_documents(data_dir: str) -> List[Document]:
     return all_docs
 
 
-# ── Metadata Enrichment ─────────────────────────────────────────
-def _detect_doc_type(text: str) -> str:
-    """Detect document type from content."""
-    text_upper = text[:200].upper()
-    if "INCIDENT REPORT" in text_upper:
-        return "incident_report"
-    elif "RUNBOOK" in text_upper:
-        return "runbook"
-    elif "RESOLUTION DOC" in text_upper:
-        return "resolution_doc"
-    return "general"
-
-
-def _extract_severity(text: str) -> str:
-    """Extract severity level from text."""
-    severity_match = re.search(r'Severity:\s*(P[1-4]\s*\w+)', text, re.IGNORECASE)
-    if severity_match:
-        return severity_match.group(1).strip()
-    if any(kw in text.upper() for kw in ["P1", "CRITICAL"]):
-        return "P1 Critical"
-    elif any(kw in text.upper() for kw in ["P2", "HIGH"]):
-        return "P2 High"
-    elif any(kw in text.upper() for kw in ["P3", "MEDIUM"]):
-        return "P3 Medium"
-    return "Unknown"
-
-
-def _extract_service(text: str) -> str:
-    """Extract service name from text."""
-    service_match = re.search(r'Service:\s*(.+?)(?:\n|$)', text, re.IGNORECASE)
-    if service_match:
-        return service_match.group(1).strip()
-    return "Unknown"
-
-
-def _extract_incident_id(text: str) -> str:
-    """Extract incident/runbook ID from text."""
-    id_match = re.search(r'(INC-\d{4}-\d{3}|RB-\d{3}|RES-\d{4}-\d{3})', text)
-    if id_match:
-        return id_match.group(1)
-    return ""
-
-
-def enrich_metadata(chunks: List[Document]) -> List[Document]:
-    """Add rich metadata to each chunk for better retrieval."""
-    enriched = []
-    for chunk in chunks:
-        text = chunk.page_content
-        # Enrich metadata
-        chunk.metadata["doc_type"] = _detect_doc_type(text)
-        chunk.metadata["severity"] = _extract_severity(text)
-        chunk.metadata["service"] = _extract_service(text)
-        chunk.metadata["incident_id"] = _extract_incident_id(text)
-        enriched.append(chunk)
-
-    type_counts = {}
-    for c in enriched:
-        t = c.metadata["doc_type"]
-        type_counts[t] = type_counts.get(t, 0) + 1
-    print(f"[INFO] Metadata enrichment: {type_counts}")
-
-    return enriched
-
-
-# ── Smart Chunking (Improved) ────────────────────────────────────
 def split_documents(docs: List[Document]) -> List[Document]:
-    """Split documents into larger, context-preserving chunks."""
+    """Split documents into smaller chunks for embedding."""
     splitter = RecursiveCharacterTextSplitter(
-        chunk_size=800,       # Larger chunks preserve more context
-        chunk_overlap=150,    # More overlap prevents cutting incidents in half
-        separators=[
-            "\n=====================",  # Split on incident boundaries first
-            "\n\n",                     # Then on paragraph breaks
-            "\n",                       # Then line breaks
-            ". ",                       # Then sentences
-            " ",
-            "",
-        ],
-        length_function=len,
+        chunk_size=500,
+        chunk_overlap=50,
+        separators=["\n=====================", "\n\n", "\n", ". ", " ", ""],
     )
     chunks = splitter.split_documents(docs)
-    print(f"[INFO] Split into {len(chunks)} chunks (800 char, 150 overlap)")
+    print(f"[INFO] Split into {len(chunks)} chunks")
     return chunks
 
 
-# ── Embeddings (Upgraded) ────────────────────────────────────────
+# ── Embeddings ───────────────────────────────────────────────────
 def get_embeddings() -> HuggingFaceEmbeddings:
-    """Return upgraded BGE embeddings model (384-dim, better accuracy)."""
+    """Return HuggingFace embeddings model (384‑dim)."""
     return HuggingFaceEmbeddings(
-        model_name="BAAI/bge-small-en-v1.5",
-        model_kwargs={"device": "cpu"},
-        encode_kwargs={
-            "normalize_embeddings": True,  # Better cosine similarity
-        },
+        model_name="sentence-transformers/all-MiniLM-L6-v2"
     )
 
 
@@ -300,15 +211,11 @@ def ingest_documents(data_dir: str, index_name: str | None = None) -> str:
 
     chunks = split_documents(docs)
 
-    # Enrich metadata
-    chunks = enrich_metadata(chunks)
-
     # Embeddings
     embedding = get_embeddings()
 
-    # Ensure index exists & clear old vectors
+    # Ensure index exists
     setup_pinecone(index_name)
-    clear_pinecone_index(index_name)
 
     # Upload to Pinecone
     PineconeVectorStore.from_documents(
@@ -317,7 +224,7 @@ def ingest_documents(data_dir: str, index_name: str | None = None) -> str:
         index_name=index_name,
     )
 
-    msg = f"✅ Ingested {len(docs)} document(s) → {len(chunks)} enriched chunks into '{index_name}'"
+    msg = f"✅ Ingested {len(docs)} document(s) → {len(chunks)} chunks into '{index_name}'"
     print(f"[INFO] {msg}")
     return msg
 

@@ -1,4 +1,4 @@
-export type SourceSystem = "Auvik" | "Meraki" | "N-Central";
+export type SourceSystem = "Auvik" | "Meraki" | "N-Central" | "Ctgan";
 export type Severity = "Critical" | "High" | "Medium" | "Low";
 
 export interface IncidentRecord {
@@ -28,3 +28,10 @@ export interface DashboardKpis {
   criticalIncidents: number;
   avgMttrMinutes: number;
 }
+
+export const SOURCE_COLORS: Record<string, string> = {
+  Auvik: "#3b82f6",
+  Meraki: "#06b6d4",
+  "N-Central": "#8b5cf6",
+  Ctgan: "#a78bfa" // Added Ctgan color
+};

@@ -103,6 +103,9 @@ function addUserMessage(text) {
     `;
     chatMessages.appendChild(div);
     scrollToBottom();
+}
+
+function addAssistantMessage(text, sources = []) {
     saveChatHistory();
 }
 
