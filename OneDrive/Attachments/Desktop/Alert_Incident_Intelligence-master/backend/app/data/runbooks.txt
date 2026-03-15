@@ -1,0 +1,216 @@
+=====================================================
+RUNBOOK: RB-001 — High CPU Usage Response
+Category: Server / Compute
+Last Updated: 2025-11-01
+=====================================================
+
+TRIGGER: CPU usage > 85% for more than 10 minutes on any production server.
+
+STEP-BY-STEP RESPONSE:
+
+1. IDENTIFY THE CAUSE
+   - SSH into the affected server: ssh admin@<server-ip>
+   - Run: top -bn1 | head -20
+   - Run: ps aux --sort=-%cpu | head -10
+   - Check for recent deployments: kubectl get deployments --sort-by=.metadata.creationTimestamp
+
+2. IMMEDIATE MITIGATION
+   - If a single process is consuming >80% CPU:
+     a. Identify the process: ps -p <PID> -o comm=
+     b. If safe to restart: sudo systemctl restart <service-name>
+     c. If not safe: reduce load via load balancer (remove server from pool)
+   - If overall system load is high:
+     a. Scale horizontally: kubectl scale deployment/<app> --replicas=+2
+     b. Enable auto-scaling if not active
+
+3. VERIFY RESOLUTION
+   - Monitor CPU for 10 minutes: watch -n 5 'top -bn1 | head -5'
+   - Check application response times in Grafana dashboard
+   - Verify no error rate increase in application logs
+
+4. ESCALATION
+   - If CPU remains >90% after 15 minutes of mitigation → Escalate to Platform Engineering (P1)
+   - If caused by application code → Escalate to Application Development team
+   - If caused by infrastructure → Escalate to Infrastructure team
+
+=====================================================
+RUNBOOK: RB-002 — Database Replication Lag
+Category: Database
+Last Updated: 2025-10-15
+=====================================================
+
+TRIGGER: Replication lag > 60 seconds on any database replica.
+
+STEP-BY-STEP RESPONSE:
+
+1. ASSESS THE SITUATION
+   - Check replication status: SHOW SLAVE STATUS\G
+   - Key metrics to note: Seconds_Behind_Master, Relay_Log_Space, Last_IO_Error
+   - Check primary DB load: SHOW PROCESSLIST (look for long-running queries)
+
+2. IDENTIFY BLOCKING QUERIES
+   - On the replica: SELECT * FROM information_schema.processlist WHERE time > 300 ORDER BY time DESC
+   - Common causes:
+     a. Long-running analytical queries
+     b. Large batch INSERT/UPDATE operations
+     c. Schema migrations (ALTER TABLE)
+     d. Disk I/O saturation
+
+3. IMMEDIATE MITIGATION
+   - Kill blocking queries: CALL mysql.rds_kill(<thread_id>)
+   - If I/O bottleneck: Check disk utilization with iostat -x 1 5
+   - If network issue: Check network between primary and replica
+
+4. VERIFY RESOLUTION
+   - Monitor replication lag: while true; do mysql -e "SHOW SLAVE STATUS\G" | grep Seconds_Behind; sleep 5; done
+   - Lag should decrease steadily and reach 0
+
+5. ESCALATION
+   - If lag > 300 seconds and not decreasing → Escalate to DBA team (P1)
+   - If caused by schema migration → Contact the team that initiated the migration
+
+=====================================================
+RUNBOOK: RB-003 — HTTP 5xx Error Rate Spike
+Category: Application / API
+Last Updated: 2025-09-20
+=====================================================
+
+TRIGGER: HTTP 5xx error rate > 5% for more than 3 minutes.
+
+STEP-BY-STEP RESPONSE:
+
+1. IDENTIFY SCOPE
+   - Check which endpoints are affected: grep "HTTP/1.1\" 5" /var/log/nginx/access.log | awk '{print $7}' | sort | uniq -c | sort -rn
+   - Check if specific backend services are down: kubectl get pods --field-selector=status.phase!=Running
+   - Review recent deployments: kubectl rollout history deployment/<app>
+
+2. CHECK BACKEND HEALTH
+   - Verify all backend services: for svc in $(kubectl get svc -o name); do kubectl exec -it test-pod -- curl -s $svc/health; done
+   - Check for OOM kills: kubectl get events --sort-by='.lastTimestamp' | grep -i oom
+   - Check application logs: kubectl logs <pod-name> --tail=100
+
+3. IMMEDIATE MITIGATION
+   - If caused by recent deployment → Rollback: kubectl rollout undo deployment/<app>
+   - If caused by downstream service failure → Enable circuit breaker / fallback
+   - If caused by resource exhaustion → Scale up: kubectl scale deployment/<app> --replicas=+3
+
+4. VERIFY RESOLUTION
+   - Monitor error rates in Grafana for 10 minutes
+   - Check that 5xx rate drops below 1%
+   - Verify no cascading failures in dependent services
+
+5. ESCALATION
+   - If error rate > 25% → P1 Critical, escalate to On-Call Engineering Lead
+   - If caused by third-party dependency → Contact vendor support
+
+=====================================================
+RUNBOOK: RB-004 — Redis Cache Failure
+Category: Cache / In-Memory Store
+Last Updated: 2025-08-25
+=====================================================
+
+TRIGGER: Redis cache hit ratio < 60% OR Redis instance unreachable.
+
+STEP-BY-STEP RESPONSE:
+
+1. CHECK REDIS STATUS
+   - Connect to Redis: redis-cli -h <redis-host> -p 6379
+   - Check server info: redis-cli INFO server
+   - Check memory: redis-cli INFO memory
+   - Check hit ratio: redis-cli INFO stats | grep keyspace
+
+2. IDENTIFY THE ISSUE
+   - If Redis is unreachable:
+     a. Check if Redis process is running: systemctl status redis
+     b. Check for OOM: dmesg | grep -i "out of memory"
+     c. Check disk (RDB/AOF): df -h /var/lib/redis
+   - If hit ratio is low:
+     a. Check recent deployments (cache key changes)
+     b. Check eviction policy: redis-cli CONFIG GET maxmemory-policy
+     c. Check key expiration: redis-cli INFO keyspace
+
+3. IMMEDIATE MITIGATION
+   - If Redis is down: sudo systemctl restart redis
+   - If memory exhausted: redis-cli FLUSHDB (caution: clears all cached data)
+   - If cache key issue: rollback the faulty deployment
+   - If eviction too aggressive: increase maxmemory
+
+4. VERIFY RESOLUTION
+   - Monitor cache hit ratio for 15 minutes
+   - Should recover to >80% as cache warms up
+   - Check application latency returns to normal
+
+5. ESCALATION
+   - If Redis cluster is completely down → P1 Critical, escalate to Platform Engineering
+   - If data loss suspected → Escalate to DBA team
+
+=====================================================
+RUNBOOK: RB-005 — Disk Space Critical
+Category: Infrastructure / Storage
+Last Updated: 2025-11-10
+=====================================================
+
+TRIGGER: Disk usage > 85% on any production server.
+
+STEP-BY-STEP RESPONSE:
+
+1. IDENTIFY SPACE CONSUMERS
+   - Check overall disk usage: df -h
+   - Find large files: du -sh /* 2>/dev/null | sort -rh | head -20
+   - Find large log files: find /var/log -type f -size +100M -exec ls -lh {} +
+   - Check for core dumps: find / -name "core.*" -type f 2>/dev/null
+
+2. IMMEDIATE CLEANUP
+   - Clear old logs: find /var/log -name "*.gz" -mtime +7 -delete
+   - Clear temp files: rm -rf /tmp/old-*
+   - Clear package cache: apt-get clean OR yum clean all
+   - Truncate large active logs: > /var/log/app/debug.log (if safe)
+
+3. PREVENT RECURRENCE
+   - Review and update logrotate config: /etc/logrotate.d/
+   - Ensure log compression is enabled
+   - Set appropriate retention periods
+   - Consider moving logs to centralized logging (ELK/CloudWatch)
+
+4. VERIFY RESOLUTION
+   - Check disk usage dropped below 80%: df -h
+   - Monitor for 24 hours to ensure disk growth is manageable
+
+5. ESCALATION
+   - If disk > 95% and cleanup insufficient → P1 Critical, escalate to Infrastructure team
+   - Request disk expansion or additional storage
+   - If rapid growth → investigate the source application
+
+=====================================================
+RUNBOOK: RB-006 — SSL/TLS Certificate Expiry
+Category: Security / Networking
+Last Updated: 2025-10-01
+=====================================================
+
+TRIGGER: TLS certificate expiring within 14 days OR expired certificate detected.
+
+STEP-BY-STEP RESPONSE:
+
+1. IDENTIFY THE CERTIFICATE
+   - Check certificate details: openssl x509 -enddate -noout -in /path/to/cert.crt
+   - Check remote certificate: echo | openssl s_client -connect <host>:443 2>/dev/null | openssl x509 -noout -dates
+   - List all certificates: find /etc/ssl -name "*.crt" -exec openssl x509 -enddate -noout -in {} \;
+
+2. RENEW THE CERTIFICATE
+   - For Let's Encrypt: sudo certbot renew --cert-name <domain>
+   - For internal CA: Generate CSR and submit to internal CA team
+   - For purchased certificates: Contact vendor or use automated renewal
+
+3. DEPLOY NEW CERTIFICATE
+   - Copy certificate to correct location
+   - Reload web server: sudo systemctl reload nginx OR sudo systemctl reload apache2
+   - Verify no downtime during reload
+
+4. VERIFY RESOLUTION
+   - Check new expiry: openssl x509 -enddate -noout -in /path/to/new-cert.crt
+   - Test HTTPS connection: curl -vI https://<domain> 2>&1 | grep "expire date"
+   - Verify no SSL errors in browser
+
+5. ESCALATION
+   - If certificate already expired and causing outage → P1 Critical
+   - If unable to renew → Escalate to Security team

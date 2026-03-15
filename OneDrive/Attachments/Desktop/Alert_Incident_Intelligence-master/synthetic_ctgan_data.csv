@@ -1,0 +1,501 @@
+source_system,alert_name,severity,status,customer_name,device_name,host,host_country,host_state,alert_category,is_duplicate,is_resolution,duplicate_count
+meraki,Memory,3,Normal,Signorelli Company,LBTAMAG01,192.168.1.85,Israel,Madrid,server,True,True,1
+auvik,Network Element Offline,4,Triggered,Ambient Enterprises > Ambient Enterprises HCN (HAR),JB-CLACKAMAS-FW,JB-SEATTLE-FW,Ireland,KwaZulu-Natal,synthetic,True,True,1
+ctgan,Client IP conflict detected,3,Triggered,Ambient Enterprises - Johnson Barrow,DMG-SLO-AP02,JB-SEATTLE-FW,Canada,Victoria,synthetic,True,True,1
+auvik,Access Point Offline,1,Failed,Synthetic Corp,JB-SEATTLE-FW,JB-SEATTLE-FW,Brazil,Brussels,interface,True,True,1
+ncentral,Synthetic CTGAN Alert,4,Triggered,DYOPATH Oakbrook Terrace,MH-BoiseOffice-MX,MH-BoiseOffice-MX,Singapore,Delhi,device,True,True,1
+auvik,Uplink status changed,3,Triggered,HVP SLHV Data Center,JB-SEATTLE-FW,10.108.6.90,Denmark,Lazio,synthetic,True,True,1
+auvik,Agent Status,3,Triggered,Ambient Enterprises - Johnson Barrow,NJ-EX01,asa5515x-01.kslinc.net,South Africa,England,network,True,True,1
+ctgan,Interface Status Mismatch,4,Warning,Hanover Company Azure,LBTAMAG01,192.168.1.85,France,Île-de-France,service,True,True,1
+ctgan,Client IP conflict detected,1,Triggered,Ambient Enterprises - Johnson Barrow,JB-SEATTLE-FW,JB-SEATTLE-FW,Singapore,Skåne,network,True,True,1
+ctgan,Access Point Offline,3,Triggered,Wedgewood Pharmacy,LBTAMAG01,10.108.6.90,Ireland,Quebec,synthetic,True,True,1
+auvik,Network Element Offline,2,Triggered,Hanover Company Azure,AmesUtility,10.10.6.6,Mexico,Flanders,device,True,True,1
+ctgan,Synthetic CTGAN Alert,4,Triggered,HVP SLHV Data Center,AmesUtility,10.0.4.6,Italy,West Region,synthetic,True,True,1
+ncentral,Windows Event Log,3,Triggered,Ambient Enterprises > Ambient Enterprises HCN (HAR),DMG-SLO-AP02,SyntheticHost,Japan,Alberta,server,True,True,1
+ncentral,Network Element Offline,1,Triggered,HVP SLHV Data Center,NJ-EX01,MH-BoiseOffice-MX,Belgium,Osaka,server,True,True,1
+auvik,Interface Status Mismatch,1,warning,Ambient Enterprises DMG San Luis Obispo,JB-CLACKAMAS-FW,JB-CLACKAMAS-FW,New Zealand,Haifa,interface,True,True,1
+ctgan,VPN remote gateway is Lost,3,Triggered,Wedgewood Pharmacy,JB-CLACKAMAS-FW,MH-BoiseOffice-MX,Italy,Sharjah,service,True,True,1
+ncentral,Internet Connection is Lost,1,Triggered,Ambient Enterprises - Johnson Barrow,AmesUtility,MH-BoiseOffice-MX,United Kingdom,Alberta,interface,True,True,1
+auvik,CPU,3,Triggered,Ambient Enterprises DMG San Luis Obispo,JB-SEATTLE-FW,JB-CLACKAMAS-FW,Mexico,Sharjah,server,True,True,1
+ctgan,Memory,4,warning,Ambient Enterprises,DC3,DMG-SLO-AP01,Brazil,Western Australia,interface,True,True,1
+meraki,Access Point Offline,4,Triggered,Ambient Enterprises DMG San Luis Obispo,JB-SEATTLE-FW,10.0.4.6,Belgium,Île-de-France,synthetic,True,True,1
+ctgan,Uplink status changed,2,Triggered,DYOPATH Oakbrook Terrace,JB-SEATTLE-FW,JB-CLACKAMAS-FW,Brazil,Maharashtra,synthetic,True,True,1
+ctgan,VPN remote gateway is Lost,4,Failed,Ambient Enterprises - Johnson Barrow,LBTAMAG01,192.168.1.85,India,Flanders,synthetic,True,True,1
+ctgan,Synthetic CTGAN Alert,1,Warning,Wyffels,JB-SEATTLE-FW,DMG-SLO-AP01,Spain,Kyoto,service,True,True,1
+ncentral,Network Element Offline,3,Triggered,Ambient Enterprises,dyo-sch-fw01a,MH-BoiseOffice-MX,Canada,Hokkaido,network,True,True,1
+auvik,Memory,3,Triggered,DYOPATH Oakbrook Terrace,DMG-SLO-AP02,10.0.1.24,United States,New York,server,True,True,1
+meraki,Interface Status Mismatch,4,critical,HVP SLHV Data Center,DMG-SLO-AP02,JB-SEATTLE-FW,New Zealand,Texas,service,True,True,1
+ncentral,Internet Connection is Lost,4,critical,Signorelli Company,LBTAMAG01,10.10.6.6,Canada,Seoul,device,True,True,1
+auvik,Disk,3,Failed,Wedgewood Pharmacy,dyoOBTdepotsw02,10.10.6.6,Netherlands,Flanders,server,True,True,1
+ncentral,VPN remote gateway is Lost,1,Failed,Ambient Enterprises > Ambient Enterprises HCN (HAR),dpOBTlabsw01,10.0.1.24,Spain,Ontario,server,True,True,1
+meraki,Synthetic CTGAN Alert,4,Triggered,Synthetic Corp,GlacierVmProd2,DMG-SLO-AP01,India,Central Region,synthetic,True,True,1
+meraki,Windows Event Log,4,Triggered,Wyffels,JB-SEATTLE-FW,10.0.4.6,Ireland,Nuevo León,network,True,True,1
+meraki,Synthetic CTGAN Alert,1,Triggered,Ambient Enterprises DMG San Luis Obispo,DMG-SLO-AP02,MH-BoiseOffice-MX,Japan,Haifa,synthetic,True,True,1
+auvik,Interface Status Mismatch,4,Triggered,Hanover Company Azure,asa5515x-01.kslinc.net,JB-CLACKAMAS-FW,United Kingdom,Cork,device,True,True,1
+ncentral,Synthetic CTGAN Alert,1,Triggered,Hanover Company Azure,DMG-SLO-AP02,192.168.1.85,Australia,British Columbia,device,True,True,1
+ncentral,Disk,3,Failed,Ambient Enterprises > Ambient Enterprises HCN (HAR),JB-SEATTLE-FW,192.168.1.85,France,Wallonia,synthetic,True,True,1
+ncentral,Synthetic CTGAN Alert,3,Triggered,HVP SLHV Data Center,JB-CLACKAMAS-FW,dyo-sch-fw01a,France,Western Cape,device,True,True,1
+ctgan,Network Element Offline,1,Triggered,Ambient Enterprises - Johnson Barrow,DMG-SLO-AP01,dpOBTlabsw01,Ireland,Lazio,service,True,True,1
+meraki,Windows Event Log,3,Triggered,Synthetic Corp,DMG-SLO-AP02,asa5515x-01.kslinc.net,Singapore,Jerusalem,server,True,True,1
+ctgan,VPN remote gateway is Lost,2,Normal,Ambient Enterprises DMG San Luis Obispo,LBTAMAG01,DMG-SLO-AP01,Switzerland,Hokkaido,interface,True,True,1
+ncentral,Network Element Offline,3,Warning,Ambient Enterprises > Ambient Enterprises HCN (HAR),SyntheticDevice,JB-CLACKAMAS-FW,Switzerland,New York,service,True,True,1
+ctgan,Rogue AP detected,3,Triggered,Hanover Company Azure,GlacierVmProd2,JB-CLACKAMAS-FW,South Africa,Oslo,server,True,True,1
+auvik,Access Point Offline,1,Failed,Ocean Point Terminals (LTB),AmesUtility,DMG-SLO-AP02,United States,England,server,True,True,1
+ncentral,Rogue AP detected,3,Failed,Wedgewood Pharmacy,asa5515x-01.kslinc.net,asa5515x-01.kslinc.net,Switzerland,Seoul,server,True,True,1
+auvik,Network Element Offline,4,Triggered,Wedgewood Pharmacy,JB-CLACKAMAS-FW,dpOBTlabsw01,Mexico,Hesse,service,True,True,1
+auvik,Disk,3,Triggered,Wyffels,JB-CLACKAMAS-FW,192.168.1.85,France,Rio de Janeiro,service,True,True,1
+auvik,Interface Status Mismatch,3,Triggered,DYOPATH Oakbrook Terrace,JB-CLACKAMAS-FW,JB-CLACKAMAS-FW,Germany,Madrid,network,True,True,1
+meraki,Memory,3,Warning,HVP SLHV Data Center,dyo-sch-fw01a,192.168.1.85,Canada,Central Region,server,True,True,1
+meraki,Interface Status Mismatch,4,Triggered,Ambient Enterprises - Johnson Barrow,MH-BoiseOffice-MX,JB-SEATTLE-FW,Switzerland,Nouvelle-Aquitaine,interface,True,True,1
+auvik,Network Element Offline,4,Triggered,Synthetic Corp,JB-CLACKAMAS-FW,JB-SEATTLE-FW,Netherlands,Jerusalem,device,True,True,1
+ncentral,Client IP conflict detected,3,Failed,Wyffels,dyoOBTdepotsw02,DMG-SLO-AP02,Spain,England,device,True,True,1
+auvik,CPU,4,Triggered,DYOPATH Oakbrook Terrace,AmesUtility,DMG-SLO-AP02,Denmark,Jerusalem,server,True,True,1
+auvik,VPN remote gateway is Lost,3,critical,Ambient Enterprises DMG San Luis Obispo,DMG-SLO-AP02,10.0.4.6,Japan,Osaka,network,True,True,1
+meraki,VPN remote gateway is Lost,1,Triggered,DYOPATH Oakbrook Terrace,dpOBTlabsw01,dyo-sch-fw01a,Switzerland,North Holland,service,True,True,1
+auvik,Access Point Offline,4,Triggered,DYOPATH Oakbrook Terrace,dpOBTlabsw01,JB-CLACKAMAS-FW,Brazil,Central Region,device,True,True,1
+auvik,Rogue AP detected,4,Triggered,Hanover Company Azure,JB-CLACKAMAS-FW,SyntheticHost,Canada,Viken,service,True,True,1
+auvik,Connectivity,3,Warning,HVP SLHV Data Center,JB-SEATTLE-FW,JB-SEATTLE-FW,Australia,Skåne,service,True,True,1
+meraki,Agent Status,4,Triggered,Hanover Company Azure,dpOBTlabsw01,192.168.1.85,France,Lazio,network,True,True,1
+meraki,Uplink status changed,1,Failed,Synthetic Corp,NJ-EX01,dpOBTlabsw01,Canada,Jalisco,synthetic,True,True,1
+meraki,Client IP conflict detected,3,Triggered,Ambient Enterprises DMG San Luis Obispo,DMG-SLO-AP01,JB-SEATTLE-FW,United Kingdom,Queensland,service,True,True,1
+auvik,Internet Connection is Lost,3,Triggered,Ambient Enterprises,SyntheticDevice,MH-BoiseOffice-MX,Israel,Ontario,network,True,True,1
+ncentral,Connectivity,1,Failed,Ambient Enterprises,NJ-EX01,10.108.6.90,United States,Geneva,server,True,True,1
+ncentral,Interface Status Mismatch,1,Failed,Ambient Enterprises - Johnson Barrow,SyntheticDevice,asa5515x-01.kslinc.net,Sweden,Queensland,server,True,True,1
+auvik,Windows Event Log,1,Triggered,DYOPATH Oakbrook Terrace,JB-SEATTLE-FW,10.0.1.24,Australia,Vestland,server,True,True,1
+auvik,Network Element Offline,4,warning,HVP SLHV Data Center,asa5515x-01.kslinc.net,10.10.6.6,South Korea,Västra Götaland,synthetic,True,True,1
+ncentral,Network Element Offline,3,Triggered,Synthetic Corp,DC3,10.0.4.6,Spain,Texas,network,True,True,1
+auvik,Rogue AP detected,4,Triggered,Synthetic Corp,JB-CLACKAMAS-FW,DMG-SLO-AP01,Norway,Île-de-France,service,True,True,1
+auvik,Internet Connection is Lost,3,Failed,Wyffels,JB-CLACKAMAS-FW,192.168.1.85,Singapore,North Holland,server,True,True,1
+meraki,Connectivity,4,Triggered,HVP SLHV Data Center,JB-CLACKAMAS-FW,MH-BoiseOffice-MX,Brazil,New York,synthetic,True,True,1
+ctgan,Agent Status,4,Triggered,Wedgewood Pharmacy,JB-SEATTLE-FW,JB-CLACKAMAS-FW,Denmark,Île-de-France,server,True,True,1
+ncentral,Access Point Offline,1,Warning,Wyffels,DC3,192.168.1.85,India,East Region,server,True,True,1
+meraki,VPN remote gateway is Lost,3,Failed,Ambient Enterprises - Johnson Barrow,dyoOBTdepotsw02,dyo-sch-fw01a,United States,Galway,server,True,True,1
+auvik,Client IP conflict detected,2,Triggered,Wedgewood Pharmacy,JB-CLACKAMAS-FW,MH-BoiseOffice-MX,Norway,Southern Denmark,device,True,True,1
+ctgan,VPN remote gateway is Lost,4,Triggered,Ambient Enterprises DMG San Luis Obispo,JB-SEATTLE-FW,JB-CLACKAMAS-FW,New Zealand,Jalisco,interface,True,True,1
+auvik,Network Element Offline,4,Triggered,Ambient Enterprises,dpOBTlabsw01,10.10.6.6,Germany,Île-de-France,device,True,True,1
+ctgan,Connectivity,4,Triggered,DYOPATH Oakbrook Terrace,NJ-EX01,JB-CLACKAMAS-FW,Ireland,California,service,True,True,1
+auvik,Connectivity,3,Triggered,Ambient Enterprises - Johnson Barrow,SyntheticDevice,DMG-SLO-AP02,Ireland,Hokkaido,server,True,True,1
+meraki,Synthetic CTGAN Alert,4,Triggered,Wyffels,JB-CLACKAMAS-FW,JB-CLACKAMAS-FW,Norway,Provence-Alpes-Côte d'Azur,network,True,True,1
+ctgan,Network Element Offline,4,Triggered,DYOPATH Oakbrook Terrace,JB-SEATTLE-FW,192.168.1.85,Germany,Madrid,synthetic,True,True,1
+auvik,Uplink status changed,4,Normal,Ambient Enterprises DMG San Luis Obispo,JB-SEATTLE-FW,JB-SEATTLE-FW,Japan,Victoria,synthetic,True,True,1
+auvik,Rogue AP detected,4,Triggered,HVP SLHV Data Center,GlacierVmProd2,10.108.6.90,Australia,São Paulo,service,True,True,1
+ctgan,Memory,1,Triggered,Hanover Company Azure,AmesUtility,JB-CLACKAMAS-FW,Mexico,Mexico City,synthetic,True,True,1
+auvik,VPN remote gateway is Lost,3,warning,HVP SLHV Data Center,DC3,10.0.4.6,India,Scotland,synthetic,True,True,1
+auvik,Interface Status Mismatch,1,Normal,Wyffels,dyo-sch-fw01a,JB-CLACKAMAS-FW,Netherlands,Jerusalem,server,True,True,1
+meraki,Rogue AP detected,1,Normal,Ambient Enterprises,MH-BoiseOffice-MX,10.10.6.6,Brazil,Cork,service,True,True,1
+auvik,Access Point Offline,4,Failed,Synthetic Corp,GlacierVmProd2,JB-CLACKAMAS-FW,Belgium,Zurich,service,True,True,1
+ncentral,Network Element Offline,1,Triggered,Ambient Enterprises DMG San Luis Obispo,NJ-EX01,192.168.1.85,South Africa,Tokyo,server,True,True,1
+ncentral,Memory,1,Triggered,Wedgewood Pharmacy,MH-BoiseOffice-MX,JB-SEATTLE-FW,Israel,Osaka,server,True,True,1
+meraki,Network Element Offline,2,warning,Ambient Enterprises - Johnson Barrow,DC3,JB-CLACKAMAS-FW,Japan,Southern Denmark,device,True,True,1
+auvik,CPU,1,Triggered,Synthetic Corp,DMG-SLO-AP01,JB-CLACKAMAS-FW,Spain,Bavaria,network,True,True,1
+ctgan,Internet Connection is Lost,4,Warning,Wyffels,JB-SEATTLE-FW,DMG-SLO-AP01,Australia,Seoul,service,True,True,1
+ctgan,Network Element Offline,3,critical,Wedgewood Pharmacy,DC3,192.168.1.85,United States,West Region,server,True,True,1
+auvik,Internet Connection is Lost,4,warning,Wedgewood Pharmacy,MH-BoiseOffice-MX,SyntheticHost,Italy,Oslo,server,True,True,1
+auvik,Interface Status Mismatch,4,warning,Wedgewood Pharmacy,DMG-SLO-AP01,192.168.1.85,United Arab Emirates,Alberta,device,True,True,1
+ncentral,Disk,4,Failed,Ambient Enterprises > Ambient Enterprises HCN (HAR),DMG-SLO-AP01,MH-BoiseOffice-MX,Spain,Sharjah,server,True,True,1
+ncentral,CPU,3,Failed,Ambient Enterprises > Ambient Enterprises HCN (HAR),LBTAMAG01,dpOBTlabsw01,Israel,North Holland,server,True,True,1
+auvik,Rogue AP detected,4,Failed,Ambient Enterprises,DMG-SLO-AP02,192.168.1.85,United Arab Emirates,Mexico City,server,True,True,1
+auvik,Network Element Offline,3,critical,Signorelli Company,NJ-EX01,asa5515x-01.kslinc.net,Germany,Lombardy,network,True,True,1
+meraki,Network Element Offline,4,Triggered,Ambient Enterprises DMG San Luis Obispo,DMG-SLO-AP01,JB-CLACKAMAS-FW,United Arab Emirates,Madrid,synthetic,True,True,1
+auvik,VPN connectivity changed,4,Failed,HVP SLHV Data Center,GlacierVmProd2,JB-SEATTLE-FW,Sweden,Cork,server,True,True,1
+auvik,VPN connectivity changed,1,Failed,Wyffels,asa5515x-01.kslinc.net,10.10.6.6,Norway,Bern,device,True,True,1
+auvik,CPU,1,Normal,Ocean Point Terminals (LTB),MH-BoiseOffice-MX,10.0.4.6,Japan,Canterbury,server,True,True,1
+meraki,Connectivity,3,Triggered,Ambient Enterprises,SyntheticDevice,10.10.6.6,Sweden,Minas Gerais,synthetic,True,True,1
+meraki,Uplink status changed,1,Triggered,Hanover Company Azure,MH-BoiseOffice-MX,10.108.6.90,Canada,Western Cape,synthetic,True,True,1
+auvik,Interface Status Mismatch,4,Triggered,Wedgewood Pharmacy,SyntheticDevice,10.108.6.90,United Kingdom,São Paulo,synthetic,True,True,1
+ncentral,VPN remote gateway is Lost,2,Failed,Signorelli Company,DMG-SLO-AP02,dyoOBTdepotsw02,Belgium,Stockholm,server,True,True,1
+ncentral,Disk,1,Failed,Hanover Company Azure,DC3,10.10.6.6,South Korea,Catalonia,server,True,True,1
+ctgan,Network Element Offline,3,Triggered,Ambient Enterprises,SyntheticDevice,10.10.6.6,Ireland,Västra Götaland,service,True,True,1
+auvik,CPU,4,Warning,Signorelli Company,NJ-EX01,DMG-SLO-AP01,South Africa,Flanders,server,True,True,1
+meraki,Windows Event Log,3,warning,HVP SLHV Data Center,JB-CLACKAMAS-FW,dpOBTlabsw01,South Africa,North Holland,service,True,True,1
+ncentral,Network Element Offline,3,Normal,Ocean Point Terminals (LTB),DMG-SLO-AP01,DMG-SLO-AP02,Brazil,Dubai,interface,True,True,1
+ctgan,Agent Status,4,Triggered,Ambient Enterprises DMG San Luis Obispo,NJ-EX01,MH-BoiseOffice-MX,Japan,Nuevo León,device,True,True,1
+ncentral,Agent Status,3,Triggered,Ambient Enterprises DMG San Luis Obispo,dyo-sch-fw01a,dyoOBTdepotsw02,Brazil,Nouvelle-Aquitaine,interface,True,True,1
+auvik,VPN connectivity changed,4,Triggered,Synthetic Corp,JB-SEATTLE-FW,DMG-SLO-AP02,Belgium,Osaka,server,True,True,1
+ncentral,Disk,1,Failed,Hanover Company Azure,LBTAMAG01,10.108.6.90,Japan,East Region,server,True,True,1
+ncentral,Connectivity,4,Failed,Hanover Company Azure,dpOBTlabsw01,10.0.1.24,South Korea,New South Wales,device,True,True,1
+auvik,Memory,3,Triggered,DYOPATH Oakbrook Terrace,DC3,JB-CLACKAMAS-FW,Netherlands,Skåne,network,True,True,1
+meraki,Internet Connection is Lost,4,Triggered,Ambient Enterprises - Johnson Barrow,JB-SEATTLE-FW,10.0.4.6,New Zealand,Queensland,device,True,True,1
+meraki,Connectivity,3,Triggered,Ambient Enterprises,NJ-EX01,192.168.1.85,India,Sharjah,server,True,True,1
+auvik,Access Point Offline,4,Triggered,Ocean Point Terminals (LTB),AmesUtility,MH-BoiseOffice-MX,France,Wales,service,True,True,1
+meraki,VPN remote gateway is Lost,4,Normal,Ocean Point Terminals (LTB),AmesUtility,DMG-SLO-AP01,Netherlands,Kyoto,server,True,True,1
+ncentral,Memory,1,Triggered,Hanover Company Azure,JB-CLACKAMAS-FW,192.168.1.85,Canada,Stockholm,server,True,True,1
+ctgan,Synthetic CTGAN Alert,3,Triggered,HVP SLHV Data Center,JB-CLACKAMAS-FW,JB-CLACKAMAS-FW,Italy,Utrecht,server,True,True,1
+ncentral,Internet Connection is Lost,4,Triggered,DYOPATH Oakbrook Terrace,dyo-sch-fw01a,JB-SEATTLE-FW,France,Zurich,interface,True,True,1
+ncentral,Agent Status,1,Failed,Wedgewood Pharmacy,AmesUtility,dyoOBTdepotsw02,India,New York,server,True,True,1
+auvik,VPN remote gateway is Lost,2,Triggered,HVP SLHV Data Center,GlacierVmProd2,192.168.1.85,South Korea,Zurich,synthetic,True,True,1
+meraki,Synthetic CTGAN Alert,4,Triggered,Ambient Enterprises DMG San Luis Obispo,MH-BoiseOffice-MX,dpOBTlabsw01,Ireland,Ontario,interface,True,True,1
+ncentral,CPU,1,Failed,Ambient Enterprises,dyo-sch-fw01a,10.0.1.24,France,Wellington,server,True,True,1
+auvik,Agent Status,1,Triggered,Ambient Enterprises - Johnson Barrow,GlacierVmProd2,JB-CLACKAMAS-FW,South Korea,Vestland,server,True,True,1
+auvik,Access Point Offline,4,Triggered,Ambient Enterprises DMG San Luis Obispo,DMG-SLO-AP01,MH-BoiseOffice-MX,Japan,Berlin,synthetic,True,True,1
+ctgan,Agent Status,3,Triggered,Wyffels,dyoOBTdepotsw02,10.0.1.24,Norway,Victoria,network,True,True,1
+ncentral,Interface Status Mismatch,1,Failed,Ocean Point Terminals (LTB),LBTAMAG01,dyoOBTdepotsw02,United Kingdom,Berlin,device,True,True,1
+meraki,Network Element Offline,1,Triggered,Hanover Company Azure,DMG-SLO-AP01,192.168.1.85,Ireland,Capital Region,interface,True,True,1
+ncentral,Network Element Offline,1,Triggered,Ambient Enterprises,NJ-EX01,10.108.6.90,India,Alberta,network,True,True,1
+meraki,Network Element Offline,3,warning,Ambient Enterprises,DMG-SLO-AP02,10.10.6.6,Singapore,Kyoto,network,True,True,1
+meraki,VPN remote gateway is Lost,2,Triggered,Synthetic Corp,GlacierVmProd2,192.168.1.85,Mexico,Canterbury,network,True,True,1
+ctgan,VPN remote gateway is Lost,3,Triggered,Ambient Enterprises - Johnson Barrow,JB-CLACKAMAS-FW,MH-BoiseOffice-MX,Australia,Central Region,network,True,True,1
+ctgan,Synthetic CTGAN Alert,1,warning,DYOPATH Oakbrook Terrace,JB-CLACKAMAS-FW,10.10.6.6,Ireland,Seoul,service,True,True,1
+ctgan,Interface Status Mismatch,3,Triggered,Ambient Enterprises,DMG-SLO-AP02,JB-CLACKAMAS-FW,Singapore,Catalonia,synthetic,True,True,1
+auvik,CPU,1,warning,Hanover Company Azure,LBTAMAG01,JB-SEATTLE-FW,Germany,Jerusalem,synthetic,True,True,1
+auvik,Network Element Offline,4,Failed,Ambient Enterprises > Ambient Enterprises HCN (HAR),JB-CLACKAMAS-FW,10.10.6.6,Australia,Alberta,server,True,True,1
+ncentral,VPN connectivity changed,3,Normal,DYOPATH Oakbrook Terrace,LBTAMAG01,10.108.6.90,Spain,Oslo,server,True,True,1
+ctgan,Rogue AP detected,4,Warning,Wedgewood Pharmacy,JB-CLACKAMAS-FW,MH-BoiseOffice-MX,United Arab Emirates,Osaka,network,True,True,1
+ctgan,Client IP conflict detected,3,Triggered,Ambient Enterprises DMG San Luis Obispo,AmesUtility,dyo-sch-fw01a,United Kingdom,Dublin,interface,True,True,1
+auvik,VPN connectivity changed,2,Failed,Ambient Enterprises > Ambient Enterprises HCN (HAR),DC3,10.0.4.6,Belgium,Mexico City,service,True,True,1
+ncentral,Internet Connection is Lost,3,Triggered,Hanover Company Azure,dyo-sch-fw01a,dyoOBTdepotsw02,Mexico,Gyeonggi,server,True,True,1
+auvik,Client IP conflict detected,3,Triggered,Ambient Enterprises - Johnson Barrow,JB-CLACKAMAS-FW,10.108.6.90,United Kingdom,Western Cape,service,True,True,1
+auvik,VPN connectivity changed,3,Failed,DYOPATH Oakbrook Terrace,SyntheticDevice,10.108.6.90,France,Lombardy,server,True,True,1
+ctgan,Rogue AP detected,1,Triggered,Ambient Enterprises DMG San Luis Obispo,JB-CLACKAMAS-FW,asa5515x-01.kslinc.net,Mexico,Dubai,server,True,True,1
+ncentral,Interface Status Mismatch,1,Failed,Hanover Company Azure,dyoOBTdepotsw02,dyo-sch-fw01a,Mexico,Andalusia,server,True,True,1
+ctgan,Memory,1,Triggered,Hanover Company Azure,AmesUtility,JB-SEATTLE-FW,Mexico,Kyoto,interface,True,True,1
+ncentral,VPN remote gateway is Lost,1,Failed,Signorelli Company,LBTAMAG01,10.108.6.90,New Zealand,KwaZulu-Natal,server,True,True,1
+ncentral,Connectivity,3,Warning,Hanover Company Azure,AmesUtility,MH-BoiseOffice-MX,Spain,Northern Ireland,network,True,True,1
+meraki,Disk,3,Triggered,Hanover Company Azure,dpOBTlabsw01,MH-BoiseOffice-MX,Belgium,West Region,server,True,True,1
+ncentral,Agent Status,3,Failed,Wedgewood Pharmacy,LBTAMAG01,10.108.6.90,Italy,Scotland,server,True,True,1
+ctgan,Synthetic CTGAN Alert,1,Triggered,HVP SLHV Data Center,DMG-SLO-AP01,JB-SEATTLE-FW,Ireland,Flanders,device,True,True,1
+ncentral,Agent Status,2,Triggered,Ambient Enterprises - Johnson Barrow,LBTAMAG01,dyo-sch-fw01a,Italy,Busan,service,True,True,1
+meraki,Disk,4,Warning,Ambient Enterprises DMG San Luis Obispo,dyo-sch-fw01a,DMG-SLO-AP01,United States,Osaka,server,True,True,1
+auvik,Client IP conflict detected,3,Triggered,Ambient Enterprises - Johnson Barrow,JB-SEATTLE-FW,JB-SEATTLE-FW,Singapore,Rio de Janeiro,synthetic,True,True,1
+ncentral,Disk,4,warning,Synthetic Corp,JB-SEATTLE-FW,JB-SEATTLE-FW,South Korea,Oslo,server,True,True,1
+ncentral,Access Point Offline,3,Triggered,Ambient Enterprises > Ambient Enterprises HCN (HAR),GlacierVmProd2,192.168.1.85,Singapore,Berlin,network,True,True,1
+ctgan,Internet Connection is Lost,2,Triggered,Signorelli Company,DMG-SLO-AP01,DMG-SLO-AP01,Italy,Karnataka,interface,True,True,1
+ctgan,Access Point Offline,2,Triggered,Synthetic Corp,SyntheticDevice,MH-BoiseOffice-MX,Spain,Jerusalem,synthetic,True,True,1
+auvik,Uplink status changed,4,Triggered,Signorelli Company,JB-CLACKAMAS-FW,10.10.6.6,United Kingdom,South Holland,synthetic,True,True,1
+meraki,Access Point Offline,3,Triggered,HVP SLHV Data Center,SyntheticDevice,DMG-SLO-AP01,Canada,Provence-Alpes-Côte d'Azur,server,True,True,1
+ncentral,Client IP conflict detected,3,Triggered,HVP SLHV Data Center,DMG-SLO-AP01,10.108.6.90,Japan,Tamil Nadu,server,True,True,1
+ctgan,Synthetic CTGAN Alert,3,Warning,Ambient Enterprises DMG San Luis Obispo,DMG-SLO-AP01,DMG-SLO-AP01,United Arab Emirates,Provence-Alpes-Côte d'Azur,server,True,True,1
+ctgan,CPU,1,Triggered,Ambient Enterprises DMG San Luis Obispo,MH-BoiseOffice-MX,MH-BoiseOffice-MX,Belgium,Scotland,server,True,True,1
+meraki,Internet Connection is Lost,1,Triggered,Ambient Enterprises > Ambient Enterprises HCN (HAR),dyoOBTdepotsw02,asa5515x-01.kslinc.net,Australia,Campania,synthetic,True,True,1
+ncentral,Synthetic CTGAN Alert,3,critical,Ambient Enterprises - Johnson Barrow,asa5515x-01.kslinc.net,10.108.6.90,United Arab Emirates,Capital Region,server,True,True,1
+ctgan,Internet Connection is Lost,4,critical,Ambient Enterprises DMG San Luis Obispo,JB-CLACKAMAS-FW,JB-CLACKAMAS-FW,United Arab Emirates,Campania,network,True,True,1
+auvik,VPN connectivity changed,2,Triggered,Ambient Enterprises > Ambient Enterprises HCN (HAR),JB-SEATTLE-FW,10.108.6.90,Switzerland,Auckland,synthetic,True,True,1
+meraki,Network Element Offline,4,Triggered,Synthetic Corp,GlacierVmProd2,JB-SEATTLE-FW,New Zealand,Sharjah,network,True,True,1
+auvik,Memory,1,Failed,Hanover Company Azure,JB-CLACKAMAS-FW,JB-SEATTLE-FW,Canada,Tel Aviv,server,True,True,1
+meraki,CPU,4,Warning,Wyffels,NJ-EX01,10.10.6.6,New Zealand,West Region,server,True,True,1
+ncentral,Connectivity,1,Cleared,HVP SLHV Data Center,NJ-EX01,JB-SEATTLE-FW,Canada,Western Australia,server,True,True,1
+meraki,Network Element Offline,2,Failed,HVP SLHV Data Center,JB-SEATTLE-FW,asa5515x-01.kslinc.net,Japan,Seoul,synthetic,True,True,1
+meraki,Rogue AP detected,1,Triggered,Ambient Enterprises DMG San Luis Obispo,SyntheticDevice,asa5515x-01.kslinc.net,United Arab Emirates,Queensland,server,True,True,1
+auvik,Internet Connection is Lost,4,Triggered,Ambient Enterprises - Johnson Barrow,GlacierVmProd2,JB-SEATTLE-FW,United States,Rio de Janeiro,synthetic,True,True,1
+auvik,Network Element Offline,3,warning,Ambient Enterprises > Ambient Enterprises HCN (HAR),GlacierVmProd2,JB-SEATTLE-FW,United Arab Emirates,Galway,server,True,True,1
+auvik,Network Element Offline,3,Failed,Ambient Enterprises,dyoOBTdepotsw02,10.10.6.6,Israel,Scotland,synthetic,True,True,1
+ncentral,Agent Status,1,Triggered,Signorelli Company,AmesUtility,10.10.6.6,Mexico,Sharjah,server,True,True,1
+auvik,Memory,2,warning,DYOPATH Oakbrook Terrace,GlacierVmProd2,JB-CLACKAMAS-FW,Switzerland,Stockholm,service,True,True,1
+auvik,Synthetic CTGAN Alert,2,Triggered,Hanover Company Azure,DC3,JB-CLACKAMAS-FW,Japan,Stockholm,device,True,True,1
+ncentral,Uplink status changed,4,Triggered,Ambient Enterprises > Ambient Enterprises HCN (HAR),dpOBTlabsw01,JB-SEATTLE-FW,Italy,Skåne,server,True,True,1
+ncentral,Memory,1,Normal,Signorelli Company,GlacierVmProd2,10.108.6.90,Brazil,Karnataka,service,True,True,1
+ncentral,Agent Status,4,Failed,Ambient Enterprises - Johnson Barrow,JB-CLACKAMAS-FW,DMG-SLO-AP02,Australia,Vestland,synthetic,True,True,1
+auvik,Internet Connection is Lost,4,Triggered,Hanover Company Azure,JB-SEATTLE-FW,asa5515x-01.kslinc.net,United Kingdom,Southern Denmark,device,True,True,1
+ncentral,Disk,1,Failed,Wedgewood Pharmacy,AmesUtility,10.108.6.90,New Zealand,Ontario,server,True,True,1
+ncentral,Windows Event Log,4,Failed,Wyffels,LBTAMAG01,10.0.1.24,Singapore,California,server,True,True,1
+meraki,Access Point Offline,3,Triggered,Ambient Enterprises - Johnson Barrow,DMG-SLO-AP02,MH-BoiseOffice-MX,Canada,Nouvelle-Aquitaine,service,True,True,1
+ncentral,Uplink status changed,1,Failed,Wyffels,MH-BoiseOffice-MX,10.0.1.24,United Kingdom,Wales,service,True,True,1
+ncentral,Internet Connection is Lost,4,Triggered,Signorelli Company,DMG-SLO-AP02,dpOBTlabsw01,Italy,Wallonia,server,True,True,1
+ctgan,Windows Event Log,1,Triggered,Synthetic Corp,JB-CLACKAMAS-FW,SyntheticHost,New Zealand,California,interface,True,True,1
+ncentral,Interface Status Mismatch,3,Triggered,HVP SLHV Data Center,LBTAMAG01,JB-SEATTLE-FW,South Korea,Flanders,server,True,True,1
+ncentral,Internet Connection is Lost,3,Failed,Ambient Enterprises DMG San Luis Obispo,dyoOBTdepotsw02,MH-BoiseOffice-MX,United Kingdom,Southern Denmark,service,True,True,1
+auvik,Rogue AP detected,3,Failed,HVP SLHV Data Center,SyntheticDevice,192.168.1.85,France,England,interface,True,True,1
+auvik,Agent Status,1,Triggered,Ambient Enterprises DMG San Luis Obispo,LBTAMAG01,JB-CLACKAMAS-FW,United Kingdom,Busan,synthetic,True,True,1
+auvik,Network Element Offline,1,warning,Hanover Company Azure,JB-SEATTLE-FW,10.0.1.24,Brazil,Oslo,synthetic,True,True,1
+auvik,CPU,4,Triggered,Ambient Enterprises DMG San Luis Obispo,DC3,SyntheticHost,India,Central Denmark,service,True,True,1
+auvik,Connectivity,2,Failed,Ambient Enterprises > Ambient Enterprises HCN (HAR),AmesUtility,192.168.1.85,Norway,Utrecht,server,True,True,1
+meraki,Disk,3,Triggered,Ambient Enterprises,JB-CLACKAMAS-FW,JB-SEATTLE-FW,Ireland,Auckland,network,True,True,1
+meraki,CPU,3,Triggered,Ambient Enterprises > Ambient Enterprises HCN (HAR),DMG-SLO-AP01,10.108.6.90,United States,Alberta,synthetic,True,True,1
+ncentral,Network Element Offline,3,Normal,Ambient Enterprises - Johnson Barrow,JB-SEATTLE-FW,dpOBTlabsw01,Switzerland,Canterbury,device,True,True,1
+auvik,Access Point Offline,3,warning,Ambient Enterprises > Ambient Enterprises HCN (HAR),JB-CLACKAMAS-FW,10.0.4.6,United States,Andalusia,synthetic,True,True,1
+ncentral,Uplink status changed,2,Triggered,Wedgewood Pharmacy,MH-BoiseOffice-MX,10.10.6.6,Australia,Brussels,interface,True,True,1
+auvik,CPU,4,Triggered,DYOPATH Oakbrook Terrace,dpOBTlabsw01,JB-SEATTLE-FW,Germany,Flanders,interface,True,True,1
+meraki,Agent Status,3,Cleared,Ambient Enterprises,dyoOBTdepotsw02,dyo-sch-fw01a,Mexico,New York,network,True,True,1
+auvik,Internet Connection is Lost,4,Triggered,Ambient Enterprises - Johnson Barrow,dpOBTlabsw01,JB-CLACKAMAS-FW,Norway,Oslo,service,True,True,1
+ctgan,Internet Connection is Lost,2,Triggered,DYOPATH Oakbrook Terrace,JB-CLACKAMAS-FW,JB-CLACKAMAS-FW,Australia,Dubai,service,True,True,1
+ncentral,Access Point Offline,3,Triggered,HVP SLHV Data Center,NJ-EX01,JB-CLACKAMAS-FW,Singapore,Bern,service,True,True,1
+ctgan,Agent Status,3,Triggered,Ambient Enterprises - Johnson Barrow,JB-SEATTLE-FW,DMG-SLO-AP01,Canada,Tel Aviv,service,True,True,1
+meraki,Uplink status changed,4,Triggered,Ambient Enterprises DMG San Luis Obispo,dyoOBTdepotsw02,JB-CLACKAMAS-FW,Australia,Quebec,service,True,True,1
+ctgan,Network Element Offline,4,Triggered,Ambient Enterprises > Ambient Enterprises HCN (HAR),JB-SEATTLE-FW,10.108.6.90,Japan,Wellington,interface,True,True,1
+meraki,CPU,3,Triggered,Ambient Enterprises DMG San Luis Obispo,JB-SEATTLE-FW,10.108.6.90,United Arab Emirates,Tel Aviv,network,True,True,1
+ctgan,VPN connectivity changed,3,Triggered,Ocean Point Terminals (LTB),NJ-EX01,10.0.4.6,South Africa,Mexico City,synthetic,True,True,1
+auvik,VPN remote gateway is Lost,3,Triggered,DYOPATH Oakbrook Terrace,asa5515x-01.kslinc.net,dyo-sch-fw01a,Italy,Wales,synthetic,True,True,1
+ctgan,Access Point Offline,4,Triggered,Wyffels,LBTAMAG01,10.0.1.24,Denmark,Vestland,service,True,True,1
+ncentral,Access Point Offline,1,Triggered,Ambient Enterprises > Ambient Enterprises HCN (HAR),LBTAMAG01,192.168.1.85,Mexico,Västra Götaland,server,True,True,1
+ncentral,VPN remote gateway is Lost,1,warning,Ambient Enterprises,DMG-SLO-AP02,192.168.1.85,Belgium,Central Denmark,synthetic,True,True,1
+auvik,Client IP conflict detected,3,Triggered,DYOPATH Oakbrook Terrace,DMG-SLO-AP01,JB-SEATTLE-FW,Switzerland,Zurich,server,True,True,1
+auvik,Synthetic CTGAN Alert,4,Triggered,Hanover Company Azure,DMG-SLO-AP01,JB-CLACKAMAS-FW,Mexico,East Region,network,True,True,1
+ctgan,VPN remote gateway is Lost,3,Triggered,Hanover Company Azure,MH-BoiseOffice-MX,192.168.1.85,United States,Mexico City,synthetic,True,True,1
+ncentral,VPN remote gateway is Lost,4,Triggered,Ambient Enterprises,JB-SEATTLE-FW,MH-BoiseOffice-MX,United States,Flanders,server,True,True,1
+ncentral,Client IP conflict detected,3,Failed,DYOPATH Oakbrook Terrace,JB-SEATTLE-FW,10.0.1.24,Japan,Jalisco,network,True,True,1
+ncentral,Synthetic CTGAN Alert,1,warning,Ambient Enterprises,MH-BoiseOffice-MX,JB-CLACKAMAS-FW,United States,KwaZulu-Natal,server,True,True,1
+auvik,Synthetic CTGAN Alert,1,Triggered,HVP SLHV Data Center,SyntheticDevice,192.168.1.85,United States,Tamil Nadu,server,True,True,1
+ncentral,CPU,2,Triggered,Ambient Enterprises - Johnson Barrow,GlacierVmProd2,JB-SEATTLE-FW,Brazil,Bavaria,network,True,True,1
+ctgan,CPU,1,critical,Wedgewood Pharmacy,JB-CLACKAMAS-FW,JB-CLACKAMAS-FW,Denmark,New York,device,True,True,1
+auvik,CPU,4,Triggered,Ambient Enterprises - Johnson Barrow,dyoOBTdepotsw02,SyntheticHost,France,England,device,True,True,1
+auvik,Network Element Offline,4,Triggered,Ambient Enterprises,JB-SEATTLE-FW,MH-BoiseOffice-MX,Mexico,Brussels,device,True,True,1
+auvik,VPN connectivity changed,3,Triggered,Hanover Company Azure,JB-SEATTLE-FW,MH-BoiseOffice-MX,Brazil,Provence-Alpes-Côte d'Azur,interface,True,True,1
+auvik,Synthetic CTGAN Alert,4,Triggered,HVP SLHV Data Center,DMG-SLO-AP01,JB-SEATTLE-FW,Belgium,Oslo,device,True,True,1
+auvik,VPN connectivity changed,2,Triggered,Signorelli Company,SyntheticDevice,10.0.4.6,Sweden,Victoria,synthetic,True,True,1
+ctgan,VPN connectivity changed,3,Triggered,Wyffels,MH-BoiseOffice-MX,10.108.6.90,United Arab Emirates,Capital Region,device,True,True,1
+meraki,Interface Status Mismatch,1,warning,Hanover Company Azure,dyoOBTdepotsw02,JB-SEATTLE-FW,United Kingdom,Sharjah,device,True,True,1
+ncentral,Memory,1,Failed,Signorelli Company,AmesUtility,192.168.1.85,Sweden,Campania,server,True,True,1
+ncentral,Uplink status changed,1,warning,Ocean Point Terminals (LTB),LBTAMAG01,asa5515x-01.kslinc.net,Japan,Central Denmark,server,True,True,1
+auvik,Internet Connection is Lost,3,Triggered,Ocean Point Terminals (LTB),MH-BoiseOffice-MX,10.10.6.6,Ireland,Capital Region,synthetic,True,True,1
+ncentral,Access Point Offline,1,Warning,Signorelli Company,dyoOBTdepotsw02,DMG-SLO-AP01,Spain,Geneva,server,True,True,1
+ncentral,Memory,4,Triggered,Wyffels,MH-BoiseOffice-MX,JB-CLACKAMAS-FW,Australia,Busan,device,True,True,1
+ctgan,CPU,4,Triggered,Ambient Enterprises DMG San Luis Obispo,dyo-sch-fw01a,DMG-SLO-AP02,Spain,Utrecht,synthetic,True,True,1
+ncentral,Agent Status,1,critical,DYOPATH Oakbrook Terrace,dpOBTlabsw01,10.0.1.24,Ireland,Hamburg,service,True,True,1
+auvik,Access Point Offline,3,Triggered,Ambient Enterprises - Johnson Barrow,dyoOBTdepotsw02,SyntheticHost,Italy,Canterbury,service,True,True,1
+auvik,Network Element Offline,1,Failed,Hanover Company Azure,asa5515x-01.kslinc.net,MH-BoiseOffice-MX,Canada,England,device,True,True,1
+ncentral,Client IP conflict detected,3,Triggered,Ambient Enterprises,JB-CLACKAMAS-FW,dyo-sch-fw01a,New Zealand,Mexico City,synthetic,True,True,1
+ctgan,Uplink status changed,3,Triggered,Hanover Company Azure,MH-BoiseOffice-MX,DMG-SLO-AP02,India,Hesse,device,True,True,1
+ctgan,CPU,4,warning,Ambient Enterprises - Johnson Barrow,JB-CLACKAMAS-FW,DMG-SLO-AP02,United States,Southern Denmark,service,True,True,1
+ncentral,VPN connectivity changed,1,Normal,Ambient Enterprises DMG San Luis Obispo,DMG-SLO-AP01,JB-SEATTLE-FW,Ireland,Illinois,server,True,True,1
+ctgan,Internet Connection is Lost,3,Triggered,Wedgewood Pharmacy,AmesUtility,MH-BoiseOffice-MX,Japan,Texas,device,True,True,1
+ncentral,Windows Event Log,1,Failed,Ambient Enterprises > Ambient Enterprises HCN (HAR),LBTAMAG01,10.108.6.90,India,Tokyo,server,True,True,1
+ncentral,Network Element Offline,4,Triggered,Wyffels,MH-BoiseOffice-MX,JB-SEATTLE-FW,United Kingdom,Minas Gerais,synthetic,True,True,1
+auvik,Network Element Offline,2,Triggered,Hanover Company Azure,LBTAMAG01,MH-BoiseOffice-MX,New Zealand,Berlin,service,True,True,1
+meraki,Internet Connection is Lost,4,Triggered,Signorelli Company,JB-SEATTLE-FW,JB-CLACKAMAS-FW,Germany,Andalusia,interface,True,True,1
+meraki,Interface Status Mismatch,3,Triggered,HVP SLHV Data Center,dyo-sch-fw01a,MH-BoiseOffice-MX,Singapore,Mexico City,server,True,True,1
+auvik,Agent Status,1,Triggered,Hanover Company Azure,GlacierVmProd2,asa5515x-01.kslinc.net,Spain,Sharjah,network,True,True,1
+ncentral,CPU,4,Normal,Ambient Enterprises > Ambient Enterprises HCN (HAR),AmesUtility,10.0.4.6,Sweden,Osaka,device,True,True,1
+auvik,Interface Status Mismatch,1,Triggered,Ambient Enterprises - Johnson Barrow,DC3,JB-CLACKAMAS-FW,Israel,Lombardy,interface,True,True,1
+ctgan,Agent Status,4,Warning,Hanover Company Azure,dyoOBTdepotsw02,JB-SEATTLE-FW,Spain,Jerusalem,server,True,True,1
+auvik,Memory,1,Warning,Wyffels,AmesUtility,10.108.6.90,South Korea,Cork,network,True,True,1
+auvik,Internet Connection is Lost,3,Triggered,Ambient Enterprises - Johnson Barrow,JB-CLACKAMAS-FW,MH-BoiseOffice-MX,United Arab Emirates,Madrid,device,True,True,1
+auvik,Client IP conflict detected,3,Triggered,Ambient Enterprises DMG San Luis Obispo,SyntheticDevice,10.10.6.6,Netherlands,Lombardy,network,True,True,1
+ctgan,Internet Connection is Lost,4,Triggered,HVP SLHV Data Center,JB-SEATTLE-FW,JB-SEATTLE-FW,Germany,Karnataka,synthetic,True,True,1
+auvik,VPN remote gateway is Lost,4,Triggered,Ocean Point Terminals (LTB),DMG-SLO-AP02,JB-CLACKAMAS-FW,France,Hokkaido,service,True,True,1
+auvik,Agent Status,3,Triggered,Ocean Point Terminals (LTB),AmesUtility,10.108.6.90,Mexico,Delhi,server,True,True,1
+ctgan,CPU,4,critical,HVP SLHV Data Center,LBTAMAG01,MH-BoiseOffice-MX,Switzerland,Dubai,server,True,True,1
+meraki,Windows Event Log,4,Triggered,Hanover Company Azure,LBTAMAG01,192.168.1.85,Germany,Sharjah,server,True,True,1
+ncentral,Internet Connection is Lost,1,Failed,Wyffels,AmesUtility,JB-CLACKAMAS-FW,Denmark,Capital Region,server,True,True,1
+ctgan,VPN connectivity changed,1,Triggered,Wyffels,dpOBTlabsw01,10.108.6.90,United States,Campania,synthetic,True,True,1
+ncentral,Network Element Offline,4,Warning,Ambient Enterprises,LBTAMAG01,asa5515x-01.kslinc.net,India,Andalusia,synthetic,True,True,1
+auvik,Interface Status Mismatch,1,Triggered,Ambient Enterprises,LBTAMAG01,10.10.6.6,India,Tel Aviv,server,True,True,1
+auvik,Interface Status Mismatch,1,Triggered,Ambient Enterprises - Johnson Barrow,LBTAMAG01,10.0.1.24,France,Tamil Nadu,server,True,True,1
+auvik,VPN remote gateway is Lost,2,Triggered,Ambient Enterprises DMG San Luis Obispo,JB-CLACKAMAS-FW,JB-CLACKAMAS-FW,Belgium,Dubai,interface,True,True,1
+meraki,Internet Connection is Lost,1,Triggered,HVP SLHV Data Center,LBTAMAG01,10.108.6.90,Mexico,Minas Gerais,network,True,True,1
+ncentral,Network Element Offline,4,Failed,Wyffels,LBTAMAG01,10.0.1.24,Brazil,Oslo,server,True,True,1
+auvik,Connectivity,1,Failed,Ambient Enterprises > Ambient Enterprises HCN (HAR),JB-SEATTLE-FW,JB-CLACKAMAS-FW,Canada,North Holland,service,True,True,1
+auvik,Rogue AP detected,1,Triggered,Ocean Point Terminals (LTB),dpOBTlabsw01,10.108.6.90,Singapore,Mexico City,server,True,True,1
+auvik,CPU,2,Warning,HVP SLHV Data Center,dpOBTlabsw01,JB-SEATTLE-FW,Switzerland,Cork,server,True,True,1
+meraki,Connectivity,4,warning,HVP SLHV Data Center,NJ-EX01,JB-CLACKAMAS-FW,South Korea,Berlin,network,True,True,1
+ctgan,Network Element Offline,3,Triggered,Synthetic Corp,LBTAMAG01,dyoOBTdepotsw02,Brazil,Jalisco,network,True,True,1
+ctgan,Interface Status Mismatch,1,Triggered,Ambient Enterprises DMG San Luis Obispo,JB-SEATTLE-FW,JB-CLACKAMAS-FW,United Kingdom,Sharjah,service,True,True,1
+ncentral,Rogue AP detected,1,Triggered,Signorelli Company,asa5515x-01.kslinc.net,10.108.6.90,Spain,California,service,True,True,1
+ctgan,Network Element Offline,4,Triggered,Synthetic Corp,DMG-SLO-AP01,JB-CLACKAMAS-FW,Netherlands,Zurich,device,True,True,1
+meraki,Uplink status changed,3,warning,Ambient Enterprises - Johnson Barrow,DMG-SLO-AP01,10.108.6.90,Belgium,Gauteng,server,True,True,1
+auvik,Disk,1,Triggered,Ambient Enterprises,dyoOBTdepotsw02,10.10.6.6,Canada,Catalonia,network,True,True,1
+ncentral,Connectivity,1,Failed,Ambient Enterprises > Ambient Enterprises HCN (HAR),dpOBTlabsw01,10.0.4.6,South Korea,Andalusia,server,True,True,1
+auvik,Uplink status changed,2,Triggered,Ambient Enterprises - Johnson Barrow,JB-CLACKAMAS-FW,dyoOBTdepotsw02,United Kingdom,Tamil Nadu,interface,True,True,1
+meraki,Uplink status changed,3,warning,Ocean Point Terminals (LTB),LBTAMAG01,MH-BoiseOffice-MX,Japan,Northern Ireland,server,True,True,1
+ncentral,Network Element Offline,3,Failed,Synthetic Corp,MH-BoiseOffice-MX,SyntheticHost,United Arab Emirates,South Holland,interface,True,True,1
+auvik,Network Element Offline,1,Triggered,Ambient Enterprises - Johnson Barrow,GlacierVmProd2,JB-SEATTLE-FW,Germany,Vestland,synthetic,True,True,1
+meraki,Windows Event Log,3,Failed,Hanover Company Azure,JB-SEATTLE-FW,dyoOBTdepotsw02,Japan,British Columbia,device,True,True,1
+ncentral,Internet Connection is Lost,1,Triggered,Ambient Enterprises DMG San Luis Obispo,SyntheticDevice,10.0.1.24,South Africa,Busan,synthetic,True,True,1
+auvik,Agent Status,3,critical,Hanover Company Azure,JB-CLACKAMAS-FW,MH-BoiseOffice-MX,Australia,Gujarat,service,True,True,1
+meraki,Access Point Offline,3,Triggered,HVP SLHV Data Center,dyoOBTdepotsw02,10.0.4.6,Ireland,Île-de-France,service,True,True,1
+ctgan,Interface Status Mismatch,1,Triggered,Ambient Enterprises DMG San Luis Obispo,DMG-SLO-AP01,dpOBTlabsw01,Denmark,Karnataka,server,True,True,1
+auvik,Interface Status Mismatch,4,Triggered,Ambient Enterprises DMG San Luis Obispo,JB-SEATTLE-FW,MH-BoiseOffice-MX,Japan,Nouvelle-Aquitaine,network,True,True,1
+auvik,Client IP conflict detected,2,warning,Hanover Company Azure,SyntheticDevice,MH-BoiseOffice-MX,South Africa,Zurich,device,True,True,1
+auvik,Disk,3,Triggered,Ambient Enterprises > Ambient Enterprises HCN (HAR),asa5515x-01.kslinc.net,dyoOBTdepotsw02,Denmark,Flanders,service,True,True,1
+auvik,Disk,4,Triggered,HVP SLHV Data Center,LBTAMAG01,10.0.1.24,United Arab Emirates,Minas Gerais,server,True,True,1
+ncentral,Disk,1,Failed,Ocean Point Terminals (LTB),LBTAMAG01,10.108.6.90,Brazil,Tokyo,server,True,True,1
+ncentral,Internet Connection is Lost,1,Failed,Ambient Enterprises > Ambient Enterprises HCN (HAR),LBTAMAG01,192.168.1.85,Singapore,Skåne,server,True,True,1
+ncentral,Access Point Offline,1,Triggered,Signorelli Company,SyntheticDevice,10.108.6.90,Japan,Nouvelle-Aquitaine,service,True,True,1
+ncentral,Access Point Offline,1,Failed,Wyffels,NJ-EX01,10.0.4.6,New Zealand,Tamil Nadu,server,True,True,1
+auvik,VPN remote gateway is Lost,3,Triggered,Synthetic Corp,SyntheticDevice,MH-BoiseOffice-MX,Singapore,Brussels,network,True,True,1
+ncentral,Uplink status changed,1,Triggered,Wedgewood Pharmacy,AmesUtility,JB-SEATTLE-FW,United States,Victoria,device,True,True,1
+ncentral,Windows Event Log,1,Failed,Signorelli Company,dyoOBTdepotsw02,10.108.6.90,United Arab Emirates,West Region,server,True,True,1
+meraki,Agent Status,4,Failed,Ambient Enterprises - Johnson Barrow,SyntheticDevice,DMG-SLO-AP01,Brazil,Ontario,service,True,True,1
+auvik,VPN remote gateway is Lost,3,Triggered,HVP SLHV Data Center,SyntheticDevice,JB-SEATTLE-FW,France,Central Region,server,True,True,1
+auvik,CPU,4,Triggered,Ambient Enterprises DMG San Luis Obispo,DMG-SLO-AP02,JB-CLACKAMAS-FW,South Korea,Northern Ireland,device,True,True,1
+auvik,Uplink status changed,4,Triggered,Ambient Enterprises DMG San Luis Obispo,dyo-sch-fw01a,JB-CLACKAMAS-FW,New Zealand,Jalisco,device,True,True,1
+auvik,Access Point Offline,2,Warning,HVP SLHV Data Center,NJ-EX01,10.108.6.90,United States,Northern Ireland,device,True,True,1
+ctgan,Rogue AP detected,4,Triggered,HVP SLHV Data Center,GlacierVmProd2,dpOBTlabsw01,United States,Vestland,interface,True,True,1
+auvik,Memory,4,Triggered,Hanover Company Azure,NJ-EX01,asa5515x-01.kslinc.net,Singapore,Wellington,device,True,True,1
+auvik,Agent Status,1,Failed,Wyffels,NJ-EX01,asa5515x-01.kslinc.net,South Africa,Western Cape,server,True,True,1
+ctgan,Network Element Offline,3,Triggered,Wyffels,JB-CLACKAMAS-FW,DMG-SLO-AP02,United Arab Emirates,Wallonia,network,True,True,1
+ncentral,Synthetic CTGAN Alert,1,Failed,Ocean Point Terminals (LTB),JB-CLACKAMAS-FW,asa5515x-01.kslinc.net,New Zealand,Ontario,server,True,True,1
+auvik,Uplink status changed,1,Failed,Wedgewood Pharmacy,AmesUtility,JB-CLACKAMAS-FW,South Korea,Scotland,service,True,True,1
+ncentral,CPU,1,Triggered,Ambient Enterprises - Johnson Barrow,asa5515x-01.kslinc.net,MH-BoiseOffice-MX,Belgium,Hokkaido,server,True,True,1
+ncentral,Synthetic CTGAN Alert,1,Triggered,HVP SLHV Data Center,NJ-EX01,DMG-SLO-AP02,Netherlands,Stockholm,server,True,True,1
+ncentral,Disk,3,Triggered,Ambient Enterprises DMG San Luis Obispo,AmesUtility,MH-BoiseOffice-MX,Switzerland,Västra Götaland,service,True,True,1
+auvik,Internet Connection is Lost,3,critical,HVP SLHV Data Center,LBTAMAG01,dyoOBTdepotsw02,France,Galway,synthetic,True,True,1
+auvik,Uplink status changed,3,Triggered,Ambient Enterprises > Ambient Enterprises HCN (HAR),dpOBTlabsw01,DMG-SLO-AP02,Italy,Rio de Janeiro,synthetic,True,True,1
+ncentral,Windows Event Log,2,Triggered,Ambient Enterprises DMG San Luis Obispo,GlacierVmProd2,dpOBTlabsw01,Denmark,North Holland,service,True,True,1
+auvik,Network Element Offline,4,Triggered,HVP SLHV Data Center,JB-SEATTLE-FW,JB-SEATTLE-FW,France,California,service,True,True,1
+auvik,Agent Status,2,Triggered,Ambient Enterprises > Ambient Enterprises HCN (HAR),GlacierVmProd2,DMG-SLO-AP01,Canada,South Holland,device,True,True,1
+auvik,Network Element Offline,2,Triggered,HVP SLHV Data Center,JB-SEATTLE-FW,JB-SEATTLE-FW,Belgium,North Holland,network,True,True,1
+ncentral,Client IP conflict detected,3,Failed,Ambient Enterprises > Ambient Enterprises HCN (HAR),DC3,dyo-sch-fw01a,Belgium,West Region,server,True,True,1
+ctgan,Disk,2,Triggered,Wyffels,DMG-SLO-AP01,DMG-SLO-AP01,Australia,Madrid,synthetic,True,True,1
+ncentral,Access Point Offline,4,Triggered,Ambient Enterprises,JB-CLACKAMAS-FW,SyntheticHost,Germany,São Paulo,service,True,True,1
+auvik,Access Point Offline,3,Triggered,DYOPATH Oakbrook Terrace,JB-CLACKAMAS-FW,DMG-SLO-AP01,United States,Stockholm,device,True,True,1
+auvik,Connectivity,4,Warning,Ambient Enterprises,AmesUtility,JB-SEATTLE-FW,Belgium,Bavaria,server,True,True,1
+meraki,Uplink status changed,1,Failed,Ambient Enterprises,MH-BoiseOffice-MX,JB-CLACKAMAS-FW,Sweden,Wellington,server,True,True,1
+ctgan,Uplink status changed,4,Failed,DYOPATH Oakbrook Terrace,dpOBTlabsw01,JB-CLACKAMAS-FW,Norway,Vestland,network,True,True,1
+ctgan,Access Point Offline,4,Triggered,Synthetic Corp,SyntheticDevice,JB-SEATTLE-FW,South Korea,Victoria,service,True,True,1
+auvik,Client IP conflict detected,4,Triggered,Ambient Enterprises - Johnson Barrow,JB-SEATTLE-FW,MH-BoiseOffice-MX,United Kingdom,Haifa,interface,True,True,1
+auvik,Interface Status Mismatch,1,Warning,HVP SLHV Data Center,dyoOBTdepotsw02,dyoOBTdepotsw02,Switzerland,Oslo,service,True,True,1
+ncentral,Synthetic CTGAN Alert,3,Normal,Ambient Enterprises > Ambient Enterprises HCN (HAR),LBTAMAG01,10.108.6.90,Ireland,Queensland,server,True,True,1
+auvik,Network Element Offline,1,Triggered,Hanover Company Azure,DC3,MH-BoiseOffice-MX,Spain,South Holland,interface,True,True,1
+ctgan,Interface Status Mismatch,3,warning,HVP SLHV Data Center,DMG-SLO-AP01,10.0.4.6,New Zealand,England,synthetic,True,True,1
+auvik,Disk,3,Triggered,HVP SLHV Data Center,AmesUtility,10.0.4.6,Italy,Tamil Nadu,server,True,True,1
+ncentral,Disk,1,Triggered,HVP SLHV Data Center,LBTAMAG01,192.168.1.85,Brazil,Ontario,server,True,True,1
+ctgan,Client IP conflict detected,4,Triggered,Ambient Enterprises,JB-CLACKAMAS-FW,asa5515x-01.kslinc.net,United States,Cork,service,True,True,1
+ncentral,CPU,3,Failed,Ambient Enterprises,NJ-EX01,192.168.1.85,Israel,Central Region,server,True,True,1
+auvik,Rogue AP detected,3,warning,Signorelli Company,DC3,192.168.1.85,Spain,Ontario,synthetic,True,True,1
+auvik,Client IP conflict detected,2,Triggered,Synthetic Corp,SyntheticDevice,JB-SEATTLE-FW,France,East Region,synthetic,True,True,1
+auvik,Connectivity,3,Warning,Ocean Point Terminals (LTB),DMG-SLO-AP01,JB-CLACKAMAS-FW,Australia,Jerusalem,network,True,True,1
+ncentral,Memory,3,Normal,DYOPATH Oakbrook Terrace,MH-BoiseOffice-MX,JB-SEATTLE-FW,Australia,Wellington,server,True,True,1
+ctgan,Windows Event Log,2,Failed,Ambient Enterprises,LBTAMAG01,dpOBTlabsw01,Mexico,Gyeonggi,service,True,True,1
+ncentral,Access Point Offline,1,Triggered,HVP SLHV Data Center,DMG-SLO-AP01,10.10.6.6,Brazil,Oslo,network,True,True,1
+auvik,Rogue AP detected,2,Triggered,Hanover Company Azure,dpOBTlabsw01,10.108.6.90,South Korea,Southern Denmark,network,True,True,1
+auvik,Interface Status Mismatch,4,Warning,Ocean Point Terminals (LTB),JB-SEATTLE-FW,MH-BoiseOffice-MX,Italy,Viken,synthetic,True,True,1
+meraki,Internet Connection is Lost,3,warning,Ambient Enterprises,LBTAMAG01,DMG-SLO-AP02,Belgium,Rio de Janeiro,device,True,True,1
+ctgan,Network Element Offline,4,Triggered,Ambient Enterprises - Johnson Barrow,JB-CLACKAMAS-FW,JB-CLACKAMAS-FW,Italy,Ontario,device,True,True,1
+ncentral,Connectivity,1,Warning,Wyffels,dyo-sch-fw01a,10.0.1.24,Netherlands,Gauteng,server,True,True,1
+auvik,VPN remote gateway is Lost,4,Triggered,Synthetic Corp,GlacierVmProd2,JB-CLACKAMAS-FW,Japan,Brussels,service,True,True,1
+auvik,Memory,1,critical,HVP SLHV Data Center,LBTAMAG01,192.168.1.85,Singapore,Delhi,server,True,True,1
+ctgan,Internet Connection is Lost,4,Triggered,Synthetic Corp,LBTAMAG01,dyoOBTdepotsw02,Singapore,Central Denmark,device,True,True,1
+auvik,Rogue AP detected,4,Failed,HVP SLHV Data Center,GlacierVmProd2,192.168.1.85,United Kingdom,Tel Aviv,service,True,True,1
+ctgan,Internet Connection is Lost,2,Failed,HVP SLHV Data Center,NJ-EX01,192.168.1.85,Israel,Mexico City,network,True,True,1
+auvik,Disk,4,Triggered,HVP SLHV Data Center,DMG-SLO-AP02,DMG-SLO-AP01,Denmark,Abu Dhabi,server,True,True,1
+auvik,Rogue AP detected,3,Triggered,Ambient Enterprises > Ambient Enterprises HCN (HAR),JB-SEATTLE-FW,dpOBTlabsw01,Mexico,Alberta,service,True,True,1
+auvik,Rogue AP detected,3,Warning,HVP SLHV Data Center,DC3,JB-CLACKAMAS-FW,Italy,Hesse,service,True,True,1
+auvik,Synthetic CTGAN Alert,4,Triggered,DYOPATH Oakbrook Terrace,NJ-EX01,MH-BoiseOffice-MX,Singapore,Tokyo,network,True,True,1
+ncentral,Memory,4,Failed,Wyffels,AmesUtility,MH-BoiseOffice-MX,Netherlands,Wales,synthetic,True,True,1
+auvik,CPU,4,Triggered,Hanover Company Azure,DC3,JB-CLACKAMAS-FW,Italy,Galway,service,True,True,1
+ctgan,Connectivity,3,Triggered,Ambient Enterprises,MH-BoiseOffice-MX,MH-BoiseOffice-MX,Norway,Berlin,synthetic,True,True,1
+auvik,Interface Status Mismatch,3,Triggered,Ambient Enterprises - Johnson Barrow,DMG-SLO-AP01,10.0.1.24,Italy,Île-de-France,device,True,True,1
+ctgan,VPN remote gateway is Lost,2,Triggered,Synthetic Corp,DMG-SLO-AP02,dyo-sch-fw01a,Norway,KwaZulu-Natal,service,True,True,1
+ncentral,Rogue AP detected,3,Triggered,Ambient Enterprises,LBTAMAG01,JB-SEATTLE-FW,India,Karnataka,server,True,True,1
+meraki,Synthetic CTGAN Alert,4,Triggered,Hanover Company Azure,JB-SEATTLE-FW,10.108.6.90,Canada,Busan,synthetic,True,True,1
+auvik,Interface Status Mismatch,3,Triggered,Synthetic Corp,DMG-SLO-AP01,MH-BoiseOffice-MX,United Kingdom,Alberta,device,True,True,1
+ncentral,Synthetic CTGAN Alert,4,warning,Hanover Company Azure,dyo-sch-fw01a,10.0.4.6,United Arab Emirates,Vestland,interface,True,True,1
+ncentral,Network Element Offline,3,Failed,Ambient Enterprises DMG San Luis Obispo,DMG-SLO-AP01,DMG-SLO-AP01,Germany,Gauteng,server,True,True,1
+auvik,VPN connectivity changed,4,Failed,Signorelli Company,asa5515x-01.kslinc.net,192.168.1.85,South Korea,Hokkaido,device,True,True,1
+ctgan,Memory,4,Normal,Hanover Company Azure,MH-BoiseOffice-MX,asa5515x-01.kslinc.net,South Korea,Scotland,device,True,True,1
+ctgan,Uplink status changed,3,Triggered,Ambient Enterprises,dpOBTlabsw01,10.0.4.6,Switzerland,California,synthetic,True,True,1
+auvik,VPN remote gateway is Lost,3,Triggered,Ambient Enterprises - Johnson Barrow,dpOBTlabsw01,JB-CLACKAMAS-FW,Italy,Madrid,device,True,True,1
+ncentral,Agent Status,1,Failed,Signorelli Company,NJ-EX01,10.0.1.24,Spain,West Region,network,True,True,1
+auvik,Connectivity,1,critical,Ambient Enterprises - Johnson Barrow,NJ-EX01,dpOBTlabsw01,Sweden,Cork,service,True,True,1
+auvik,Network Element Offline,1,Normal,Ambient Enterprises DMG San Luis Obispo,GlacierVmProd2,MH-BoiseOffice-MX,Israel,Mexico City,interface,True,True,1
+ncentral,Connectivity,4,Failed,Ambient Enterprises - Johnson Barrow,NJ-EX01,10.10.6.6,Singapore,Bern,device,True,True,1
+auvik,Interface Status Mismatch,4,Triggered,Ambient Enterprises DMG San Luis Obispo,dyoOBTdepotsw02,dyo-sch-fw01a,Germany,Alberta,device,True,True,1
+ctgan,Client IP conflict detected,1,Triggered,Ambient Enterprises - Johnson Barrow,JB-SEATTLE-FW,10.0.1.24,Japan,Tel Aviv,network,True,True,1
+auvik,Memory,1,Triggered,Hanover Company Azure,LBTAMAG01,asa5515x-01.kslinc.net,France,New South Wales,service,True,True,1
+ncentral,VPN remote gateway is Lost,1,critical,Ambient Enterprises DMG San Luis Obispo,NJ-EX01,JB-CLACKAMAS-FW,Japan,West Region,server,True,True,1
+auvik,Client IP conflict detected,1,Triggered,Ocean Point Terminals (LTB),GlacierVmProd2,DMG-SLO-AP02,Ireland,Central Region,server,True,True,1
+auvik,Network Element Offline,4,warning,Hanover Company Azure,dpOBTlabsw01,JB-CLACKAMAS-FW,South Korea,West Region,synthetic,True,True,1
+meraki,Internet Connection is Lost,1,Triggered,Hanover Company Azure,DMG-SLO-AP01,dyoOBTdepotsw02,Belgium,Oslo,server,True,True,1
+ncentral,VPN remote gateway is Lost,2,Failed,Ambient Enterprises > Ambient Enterprises HCN (HAR),LBTAMAG01,JB-CLACKAMAS-FW,Japan,Zurich,server,True,True,1
+meraki,Memory,3,critical,HVP SLHV Data Center,LBTAMAG01,10.10.6.6,Ireland,East Region,service,True,True,1
+ctgan,Rogue AP detected,3,Triggered,Hanover Company Azure,AmesUtility,JB-CLACKAMAS-FW,Ireland,Flanders,service,True,True,1
+ncentral,Uplink status changed,4,Failed,Wyffels,NJ-EX01,asa5515x-01.kslinc.net,Netherlands,North Holland,service,True,True,1
+meraki,Access Point Offline,1,Triggered,Ambient Enterprises > Ambient Enterprises HCN (HAR),dyo-sch-fw01a,JB-CLACKAMAS-FW,Spain,Seoul,device,True,True,1
+ncentral,Connectivity,3,Failed,Ocean Point Terminals (LTB),JB-CLACKAMAS-FW,10.108.6.90,Norway,North Holland,server,True,True,1
+ctgan,Synthetic CTGAN Alert,4,Triggered,Hanover Company Azure,JB-CLACKAMAS-FW,MH-BoiseOffice-MX,India,East Region,service,True,True,1
+ctgan,Windows Event Log,4,Triggered,Ambient Enterprises,DMG-SLO-AP02,JB-CLACKAMAS-FW,Belgium,KwaZulu-Natal,device,True,True,1
+meraki,Access Point Offline,1,Triggered,HVP SLHV Data Center,DC3,JB-SEATTLE-FW,Denmark,Bavaria,network,True,True,1
+auvik,Uplink status changed,3,Failed,HVP SLHV Data Center,dyoOBTdepotsw02,10.108.6.90,Sweden,Wellington,server,True,True,1
+auvik,Network Element Offline,3,Failed,DYOPATH Oakbrook Terrace,dyo-sch-fw01a,JB-SEATTLE-FW,Israel,Catalonia,server,True,True,1
+ncentral,Rogue AP detected,3,Triggered,Ambient Enterprises - Johnson Barrow,DMG-SLO-AP01,192.168.1.85,New Zealand,Hokkaido,device,True,True,1
+meraki,VPN remote gateway is Lost,1,Failed,Ambient Enterprises,DMG-SLO-AP02,192.168.1.85,United Kingdom,Vestland,synthetic,True,True,1
+auvik,Access Point Offline,3,Triggered,Ambient Enterprises,JB-SEATTLE-FW,MH-BoiseOffice-MX,Sweden,Campania,service,True,True,1
+meraki,Synthetic CTGAN Alert,3,Triggered,Wedgewood Pharmacy,asa5515x-01.kslinc.net,DMG-SLO-AP02,South Africa,Nuevo León,server,True,True,1
+ncentral,Synthetic CTGAN Alert,1,Failed,Signorelli Company,SyntheticDevice,10.0.4.6,United Arab Emirates,California,server,True,True,1
+auvik,Disk,4,Failed,Ambient Enterprises > Ambient Enterprises HCN (HAR),DC3,asa5515x-01.kslinc.net,Germany,Western Cape,device,True,True,1
+auvik,Interface Status Mismatch,4,Triggered,Hanover Company Azure,dpOBTlabsw01,DMG-SLO-AP01,Switzerland,Kyoto,network,True,True,1
+ncentral,Interface Status Mismatch,3,Triggered,Signorelli Company,JB-CLACKAMAS-FW,JB-SEATTLE-FW,France,Ontario,server,True,True,1
+auvik,Interface Status Mismatch,4,Cleared,Ambient Enterprises - Johnson Barrow,DC3,DMG-SLO-AP01,Singapore,Alberta,server,True,True,1
+ncentral,Connectivity,1,Failed,Ambient Enterprises > Ambient Enterprises HCN (HAR),LBTAMAG01,10.0.1.24,Belgium,Busan,server,True,True,1
+ctgan,Synthetic CTGAN Alert,4,Triggered,DYOPATH Oakbrook Terrace,JB-CLACKAMAS-FW,dpOBTlabsw01,Denmark,Osaka,interface,True,True,1
+ncentral,Access Point Offline,3,critical,Wyffels,GlacierVmProd2,dpOBTlabsw01,Israel,Oslo,service,True,True,1
+ctgan,Network Element Offline,2,Triggered,Ambient Enterprises > Ambient Enterprises HCN (HAR),dpOBTlabsw01,JB-CLACKAMAS-FW,Ireland,Western Australia,device,True,True,1
+auvik,Internet Connection is Lost,4,warning,Ambient Enterprises DMG San Luis Obispo,JB-SEATTLE-FW,MH-BoiseOffice-MX,Japan,New South Wales,synthetic,True,True,1
+meraki,Synthetic CTGAN Alert,3,Normal,Wyffels,LBTAMAG01,10.108.6.90,Italy,Karnataka,device,True,True,1
+auvik,Disk,4,Failed,Ambient Enterprises > Ambient Enterprises HCN (HAR),JB-CLACKAMAS-FW,10.108.6.90,Belgium,Gauteng,server,True,True,1
+ncentral,Internet Connection is Lost,3,Normal,Ambient Enterprises - Johnson Barrow,LBTAMAG01,JB-SEATTLE-FW,Germany,Gyeonggi,server,True,True,1
+meraki,Access Point Offline,3,warning,Ocean Point Terminals (LTB),JB-SEATTLE-FW,JB-CLACKAMAS-FW,Switzerland,Stockholm,device,True,True,1
+ncentral,Connectivity,1,Triggered,Wedgewood Pharmacy,JB-SEATTLE-FW,JB-CLACKAMAS-FW,Netherlands,Skåne,service,True,True,1
+ctgan,Network Element Offline,4,Triggered,Synthetic Corp,JB-SEATTLE-FW,JB-SEATTLE-FW,Japan,Wellington,service,True,True,1
+auvik,Internet Connection is Lost,4,Triggered,Signorelli Company,dyoOBTdepotsw02,10.0.4.6,South Korea,Busan,device,True,True,1
+ncentral,Interface Status Mismatch,4,Triggered,Ambient Enterprises,MH-BoiseOffice-MX,MH-BoiseOffice-MX,Norway,Lombardy,network,True,True,1
+auvik,Interface Status Mismatch,4,Triggered,Ambient Enterprises,GlacierVmProd2,asa5515x-01.kslinc.net,Singapore,Lombardy,synthetic,True,True,1
+meraki,Agent Status,1,Normal,DYOPATH Oakbrook Terrace,JB-CLACKAMAS-FW,dyo-sch-fw01a,Singapore,Campania,synthetic,True,True,1
+ncentral,Connectivity,1,Normal,Ambient Enterprises,LBTAMAG01,JB-SEATTLE-FW,Italy,Lombardy,interface,True,True,1
+meraki,VPN remote gateway is Lost,1,Triggered,Ambient Enterprises - Johnson Barrow,dyo-sch-fw01a,MH-BoiseOffice-MX,Ireland,Western Cape,network,True,True,1
+auvik,Network Element Offline,2,Warning,Hanover Company Azure,asa5515x-01.kslinc.net,JB-CLACKAMAS-FW,United Kingdom,Gyeonggi,device,True,True,1
+meraki,Connectivity,1,Triggered,Ambient Enterprises > Ambient Enterprises HCN (HAR),NJ-EX01,JB-SEATTLE-FW,Australia,Tel Aviv,device,True,True,1
+meraki,Connectivity,1,Triggered,HVP SLHV Data Center,JB-CLACKAMAS-FW,192.168.1.85,Norway,Skåne,network,True,True,1
+auvik,Network Element Offline,3,Triggered,Ambient Enterprises DMG San Luis Obispo,JB-SEATTLE-FW,MH-BoiseOffice-MX,Sweden,Jerusalem,device,True,True,1
+ncentral,Agent Status,2,Triggered,Synthetic Corp,GlacierVmProd2,DMG-SLO-AP01,Canada,Karnataka,network,True,True,1
+ctgan,Client IP conflict detected,1,Triggered,Hanover Company Azure,dpOBTlabsw01,dpOBTlabsw01,Italy,Busan,service,True,True,1
+ctgan,CPU,3,Triggered,DYOPATH Oakbrook Terrace,AmesUtility,10.0.4.6,Switzerland,Haifa,synthetic,True,True,1
+meraki,Internet Connection is Lost,1,Triggered,Ocean Point Terminals (LTB),dpOBTlabsw01,MH-BoiseOffice-MX,Italy,Auckland,server,True,True,1
+auvik,Agent Status,3,Triggered,Synthetic Corp,asa5515x-01.kslinc.net,10.0.1.24,Netherlands,Central Denmark,server,True,True,1
+ctgan,Internet Connection is Lost,1,Triggered,DYOPATH Oakbrook Terrace,AmesUtility,MH-BoiseOffice-MX,United States,Scotland,device,True,True,1
+ctgan,Client IP conflict detected,2,Triggered,Ambient Enterprises,JB-SEATTLE-FW,MH-BoiseOffice-MX,South Africa,Kyoto,device,True,True,1
+ncentral,Agent Status,1,Failed,Signorelli Company,NJ-EX01,10.108.6.90,United Arab Emirates,Illinois,server,True,True,1
+ncentral,Connectivity,1,Triggered,Ambient Enterprises - Johnson Barrow,DMG-SLO-AP02,JB-CLACKAMAS-FW,South Africa,Tel Aviv,service,True,True,1
+auvik,Network Element Offline,3,Triggered,Ambient Enterprises - Johnson Barrow,JB-CLACKAMAS-FW,MH-BoiseOffice-MX,Norway,Sharjah,synthetic,True,True,1
+meraki,Connectivity,1,Triggered,Ocean Point Terminals (LTB),dyoOBTdepotsw02,JB-SEATTLE-FW,South Africa,Berlin,server,True,True,1
+ncentral,Uplink status changed,3,critical,HVP SLHV Data Center,LBTAMAG01,JB-CLACKAMAS-FW,Belgium,Nouvelle-Aquitaine,server,True,True,1
+ncentral,Agent Status,1,Failed,Ambient Enterprises > Ambient Enterprises HCN (HAR),LBTAMAG01,10.10.6.6,Norway,Seoul,server,True,True,1
+ctgan,Synthetic CTGAN Alert,3,Triggered,Wedgewood Pharmacy,AmesUtility,MH-BoiseOffice-MX,France,Oslo,interface,True,True,1
+auvik,Access Point Offline,1,critical,Signorelli Company,GlacierVmProd2,192.168.1.85,United Kingdom,Andalusia,server,True,True,1
+auvik,Network Element Offline,3,Triggered,Ambient Enterprises,DC3,MH-BoiseOffice-MX,New Zealand,Vestland,synthetic,True,True,1
+meraki,Network Element Offline,3,Triggered,Hanover Company Azure,JB-SEATTLE-FW,DMG-SLO-AP01,Canada,Western Australia,service,True,True,1
+auvik,VPN connectivity changed,1,warning,Hanover Company Azure,SyntheticDevice,MH-BoiseOffice-MX,United Kingdom,Catalonia,service,True,True,1
+ctgan,Agent Status,1,Warning,Ocean Point Terminals (LTB),JB-SEATTLE-FW,asa5515x-01.kslinc.net,Spain,Sharjah,service,True,True,1
+auvik,VPN remote gateway is Lost,1,Triggered,Signorelli Company,JB-CLACKAMAS-FW,SyntheticHost,South Korea,Nuevo León,network,True,True,1
+ncentral,Disk,1,Triggered,Ambient Enterprises DMG San Luis Obispo,DMG-SLO-AP01,10.10.6.6,Singapore,Karnataka,server,True,True,1
+ctgan,Access Point Offline,3,Triggered,Ambient Enterprises,dyo-sch-fw01a,asa5515x-01.kslinc.net,Sweden,Flanders,interface,True,True,1
+auvik,Disk,3,critical,Ocean Point Terminals (LTB),MH-BoiseOffice-MX,dpOBTlabsw01,Belgium,Busan,server,True,True,1
+ncentral,CPU,1,Warning,Wyffels,DMG-SLO-AP01,192.168.1.85,Mexico,Minas Gerais,server,True,True,1
+auvik,Internet Connection is Lost,3,Warning,HVP SLHV Data Center,LBTAMAG01,dyo-sch-fw01a,New Zealand,Tel Aviv,server,True,True,1
+ncentral,Interface Status Mismatch,4,Failed,Ambient Enterprises > Ambient Enterprises HCN (HAR),dyo-sch-fw01a,10.0.4.6,Norway,South Holland,interface,True,True,1
+ncentral,Network Element Offline,1,Failed,Ambient Enterprises - Johnson Barrow,LBTAMAG01,10.108.6.90,Germany,East Region,server,True,True,1
+ctgan,Connectivity,4,Triggered,DYOPATH Oakbrook Terrace,DMG-SLO-AP01,JB-SEATTLE-FW,Sweden,Canterbury,synthetic,True,True,1
+ncentral,Connectivity,2,Failed,Ambient Enterprises - Johnson Barrow,dyoOBTdepotsw02,10.108.6.90,Japan,Dubai,server,True,True,1
+meraki,Connectivity,1,Triggered,Ambient Enterprises - Johnson Barrow,JB-CLACKAMAS-FW,JB-SEATTLE-FW,United States,Galway,service,True,True,1
+ctgan,Synthetic CTGAN Alert,2,warning,Wedgewood Pharmacy,DC3,MH-BoiseOffice-MX,India,Maharashtra,service,True,True,1
+ncentral,Uplink status changed,1,Triggered,Ambient Enterprises > Ambient Enterprises HCN (HAR),DC3,dpOBTlabsw01,France,São Paulo,server,True,True,1
+ncentral,Network Element Offline,3,Triggered,Wedgewood Pharmacy,NJ-EX01,dyo-sch-fw01a,South Korea,Western Australia,server,True,True,1
+ncentral,Access Point Offline,1,Failed,Wedgewood Pharmacy,DC3,asa5515x-01.kslinc.net,Japan,Tokyo,server,True,True,1
+auvik,Windows Event Log,4,Triggered,Ambient Enterprises,dpOBTlabsw01,JB-CLACKAMAS-FW,Singapore,Oslo,service,True,True,1
+auvik,Disk,3,Triggered,Wyffels,NJ-EX01,10.0.1.24,Israel,Jerusalem,device,True,True,1
+ncentral,Memory,1,warning,Signorelli Company,dyo-sch-fw01a,JB-SEATTLE-FW,Australia,Oslo,interface,True,True,1
+auvik,Internet Connection is Lost,2,Triggered,Ambient Enterprises DMG San Luis Obispo,GlacierVmProd2,JB-SEATTLE-FW,Mexico,Viken,server,True,True,1
+auvik,Disk,3,Failed,Wyffels,DMG-SLO-AP01,10.108.6.90,Switzerland,Gauteng,server,True,True,1
+ctgan,Connectivity,3,Triggered,DYOPATH Oakbrook Terrace,asa5515x-01.kslinc.net,JB-CLACKAMAS-FW,Brazil,Bern,synthetic,True,True,1
+auvik,Network Element Offline,3,Triggered,Ambient Enterprises DMG San Luis Obispo,JB-SEATTLE-FW,MH-BoiseOffice-MX,Spain,Central Region,network,True,True,1
+meraki,CPU,1,Triggered,Synthetic Corp,dpOBTlabsw01,MH-BoiseOffice-MX,United Arab Emirates,Seoul,synthetic,True,True,1
+ncentral,Disk,1,Failed,Ambient Enterprises > Ambient Enterprises HCN (HAR),GlacierVmProd2,10.108.6.90,United States,Jerusalem,server,True,True,1
+ncentral,Access Point Offline,1,Failed,Ambient Enterprises,LBTAMAG01,JB-CLACKAMAS-FW,Sweden,Western Cape,service,True,True,1
+meraki,Interface Status Mismatch,1,Triggered,DYOPATH Oakbrook Terrace,DC3,192.168.1.85,Singapore,East Region,device,True,True,1
+ncentral,VPN remote gateway is Lost,3,Warning,Ambient Enterprises,DMG-SLO-AP01,10.0.4.6,Brazil,Bavaria,interface,True,True,1
+auvik,Uplink status changed,1,Failed,Ambient Enterprises > Ambient Enterprises HCN (HAR),LBTAMAG01,10.108.6.90,United Arab Emirates,Nouvelle-Aquitaine,interface,True,True,1
+auvik,Network Element Offline,4,Triggered,Ambient Enterprises DMG San Luis Obispo,SyntheticDevice,DMG-SLO-AP01,Germany,Brussels,service,True,True,1
+ctgan,Network Element Offline,2,Triggered,Ambient Enterprises - Johnson Barrow,JB-SEATTLE-FW,SyntheticHost,Mexico,South Holland,device,True,True,1
+ctgan,VPN remote gateway is Lost,1,Triggered,Hanover Company Azure,AmesUtility,10.108.6.90,Japan,Madrid,interface,True,True,1
+ncentral,Memory,1,Failed,Wedgewood Pharmacy,GlacierVmProd2,10.0.1.24,United Arab Emirates,West Region,network,True,True,1
+ncentral,Connectivity,3,Failed,Wyffels,LBTAMAG01,10.10.6.6,Ireland,Sharjah,server,True,True,1
+ncentral,Connectivity,1,Failed,Ambient Enterprises > Ambient Enterprises HCN (HAR),NJ-EX01,10.108.6.90,Australia,Wales,server,True,True,1
+meraki,Network Element Offline,3,Triggered,Wyffels,DC3,dyoOBTdepotsw02,Ireland,California,server,True,True,1
+meraki,Internet Connection is Lost,1,Triggered,DYOPATH Oakbrook Terrace,asa5515x-01.kslinc.net,10.108.6.90,Australia,Queensland,server,True,True,1
+ncentral,Network Element Offline,1,Triggered,Wyffels,asa5515x-01.kslinc.net,dyoOBTdepotsw02,Australia,Berlin,server,True,True,1
+auvik,Internet Connection is Lost,3,Triggered,Hanover Company Azure,NJ-EX01,JB-SEATTLE-FW,Spain,Western Cape,service,True,True,1
+ncentral,Agent Status,2,Failed,Hanover Company Azure,DC3,10.10.6.6,Canada,Mexico City,device,True,True,1
+ncentral,Client IP conflict detected,3,Failed,Ambient Enterprises > Ambient Enterprises HCN (HAR),NJ-EX01,192.168.1.85,Netherlands,Flanders,server,True,True,1
+auvik,Network Element Offline,4,Triggered,Ambient Enterprises DMG San Luis Obispo,JB-SEATTLE-FW,10.108.6.90,Spain,Ontario,server,True,True,1
+ncentral,VPN remote gateway is Lost,1,Triggered,HVP SLHV Data Center,dpOBTlabsw01,asa5515x-01.kslinc.net,Brazil,Bavaria,network,True,True,1
+auvik,Interface Status Mismatch,4,Warning,Ambient Enterprises - Johnson Barrow,NJ-EX01,JB-SEATTLE-FW,Singapore,Lazio,service,True,True,1
+auvik,Interface Status Mismatch,4,Triggered,Synthetic Corp,dyo-sch-fw01a,DMG-SLO-AP01,India,Busan,service,True,True,1
+auvik,Uplink status changed,3,Triggered,Hanover Company Azure,DMG-SLO-AP02,JB-CLACKAMAS-FW,Netherlands,Kyoto,service,True,True,1
+auvik,Connectivity,2,Triggered,Ambient Enterprises,DMG-SLO-AP02,JB-CLACKAMAS-FW,Canada,Queensland,service,True,True,1
+ncentral,Rogue AP detected,1,Triggered,Wedgewood Pharmacy,SyntheticDevice,JB-SEATTLE-FW,Denmark,Vestland,network,True,True,1
+ncentral,Client IP conflict detected,3,Failed,Ambient Enterprises > Ambient Enterprises HCN (HAR),dyoOBTdepotsw02,10.108.6.90,Sweden,Tel Aviv,server,True,True,1
+meraki,Synthetic CTGAN Alert,1,Triggered,Wyffels,SyntheticDevice,JB-CLACKAMAS-FW,Canada,Bern,network,True,True,1
+ctgan,VPN remote gateway is Lost,3,warning,DYOPATH Oakbrook Terrace,asa5515x-01.kslinc.net,10.10.6.6,New Zealand,Cork,service,True,True,1
+meraki,Internet Connection is Lost,4,Failed,Ocean Point Terminals (LTB),JB-SEATTLE-FW,192.168.1.85,Canada,Brussels,server,True,True,1
+auvik,Network Element Offline,3,critical,DYOPATH Oakbrook Terrace,MH-BoiseOffice-MX,DMG-SLO-AP01,Italy,Busan,synthetic,True,True,1
+ncentral,Access Point Offline,1,Failed,Ambient Enterprises - Johnson Barrow,LBTAMAG01,10.0.4.6,New Zealand,Lombardy,server,True,True,1

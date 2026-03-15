@@ -1,0 +1,12 @@
+langchain
+langchain-core
+langchain-community
+langchain-pinecone
+langchain-huggingface
+huggingface-hub
+sentence-transformers
+pinecone
+python-dotenv
+pypdf
+flask
+flask-cors

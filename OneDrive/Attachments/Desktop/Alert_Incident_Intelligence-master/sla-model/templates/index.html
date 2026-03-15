@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLA Breach Predictor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="background-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <h1>SLA Predictor <span>AI Copilot</span></h1>
+            <p>Enter incident details below to predict the probability of an SLA breach.</p>
+        </header>
+
+        <div class="main-content">
+            <div class="glass-panel form-section">
+                <h2>Incident Details</h2>
+                <form id="prediction-form">
+                    <div class="form-grid">
+                        {% for feature in features %}
+                        <div class="input-group">
+                            <label for="{{ feature }}">{{ feature.replace('_', ' ').title() }}</label>
+                            <input type="text" id="{{ feature }}" name="{{ feature }}" placeholder="Enter {{ feature.replace('_', ' ') }}" required>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <button type="submit" class="glow-on-hover" id="submit-btn">
+                        <span class="btn-text">Predict SLA Breach</span>
+                        <div class="spinner hidden" id="spinner"></div>
+                    </button>
+                </form>
+            </div>
+
+            <div class="glass-panel result-section hidden" id="result-section">
+                <h2>Prediction Result</h2>
+                <div class="result-card">
+                    <div class="result-circle" id="risk-circle">
+                        <span id="probability-value">--%</span>
+                    </div>
+                    <div class="result-details">
+                        <h3>Risk Level: <span id="risk-level">Unknown</span></h3>
+                        <p id="prediction-text">Submit the form to see the prediction.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

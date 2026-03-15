@@ -1,0 +1,1001 @@
+sla_id,customer_name,alert_category,alert_name,response_time_minutes,resolution_time_minutes,sla_breach_flag,predicted_breach_flag,breach_probability,severity_level
+902,Ambient Enterprises > Ambient Enterprises HCN (HAR),network,Client IP conflict detected,15.9,249.7,1,1,0.999656281995027,P3
+661,Ambient Enterprises DMG San Luis Obispo,server,Disk,32.51,361.44,1,1,0.9988740245261986,P2
+534,Signorelli Company,server,Connectivity,36.66,393.74,1,1,0.9981328531412563,P2
+987,DYOPATH Oakbrook Terrace,server,Memory,43.23,266.51,1,1,0.997355732390215,P2
+864,Wyffels,server,Windows Event Log,39.11,253.36,1,1,0.9969395711500973,P2
+291,Hanover Company Azure,server,Connectivity,33.68,246.76,1,1,0.996865787694388,P2
+816,Wedgewood Pharmacy,server,Disk,35.9,296.0,1,1,0.9963983672479639,P2
+715,Ambient Enterprises,network,Rogue AP detected,20.56,215.64,1,1,0.9963548119786936,P3
+747,Ambient Enterprises DMG San Luis Obispo,server,Windows Event Log,37.23,326.57,1,1,0.996,P2
+995,Wedgewood Pharmacy,server,Connectivity,43.59,341.89,1,1,0.9955309708823421,P2
+613,Ambient Enterprises > Ambient Enterprises HCN (HAR),service,Internet Connection is Lost,30.17,285.32,1,1,0.9950544217687074,P2
+76,DYOPATH Oakbrook Terrace,server,CPU,30.8,371.79,1,1,0.9942962962962963,P2
+689,Signorelli Company,server,Connectivity,38.91,286.64,1,1,0.9935727571390186,P2
+729,Wedgewood Pharmacy,network,Client IP conflict detected,20.03,151.44,1,1,0.9934361448866609,P3
+740,Ambient Enterprises - Johnson Barrow,network,VPN connectivity changed,19.66,154.66,1,1,0.9925399398727888,P3
+198,Ambient Enterprises > Ambient Enterprises HCN (HAR),server,Windows Event Log,36.08,266.33,1,1,0.992451836662363,P2
+158,Signorelli Company,server,Disk,34.06,388.2,1,1,0.9921985759073277,P2
+863,Wedgewood Pharmacy,server,Agent Status,29.91,258.23,1,1,0.9921416083916083,P3
+743,Wedgewood Pharmacy,server,Agent Status,41.83,231.71,1,1,0.9917804255054046,P2
+359,Ambient Enterprises > Ambient Enterprises HCN (HAR),server,CPU,38.09,305.92,1,1,0.9903372168245288,P2
+81,Ambient Enterprises - Johnson Barrow,network,Client IP conflict detected,22.28,125.78,1,1,0.9901877264371555,P3
+275,Ocean Point Terminals (LTB),network,Uplink status changed,17.84,151.91,1,1,0.989266704937789,P3
+397,DYOPATH Oakbrook Terrace,server,Memory,37.03,366.27,1,1,0.9892424242424243,P2
+760,Ambient Enterprises,interface,Interface Status Mismatch,39.41,286.38,1,1,0.9875695732838591,P2
+404,Ambient Enterprises DMG San Luis Obispo,network,Client IP conflict detected,21.0,156.53,1,1,0.9874481358434847,P3
+735,HVP SLHV Data Center,network,VPN connectivity changed,17.55,165.81,1,1,0.9874120803956646,P3
+826,Ambient Enterprises - Johnson Barrow,network,Client IP conflict detected,19.28,148.18,1,1,0.9873005177801079,P3
+637,DYOPATH Oakbrook Terrace,server,Connectivity,45.69,468.19,1,1,0.9868529646220613,P2
+233,Ocean Point Terminals (LTB),network,Client IP conflict detected,21.47,153.4,1,1,0.9867119689129443,P3
+606,Signorelli Company,server,Memory,34.27,327.07,1,1,0.9863279546124373,P2
+913,Wyffels,network,VPN connectivity changed,21.01,156.62,1,1,0.9854437206442367,P3
+78,Ambient Enterprises,server,Connectivity,42.62,335.44,1,1,0.9854245895738378,P2
+363,Wyffels,service,VPN remote gateway is Lost,26.79,353.2,1,1,0.9850754790884748,P3
+598,Wyffels,server,Connectivity,35.22,342.35,1,1,0.984946632516763,P2
+908,Signorelli Company,server,Windows Event Log,44.48,290.08,1,1,0.9846269948375211,P2
+733,Ambient Enterprises - Johnson Barrow,server,Memory,43.41,362.87,1,1,0.9840250266896607,P2
+51,Wedgewood Pharmacy,device,Access Point Offline,52.42,494.39,1,1,0.9837046008446354,P2
+549,Ambient Enterprises,server,Agent Status,28.89,262.55,1,1,0.9835415134296183,P3
+516,DYOPATH Oakbrook Terrace,server,Memory,34.68,330.24,1,1,0.9834210526315789,P2
+294,Ambient Enterprises > Ambient Enterprises HCN (HAR),server,Agent Status,30.87,260.58,1,1,0.9834199428063747,P2
+16,Wyffels,network,Client IP conflict detected,17.97,132.19,1,1,0.9834138577526028,P3
+714,Ambient Enterprises > Ambient Enterprises HCN (HAR),service,Internet Connection is Lost,32.44,329.47,1,1,0.982914979757085,P2
+56,Ocean Point Terminals (LTB),server,Windows Event Log,31.61,432.0,1,1,0.9828153698153698,P2
+706,Ambient Enterprises DMG San Luis Obispo,service,VPN remote gateway is Lost,28.59,288.36,1,1,0.9827961766218659,P3
+124,Wyffels,server,Connectivity,40.86,316.56,1,1,0.9825293634936492,P2
+331,Hanover Company Azure,interface,Interface Status Mismatch,36.24,374.56,1,1,0.9825,P2
+711,HVP SLHV Data Center,server,Agent Status,32.19,395.36,1,1,0.9822809239140909,P2
+542,Ambient Enterprises,server,Windows Event Log,30.83,310.69,1,1,0.9814796354439211,P2
+512,Ambient Enterprises > Ambient Enterprises HCN (HAR),network,VPN connectivity changed,17.65,191.1,1,1,0.9813878837266288,P3
+447,Ambient Enterprises > Ambient Enterprises HCN (HAR),device,Network Element Offline,46.98,729.08,1,1,0.9810651023694503,P2
+302,Signorelli Company,server,Connectivity,37.55,397.55,1,1,0.9808938526630164,P2
+2,Wyffels,server,Windows Event Log,40.87,415.88,1,1,0.9807145137748585,P2
+425,Ambient Enterprises - Johnson Barrow,server,CPU,48.6,264.49,1,1,0.9803690476190476,P2
+899,Wedgewood Pharmacy,server,Windows Event Log,38.92,319.36,1,1,0.9798388886082384,P2
+15,Hanover Company Azure,network,Client IP conflict detected,22.29,144.43,1,1,0.9798052787720991,P3
+872,Wyffels,network,Uplink status changed,22.93,151.13,1,1,0.9794135886912904,P3
+301,Ambient Enterprises - Johnson Barrow,server,CPU,30.65,270.94,1,1,0.9793144921731934,P2
+461,HVP SLHV Data Center,network,Uplink status changed,20.92,174.74,1,1,0.9791052787006275,P3
+459,Ocean Point Terminals (LTB),network,Client IP conflict detected,22.8,141.17,1,1,0.9788822283210554,P3
+582,DYOPATH Oakbrook Terrace,service,VPN remote gateway is Lost,27.31,285.79,1,1,0.9786326535950558,P3
+399,DYOPATH Oakbrook Terrace,server,CPU,35.81,314.76,1,1,0.978256745315628,P2
+774,Ambient Enterprises > Ambient Enterprises HCN (HAR),server,Windows Event Log,31.39,268.15,1,1,0.9776287878787879,P2
+160,Ambient Enterprises > Ambient Enterprises HCN (HAR),server,Windows Event Log,35.61,230.15,1,1,0.9775730625440877,P2
+49,HVP SLHV Data Center,network,VPN connectivity changed,20.55,158.21,1,1,0.9775475334271709,P3
+707,Ambient Enterprises > Ambient Enterprises HCN (HAR),interface,Interface Status Mismatch,34.83,368.27,1,1,0.9774813698206556,P2
+304,Wyffels,server,Agent Status,35.03,282.6,1,1,0.9773281308063916,P2
+830,Wedgewood Pharmacy,server,Agent Status,41.52,253.87,1,1,0.9771922305635541,P2
+401,Wyffels,server,Windows Event Log,34.28,243.88,1,1,0.97711763715212,P2
+43,DYOPATH Oakbrook Terrace,service,Internet Connection is Lost,22.61,283.78,1,1,0.9769597193157058,P3
+52,Signorelli Company,network,Client IP conflict detected,18.11,132.35,1,1,0.9767471910859362,P3
+150,Ambient Enterprises - Johnson Barrow,service,Internet Connection is Lost,16.49,258.12,1,1,0.9766281301740364,P3
+61,HVP SLHV Data Center,server,Memory,38.67,280.45,1,1,0.9764699525964232,P2
+806,Wedgewood Pharmacy,network,Rogue AP detected,18.55,170.19,1,1,0.9762775596496528,P3
+531,Ocean Point Terminals (LTB),server,Agent Status,42.24,250.59,1,1,0.9762297569164136,P2
+382,Ambient Enterprises DMG San Luis Obispo,server,Connectivity,41.47,314.28,1,1,0.9760101716331042,P2
+734,HVP SLHV Data Center,server,Agent Status,37.48,295.33,1,1,0.9755403402838952,P2
+142,Ambient Enterprises - Johnson Barrow,interface,Interface Status Mismatch,31.46,334.52,1,1,0.9755258782971579,P2
+383,HVP SLHV Data Center,service,Internet Connection is Lost,25.13,259.82,1,1,0.9753448726115431,P3
+339,DYOPATH Oakbrook Terrace,server,Windows Event Log,30.15,312.85,1,1,0.9752772154745838,P2
+700,Wyffels,server,Disk,16.52,353.25,1,1,0.9752426106191987,P3
+780,Wedgewood Pharmacy,server,CPU,38.98,324.41,1,1,0.9746710526315789,P2
+603,Signorelli Company,interface,Interface Status Mismatch,16.7,277.54,1,1,0.9743235294117646,P3
+87,Wedgewood Pharmacy,server,CPU,44.16,330.61,1,1,0.973886104573765,P2
+31,Ocean Point Terminals (LTB),server,Connectivity,29.97,399.33,1,1,0.9737719013763637,P3
+410,Wedgewood Pharmacy,server,Disk,23.46,265.49,1,1,0.9735320308818542,P3
+896,Ambient Enterprises > Ambient Enterprises HCN (HAR),server,Connectivity,35.92,269.78,1,1,0.973328764189334,P2
+950,Signorelli Company,network,Client IP conflict detected,8.63,154.04,1,1,0.9732798351898899,P4
+955,Ambient Enterprises DMG San Luis Obispo,server,Connectivity,43.3,274.54,1,1,0.9731823580690857,P2
+335,Hanover Company Azure,server,Memory,30.61,252.74,1,1,0.9731416607128682,P2
+178,Ocean Point Terminals (LTB),server,Disk,39.27,219.43,1,1,0.9729280314778026,P2
+246,Ambient Enterprises - Johnson Barrow,server,Windows Event Log,45.62,351.93,1,1,0.9725161064425771,P2
+403,Ocean Point Terminals (LTB),server,CPU,32.0,218.31,1,1,0.9724801774312644,P2
+660,HVP SLHV Data Center,server,Disk,34.4,284.08,1,1,0.9722519088852363,P2
+957,DYOPATH Oakbrook Terrace,network,Rogue AP detected,17.36,146.21,1,1,0.9721666666666665,P3
+814,DYOPATH Oakbrook Terrace,device,Network Element Offline,47.92,668.23,1,1,0.9721470805617147,P2
+218,Ambient Enterprises - Johnson Barrow,network,Uplink status changed,17.71,165.0,1,1,0.9718288290102552,P3
+992,Wyffels,network,VPN connectivity changed,8.81,137.14,1,1,0.9714935119649479,P4
+779,Ambient Enterprises DMG San Luis Obispo,network,Uplink status changed,17.68,188.21,1,1,0.9714467095670769,P3
+967,Ambient Enterprises > Ambient Enterprises HCN (HAR),server,Connectivity,33.15,364.74,1,1,0.9712252732024073,P2
+333,DYOPATH Oakbrook Terrace,network,Uplink status changed,17.84,167.88,1,1,0.9710163008317488,P3
+133,Ambient Enterprises,service,Internet Connection is Lost,17.8,283.3,1,1,0.9709943837479351,P3
+710,Hanover Company Azure,network,Client IP conflict detected,18.37,165.66,1,1,0.9709937888198757,P3
+854,Ambient Enterprises,server,CPU,42.41,321.86,1,1,0.9709081245053786,P2
+993,Ambient Enterprises - Johnson Barrow,network,Rogue AP detected,19.5,161.09,1,1,0.9704295699081026,P3
+432,HVP SLHV Data Center,server,Disk,46.7,286.14,1,1,0.9703402583112835,P2
+98,Ocean Point Terminals (LTB),server,CPU,36.24,279.78,1,1,0.9702560975609756,P2
+744,Hanover Company Azure,server,Windows Event Log,31.26,281.93,1,1,0.9700429061784897,P2
+961,Ocean Point Terminals (LTB),network,Client IP conflict detected,15.83,141.12,1,1,0.9690680794056752,P3
+918,Ambient Enterprises,service,Internet Connection is Lost,23.97,306.17,1,1,0.9688347011757736,P3
+10,Ocean Point Terminals (LTB),network,Client IP conflict detected,15.56,179.64,1,1,0.968733850129199,P3
+548,DYOPATH Oakbrook Terrace,network,Client IP conflict detected,17.29,144.86,1,1,0.9685714285714286,P3
+242,Wedgewood Pharmacy,network,Rogue AP detected,8.22,144.69,1,1,0.9684174361196607,P4
+769,Hanover Company Azure,network,Client IP conflict detected,20.23,167.18,1,1,0.9679937888198757,P3
+426,Wedgewood Pharmacy,network,Rogue AP detected,17.65,179.51,1,1,0.9672064134045933,P3
+813,Ambient Enterprises > Ambient Enterprises HCN (HAR),network,Rogue AP detected,11.45,200.43,1,1,0.9670927770409571,P3
+596,Wyffels,server,Windows Event Log,30.8,268.11,1,1,0.9667023809523809,P2
+23,Wyffels,server,Connectivity,31.1,181.96,1,1,0.9666604010025064,P2
+282,Ambient Enterprises - Johnson Barrow,server,Memory,33.41,293.2,1,1,0.9664752284752285,P2
+926,Ocean Point Terminals (LTB),server,Connectivity,40.54,453.32,1,1,0.9662627551020408,P2
+36,Ocean Point Terminals (LTB),server,Windows Event Log,46.63,291.63,1,1,0.966120022277917,P2
+455,Wyffels,server,CPU,43.71,256.15,1,1,0.9657894736842105,P2
+421,Wedgewood Pharmacy,network,VPN connectivity changed,23.35,186.39,1,1,0.9657410435903284,P3
+954,Ambient Enterprises,server,Connectivity,31.54,230.24,1,1,0.9654089367030538,P2
+192,Wyffels,server,Agent Status,37.26,341.09,1,1,0.9652682926829267,P2
+420,HVP SLHV Data Center,network,Rogue AP detected,17.21,212.22,1,1,0.965189634871061,P3
+940,Ambient Enterprises > Ambient Enterprises HCN (HAR),device,Network Element Offline,58.13,660.09,1,1,0.9651312312794179,P2
+438,Hanover Company Azure,service,VPN remote gateway is Lost,11.68,213.87,1,1,0.9650738569934728,P3
+611,Ambient Enterprises > Ambient Enterprises HCN (HAR),network,Rogue AP detected,16.49,142.85,1,1,0.9648903324267476,P3
+412,DYOPATH Oakbrook Terrace,server,Windows Event Log,38.5,266.34,1,1,0.9648717948717948,P2
+757,Ocean Point Terminals (LTB),network,VPN connectivity changed,19.0,133.36,1,1,0.9646304749887114,P3
+90,Wedgewood Pharmacy,network,VPN connectivity changed,17.76,132.0,1,1,0.9646014469758761,P3
+44,Wyffels,network,Rogue AP detected,13.24,171.76,1,1,0.9641438420666547,P3
+347,DYOPATH Oakbrook Terrace,server,Memory,48.1,243.13,1,1,0.9627535612535613,P2
+157,Ambient Enterprises - Johnson Barrow,server,Agent Status,31.77,344.28,1,1,0.962625105724975,P2
+818,Signorelli Company,server,Memory,47.0,297.48,1,1,0.9624444444444444,P2
+537,Ambient Enterprises,network,Uplink status changed,17.95,189.48,1,1,0.9623351573187413,P3
+576,HVP SLHV Data Center,server,Agent Status,37.54,233.21,1,1,0.9618088474025974,P2
+665,Ambient Enterprises > Ambient Enterprises HCN (HAR),server,Agent Status,30.77,263.02,1,1,0.9616948099415206,P2
+555,Ambient Enterprises - Johnson Barrow,network,Rogue AP detected,22.22,117.75,1,1,0.9616660606439836,P3
+625,HVP SLHV Data Center,device,Network Element Offline,45.82,445.4,1,1,0.9616300043986379,P2
+452,Wedgewood Pharmacy,network,Client IP conflict detected,10.05,175.44,1,1,0.9616239600193087,P3
+894,Ambient Enterprises DMG San Luis Obispo,network,Uplink status changed,16.63,160.8,1,1,0.9615535755692917,P3
+892,Ambient Enterprises > Ambient Enterprises HCN (HAR),server,Windows Event Log,30.86,225.01,1,1,0.9614591836734694,P2
+485,Ambient Enterprises,server,Connectivity,27.16,281.18,1,1,0.9608349880343404,P3
+241,DYOPATH Oakbrook Terrace,server,CPU,34.43,259.92,1,1,0.9607180285389668,P2
+532,Wyffels,server,Disk,17.57,348.03,1,1,0.9605461559286539,P3
+258,Hanover Company Azure,server,Disk,30.23,356.14,1,1,0.9599685960126045,P2
+658,DYOPATH Oakbrook Terrace,device,Access Point Offline,66.23,538.62,1,1,0.9599637681159421,P1
+956,Ambient Enterprises > Ambient Enterprises HCN (HAR),network,Rogue AP detected,13.69,154.42,1,1,0.9596068660022148,P3
+349,Ocean Point Terminals (LTB),server,Agent Status,16.59,359.28,1,1,0.9595627422113491,P3
+376,HVP SLHV Data Center,network,Rogue AP detected,18.55,147.1,1,1,0.9593933506865278,P3
+686,Wedgewood Pharmacy,server,Memory,29.72,301.52,1,1,0.9593567266380236,P3
+375,Wyffels,server,Windows Event Log,23.07,403.29,1,1,0.9592688521022232,P3
+378,Wyffels,network,VPN connectivity changed,13.04,187.35,1,1,0.9592648746602235,P3
+47,Ambient Enterprises DMG San Luis Obispo,server,Memory,35.7,415.04,1,1,0.9592424242424242,P2
+906,Ambient Enterprises > Ambient Enterprises HCN (HAR),server,Disk,23.56,383.21,1,1,0.959219246031746,P3
+221,Signorelli Company,server,Memory,37.42,291.69,1,1,0.959149245063879,P2
+388,Signorelli Company,server,Disk,35.56,167.8,1,1,0.9591434609721055,P2
+318,Hanover Company Azure,service,Internet Connection is Lost,15.35,261.81,1,1,0.9587837165590071,P3
+400,Ambient Enterprises DMG San Luis Obispo,server,Agent Status,31.24,331.13,1,1,0.9583101585793224,P2
+535,Ambient Enterprises,server,Windows Event Log,34.78,227.95,1,1,0.9582291137833902,P2
+501,Ambient Enterprises - Johnson Barrow,server,Connectivity,28.14,285.37,1,1,0.9576670652709945,P3
+828,Ambient Enterprises > Ambient Enterprises HCN (HAR),server,Connectivity,26.53,323.7,1,1,0.9570136190647085,P3
+618,DYOPATH Oakbrook Terrace,server,CPU,17.58,244.15,1,1,0.9568080281101642,P3
+551,Ambient Enterprises - Johnson Barrow,network,Client IP conflict detected,17.89,171.41,1,1,0.9568005177801079,P3
+870,Signorelli Company,network,VPN connectivity changed,16.45,128.03,1,1,0.9567906693468057,P3
+650,Wedgewood Pharmacy,server,Disk,27.22,367.56,1,1,0.9567399718490219,P3
+213,Ambient Enterprises - Johnson Barrow,server,Windows Event Log,30.0,368.89,1,1,0.9564752284752285,P3
+470,Ocean Point Terminals (LTB),server,Memory,33.33,342.34,1,1,0.9563333333333333,P2
+205,Ambient Enterprises,network,VPN connectivity changed,12.38,190.71,1,1,0.9561894990554362,P3
+79,Signorelli Company,server,CPU,32.14,215.11,1,1,0.955688003760372,P2
+879,HVP SLHV Data Center,server,Connectivity,40.73,173.02,1,1,0.9556279303677709,P2
+528,Wedgewood Pharmacy,server,Connectivity,34.74,340.98,1,1,0.955409173836999,P2
+396,Ambient Enterprises,server,Agent Status,34.66,173.83,1,1,0.9552774952057287,P2
+656,Ambient Enterprises - Johnson Barrow,interface,Interface Status Mismatch,31.7,210.05,1,1,0.955207782363189,P2
+888,Wyffels,network,Uplink status changed,6.21,145.05,1,1,0.9551113098787518,P4
+541,Ambient Enterprises - Johnson Barrow,device,Network Element Offline,53.62,674.53,1,1,0.955,P2
+948,Ambient Enterprises DMG San Luis Obispo,server,CPU,40.36,218.3,1,1,0.9544376833363114,P2
+356,Signorelli Company,server,Connectivity,34.15,197.32,1,1,0.9544373876980994,P2
+836,Ambient Enterprises - Johnson Barrow,network,VPN connectivity changed,21.79,121.87,1,1,0.9540218057210431,P3
+767,Ambient Enterprises,server,Memory,30.29,246.49,1,1,0.9539933273354326,P2
+303,Hanover Company Azure,device,Network Element Offline,32.19,632.73,1,1,0.9533664928421962,P2
+409,DYOPATH Oakbrook Terrace,server,Memory,34.08,267.65,1,1,0.9531224801133269,P2
+483,Wyffels,interface,Interface Status Mismatch,31.37,389.12,1,1,0.9526174243540833,P2
+199,Ambient Enterprises DMG San Luis Obispo,network,Client IP conflict detected,16.58,137.15,1,1,0.9525671834625323,P3
+571,Wedgewood Pharmacy,device,Access Point Offline,46.87,437.48,1,1,0.9523246753246754,P2
+568,Wedgewood Pharmacy,server,Connectivity,32.31,172.52,1,1,0.952017543859649,P2
+526,DYOPATH Oakbrook Terrace,server,CPU,33.67,363.4,1,1,0.951962406602811,P2
+840,Ambient Enterprises,server,Disk,27.86,294.09,1,1,0.9519484247333874,P3
+843,Ambient Enterprises,interface,Interface Status Mismatch,51.26,130.46,1,1,0.9509580798930425,P2
+19,Ambient Enterprises,service,VPN remote gateway is Lost,22.56,203.53,1,1,0.9508777669732337,P3
+680,Ambient Enterprises > Ambient Enterprises HCN (HAR),service,Internet Connection is Lost,20.89,215.56,1,1,0.9505259688620455,P3
+287,Hanover Company Azure,device,Access Point Offline,72.46,490.04,1,1,0.950266106442577,P1
+112,Wedgewood Pharmacy,server,CPU,15.95,494.89,1,1,0.9498570186263684,P3
+569,Ambient Enterprises DMG San Luis Obispo,server,Disk,18.45,248.77,1,1,0.9497865746710419,P3
+406,Ambient Enterprises - Johnson Barrow,server,Connectivity,28.2,372.73,1,1,0.9497370198079231,P3
+778,Ambient Enterprises DMG San Luis Obispo,interface,Interface Status Mismatch,22.36,262.22,1,1,0.9494296086773266,P3
+247,Ocean Point Terminals (LTB),service,Internet Connection is Lost,12.94,183.81,1,1,0.9491799869746028,P3
+966,Ambient Enterprises,device,Access Point Offline,58.05,476.8,1,1,0.9491316632305079,P2
+898,Ambient Enterprises - Johnson Barrow,service,VPN remote gateway is Lost,22.55,163.61,1,1,0.949114948270379,P3
+794,Hanover Company Azure,network,Client IP conflict detected,21.65,148.13,1,1,0.9489500641510397,P3
+841,Wyffels,network,Rogue AP detected,10.36,163.72,1,1,0.9482539682539682,P3
+566,Signorelli Company,network,Rogue AP detected,12.8,179.76,1,1,0.9482021040974529,P3
+554,DYOPATH Oakbrook Terrace,network,Client IP conflict detected,23.1,107.79,1,1,0.9479349001328032,P3
+442,HVP SLHV Data Center,server,Memory,31.47,330.6,1,1,0.9477435211581553,P2
+916,Ambient Enterprises > Ambient Enterprises HCN (HAR),server,Connectivity,35.56,386.39,1,1,0.9475877192982456,P2
+86,Ambient Enterprises - Johnson Barrow,server,Agent Status,39.99,249.27,1,1,0.9470268678689732,P2
+912,Hanover Company Azure,interface,Interface Status Mismatch,22.45,312.77,1,1,0.9469962738889737,P3
+962,Ambient Enterprises > Ambient Enterprises HCN (HAR),service,VPN remote gateway is Lost,22.35,151.37,1,1,0.9467980132658187,P3
+37,Ambient Enterprises - Johnson Barrow,server,Connectivity,39.8,330.83,1,1,0.9462084785133567,P2
+433,Wyffels,service,Internet Connection is Lost,21.01,285.31,1,1,0.9461803970752181,P3
+58,Ambient Enterprises DMG San Luis Obispo,server,Connectivity,46.09,298.65,1,1,0.9461580465930092,P2
+716,HVP SLHV Data Center,service,Internet Connection is Lost,29.21,198.76,1,1,0.9461373902945087,P3
+798,Ambient Enterprises > Ambient Enterprises HCN (HAR),service,Internet Connection is Lost,20.53,248.09,1,1,0.9461145204791088,P3
+1000,Hanover Company Azure,network,Uplink status changed,21.26,138.57,1,1,0.9460471244554114,P3
+745,Signorelli Company,server,Memory,25.71,292.42,1,1,0.9456999316473,P3
+80,Hanover Company Azure,server,Windows Event Log,29.31,255.0,1,1,0.9455343914803035,P3
+667,Ambient Enterprises > Ambient Enterprises HCN (HAR),network,Client IP conflict detected,14.14,198.79,1,1,0.9454564553093965,P3
+963,Hanover Company Azure,interface,Interface Status Mismatch,38.53,434.26,1,1,0.9452688149096597,P2
+810,Ocean Point Terminals (LTB),network,Client IP conflict detected,5.0,221.5,1,1,0.9452651515151516,P4
+909,Ambient Enterprises - Johnson Barrow,network,Client IP conflict detected,16.79,87.83,1,1,0.9450624999999999,P3
+550,Ocean Point Terminals (LTB),device,Network Element Offline,52.35,697.99,1,1,0.9448302005012532,P2
+518,Ambient Enterprises DMG San Luis Obispo,device,Network Element Offline,55.9,628.06,1,1,0.9446931216931218,P2
+128,Ambient Enterprises > Ambient Enterprises HCN (HAR),interface,Interface Status Mismatch,39.4,314.08,1,1,0.9445555555555554,P2
+216,Hanover Company Azure,network,Rogue AP detected,21.36,155.13,1,1,0.9445342991581804,P3
+924,HVP SLHV Data Center,network,Rogue AP detected,15.8,200.12,1,1,0.9438845943590883,P3
+108,Ambient Enterprises - Johnson Barrow,network,Client IP conflict detected,14.28,185.9,1,1,0.9434584066184614,P3
+679,Ambient Enterprises - Johnson Barrow,server,Connectivity,27.97,244.2,1,1,0.9434449412994037,P3
+320,Hanover Company Azure,server,Agent Status,26.51,252.4,1,1,0.942656491836799,P3
+594,Ambient Enterprises DMG San Luis Obispo,interface,Interface Status Mismatch,40.05,243.7,1,1,0.9426518417824579,P2
+279,Ocean Point Terminals (LTB),network,Uplink status changed,20.39,140.12,1,1,0.9424473373778227,P3
+508,Signorelli Company,server,CPU,22.0,342.03,1,1,0.9424166556020431,P3
+996,DYOPATH Oakbrook Terrace,device,Access Point Offline,54.81,696.45,1,1,0.9420397899136558,P2
+13,Ambient Enterprises - Johnson Barrow,service,Internet Connection is Lost,16.46,225.42,1,1,0.9418327279597937,P3
+283,Ambient Enterprises DMG San Luis Obispo,server,Connectivity,38.08,380.34,1,1,0.9414447027822987,P2
+540,Wyffels,service,VPN remote gateway is Lost,32.18,116.85,1,1,0.9411790093964005,P2
+381,Ambient Enterprises DMG San Luis Obispo,device,Network Element Offline,58.91,474.17,1,1,0.9410994397759103,P2
+71,Signorelli Company,service,VPN remote gateway is Lost,24.47,225.82,1,1,0.9410466099852157,P3
+215,Ambient Enterprises,service,VPN remote gateway is Lost,26.75,298.09,1,1,0.941009987426616,P3
+69,Ocean Point Terminals (LTB),service,Internet Connection is Lost,20.04,243.19,1,1,0.9410079149152243,P3
+345,Wyffels,server,CPU,19.69,434.06,1,1,0.9408365790172928,P3
+24,Signorelli Company,server,Memory,35.71,332.7,1,1,0.9408173230278494,P2
+130,Ocean Point Terminals (LTB),server,CPU,30.88,287.59,1,1,0.9407672064777327,P2
+297,DYOPATH Oakbrook Terrace,network,VPN connectivity changed,20.98,90.02,1,1,0.940722619047619,P3
+851,Ambient Enterprises > Ambient Enterprises HCN (HAR),network,Rogue AP detected,11.6,221.58,1,1,0.9403514920101983,P3
+803,Hanover Company Azure,server,Disk,28.93,278.99,1,1,0.9403511461945141,P3
+608,Ambient Enterprises,server,Windows Event Log,26.57,270.82,1,1,0.9402651559049864,P3
+379,Ambient Enterprises > Ambient Enterprises HCN (HAR),service,Internet Connection is Lost,20.34,187.32,1,1,0.9400680752658578,P3
+164,Hanover Company Azure,device,Network Element Offline,29.02,653.24,1,1,0.9400378787878787,P3
+63,Ambient Enterprises DMG San Luis Obispo,server,Agent Status,27.23,266.09,1,1,0.9398006694260862,P3
+823,Ambient Enterprises DMG San Luis Obispo,interface,Interface Status Mismatch,40.92,314.87,1,1,0.9397707364369345,P2
+771,Wyffels,network,Client IP conflict detected,7.16,136.79,1,1,0.9396289550243039,P4
+727,Wedgewood Pharmacy,device,Network Element Offline,46.46,623.79,1,1,0.9394848484848485,P2
+451,HVP SLHV Data Center,server,Memory,17.12,329.05,1,1,0.9391768458579604,P3
+626,Hanover Company Azure,server,Disk,27.29,287.58,1,1,0.9391005965652703,P3
+804,DYOPATH Oakbrook Terrace,network,Rogue AP detected,10.49,167.5,1,1,0.9390591749222049,P3
+506,Signorelli Company,server,Connectivity,48.45,147.32,1,1,0.938864734104344,P2
+723,Wedgewood Pharmacy,server,Connectivity,31.07,198.43,1,1,0.9388163265306123,P2
+533,HVP SLHV Data Center,network,VPN connectivity changed,16.15,57.04,1,1,0.9386003151260504,P3
+974,Ambient Enterprises > Ambient Enterprises HCN (HAR),service,Internet Connection is Lost,11.13,269.72,1,1,0.9384263104466593,P3
+543,Ambient Enterprises > Ambient Enterprises HCN (HAR),server,CPU,35.01,226.96,1,1,0.9384099412492268,P2
+662,Ambient Enterprises > Ambient Enterprises HCN (HAR),server,Disk,44.5,157.22,1,1,0.9380922273412241,P2
+189,Signorelli Company,server,Memory,41.17,168.38,1,1,0.9380731134497018,P2
+874,Ambient Enterprises - Johnson Barrow,server,Agent Status,26.14,421.51,1,1,0.9379787157287156,P3
+322,Signorelli Company,network,Client IP conflict detected,13.85,138.53,1,1,0.937786563719956,P3
+66,Ambient Enterprises > Ambient Enterprises HCN (HAR),network,VPN connectivity changed,20.08,239.85,1,1,0.9377515200902651,P3
+369,Wyffels,device,Access Point Offline,39.05,740.17,1,1,0.9376464355938617,P2
+285,Wedgewood Pharmacy,device,Network Element Offline,45.06,675.62,1,1,0.9372589131735474,P2
+772,HVP SLHV Data Center,server,Disk,35.16,244.87,1,1,0.9370301061610711,P2
+868,HVP SLHV Data Center,network,Rogue AP detected,15.18,156.82,1,1,0.9365615181671952,P3
+453,Ambient Enterprises,server,Windows Event Log,16.84,338.2,1,1,0.9365323544080952,P3
+153,Ocean Point Terminals (LTB),server,Disk,42.71,278.2,1,1,0.9364080868922264,P2
+147,Signorelli Company,network,Rogue AP detected,13.33,133.42,1,1,0.9361739655693145,P3
+791,Wedgewood Pharmacy,server,Windows Event Log,12.35,350.77,1,1,0.9361648351648353,P3
+875,Hanover Company Azure,server,Memory,16.64,301.67,1,1,0.9360204505442096,P3
+648,Signorelli Company,network,VPN connectivity changed,14.3,131.93,1,1,0.9359011672536772,P3
+748,DYOPATH Oakbrook Terrace,server,CPU,30.86,282.64,1,1,0.9357985347985348,P2
+620,DYOPATH Oakbrook Terrace,server,Agent Status,32.19,229.56,1,1,0.9355556224147767,P2
+172,Ambient Enterprises DMG San Luis Obispo,network,VPN connectivity changed,16.95,81.16,1,1,0.9352826086956522,P3
+873,Wyffels,network,VPN connectivity changed,14.39,169.23,1,1,0.9351227390180878,P3
+65,Ocean Point Terminals (LTB),server,Windows Event Log,28.0,362.52,1,1,0.9350176363679931,P3
+53,Ambient Enterprises DMG San Luis Obispo,server,Connectivity,30.42,302.78,1,1,0.9349972832371239,P2
+310,Hanover Company Azure,server,Windows Event Log,32.51,368.07,1,1,0.9349342105263159,P2
+8,Hanover Company Azure,interface,Interface Status Mismatch,31.15,140.54,1,1,0.9345976482280115,P2
+820,Signorelli Company,network,VPN connectivity changed,17.72,108.81,1,1,0.9343875239632731,P3
+494,Ambient Enterprises,network,Rogue AP detected,19.64,119.25,1,1,0.9342180806614769,P3
+685,Ambient Enterprises > Ambient Enterprises HCN (HAR),service,Internet Connection is Lost,26.99,150.29,1,1,0.9341455486658833,P3
+161,Ambient Enterprises DMG San Luis Obispo,server,CPU,29.51,253.47,1,1,0.934139653281994,P3
+705,Ambient Enterprises - Johnson Barrow,server,Agent Status,21.55,318.44,1,1,0.9340571395010473,P3
+457,Ambient Enterprises,server,CPU,24.71,331.82,1,1,0.9339739247687417,P3
+980,Ambient Enterprises - Johnson Barrow,network,Client IP conflict detected,12.15,183.87,1,1,0.9330368814192345,P3
+976,Ocean Point Terminals (LTB),server,Agent Status,27.36,384.15,1,1,0.9328857709750568,P3
+681,Signorelli Company,interface,Interface Status Mismatch,17.97,300.49,1,1,0.9328570434030001,P3
+332,Ocean Point Terminals (LTB),service,VPN remote gateway is Lost,23.51,128.21,1,1,0.9326908134480925,P3
+240,DYOPATH Oakbrook Terrace,network,Rogue AP detected,18.68,175.01,1,1,0.9326054471709364,P3
+795,Ambient Enterprises - Johnson Barrow,device,Access Point Offline,62.96,541.5,1,1,0.9325,P1
+805,Hanover Company Azure,service,Internet Connection is Lost,20.18,205.7,1,1,0.9323993062277944,P3
+255,Wyffels,service,VPN remote gateway is Lost,27.0,206.99,1,1,0.9323028072461438,P3
+675,Ambient Enterprises - Johnson Barrow,network,Uplink status changed,18.43,111.06,1,1,0.9315772496614908,P3
+118,Ocean Point Terminals (LTB),network,VPN connectivity changed,12.85,162.56,1,1,0.9315766462219951,P3
+456,Ambient Enterprises - Johnson Barrow,server,CPU,33.5,303.86,1,1,0.9315209289457411,P2
+640,Ocean Point Terminals (LTB),server,Disk,34.75,277.91,1,1,0.9314296345811053,P2
+441,Wedgewood Pharmacy,device,Access Point Offline,58.78,527.87,1,1,0.9309047619047619,P2
+649,Wedgewood Pharmacy,service,VPN remote gateway is Lost,27.32,201.74,1,1,0.930786431800449,P3
+439,DYOPATH Oakbrook Terrace,network,Client IP conflict detected,21.28,72.59,1,1,0.9306726190476189,P3
+755,Ambient Enterprises - Johnson Barrow,network,Client IP conflict detected,23.18,199.34,1,1,0.930515873015873,P3
+184,Wedgewood Pharmacy,network,Rogue AP detected,19.87,44.53,1,1,0.9304789812226184,P3
+385,Ocean Point Terminals (LTB),server,Disk,41.4,179.28,1,1,0.9303836374617354,P2
+465,Hanover Company Azure,interface,Interface Status Mismatch,36.4,225.14,1,1,0.930311491872071,P2
+889,Signorelli Company,device,Network Element Offline,44.83,594.05,1,1,0.930293851061746,P2
+250,Signorelli Company,network,Client IP conflict detected,12.31,139.46,1,1,0.9301398746602234,P3
+480,HVP SLHV Data Center,interface,Interface Status Mismatch,22.67,349.71,1,1,0.9301244190516016,P3
+171,Signorelli Company,service,VPN remote gateway is Lost,30.96,180.07,1,1,0.9299656954887218,P2
+604,Wedgewood Pharmacy,device,Access Point Offline,45.66,446.86,1,1,0.9299355599541935,P2
+185,Hanover Company Azure,device,Network Element Offline,55.91,449.16,1,1,0.9299311811293391,P2
+249,Signorelli Company,server,Memory,37.3,152.83,1,1,0.929861768027369,P2
+498,Ambient Enterprises - Johnson Barrow,interface,Interface Status Mismatch,33.56,119.54,1,1,0.9295582674559061,P2
+773,Ambient Enterprises > Ambient Enterprises HCN (HAR),service,Internet Connection is Lost,27.31,205.74,1,1,0.9295376764555943,P3
+979,Ambient Enterprises - Johnson Barrow,device,Network Element Offline,54.89,501.44,1,1,0.9294242424242425,P2
+6,Ambient Enterprises,device,Network Element Offline,62.49,803.12,1,1,0.9290964912280703,P1
+7,Hanover Company Azure,network,Client IP conflict detected,24.32,82.68,1,1,0.92875,P3
+643,Wyffels,service,Internet Connection is Lost,18.1,212.0,1,1,0.9286939078985202,P3
+314,DYOPATH Oakbrook Terrace,network,Client IP conflict detected,8.59,187.45,1,1,0.92852750092285,P4
+408,Ambient Enterprises - Johnson Barrow,server,CPU,37.05,100.09,1,1,0.928030942741469,P2
+468,Hanover Company Azure,server,Memory,31.19,210.95,1,1,0.9279188207625708,P2
+113,Ambient Enterprises DMG San Luis Obispo,server,Memory,30.7,196.38,1,1,0.927876812046649,P2
+186,Ambient Enterprises > Ambient Enterprises HCN (HAR),interface,Interface Status Mismatch,19.63,404.92,1,1,0.9272190384494732,P3
+33,DYOPATH Oakbrook Terrace,network,Client IP conflict detected,8.81,197.71,1,1,0.9271848739495797,P4
+327,Wedgewood Pharmacy,server,CPU,33.29,165.41,1,1,0.9270105155694641,P2
+935,Ambient Enterprises DMG San Luis Obispo,server,Disk,42.95,154.67,1,1,0.9268167387532377,P2
+210,Wedgewood Pharmacy,interface,Interface Status Mismatch,34.13,345.15,1,1,0.9268038625245515,P2
+690,Wedgewood Pharmacy,interface,Interface Status Mismatch,33.17,283.39,1,1,0.9264749013026171,P2
+64,Wyffels,server,Windows Event Log,38.86,196.14,1,1,0.9263495896742464,P2
+55,Ocean Point Terminals (LTB),network,Client IP conflict detected,14.27,191.18,1,1,0.9263218774613438,P3
+634,Wyffels,server,Disk,23.68,263.72,1,1,0.9261439918245565,P3
+807,Signorelli Company,server,Windows Event Log,22.89,333.0,1,1,0.9260372045191403,P3
+796,Wyffels,interface,Interface Status Mismatch,24.86,307.21,1,1,0.925669718261965,P3
+509,Wyffels,network,Client IP conflict detected,17.99,51.55,1,1,0.9256331784746418,P3
+488,DYOPATH Oakbrook Terrace,server,Windows Event Log,33.93,255.0,1,1,0.9251804511278197,P2
+72,Ambient Enterprises,device,Network Element Offline,44.76,539.84,1,1,0.9250034671659385,P2
+825,Ocean Point Terminals (LTB),device,Network Element Offline,42.74,554.95,1,1,0.9247362819125504,P2
+85,Signorelli Company,interface,Interface Status Mismatch,16.67,297.84,1,1,0.9246703799920367,P3
+777,Hanover Company Azure,service,Internet Connection is Lost,26.73,182.82,1,1,0.9245764281664519,P3
+490,DYOPATH Oakbrook Terrace,network,Client IP conflict detected,11.08,159.26,1,1,0.9238995830890496,P3
+368,DYOPATH Oakbrook Terrace,service,VPN remote gateway is Lost,28.6,167.4,1,1,0.923469739043572,P3
+479,Ocean Point Terminals (LTB),server,Agent Status,26.24,336.43,1,1,0.9234440199355984,P3
+629,Hanover Company Azure,service,VPN remote gateway is Lost,23.29,199.95,1,1,0.9232417958226097,P3
+672,Ambient Enterprises - Johnson Barrow,service,VPN remote gateway is Lost,23.05,261.1,1,1,0.9231666269071731,P3
+821,Ambient Enterprises > Ambient Enterprises HCN (HAR),network,Client IP conflict detected,19.88,39.32,1,1,0.9229752964426876,P3
+102,Ocean Point Terminals (LTB),server,Connectivity,20.61,358.45,1,1,0.9229115182937268,P3
+366,Ambient Enterprises > Ambient Enterprises HCN (HAR),server,Windows Event Log,16.41,268.88,1,1,0.9226984126984128,P3
+193,Ambient Enterprises DMG San Luis Obispo,service,VPN remote gateway is Lost,17.21,244.32,1,1,0.9226690217431684,P3
+176,Wedgewood Pharmacy,server,Connectivity,21.19,267.38,1,1,0.9223559912530015,P3
+610,DYOPATH Oakbrook Terrace,server,CPU,38.88,104.09,1,1,0.9222844551282051,P2
+208,Ocean Point Terminals (LTB),interface,Interface Status Mismatch,35.41,150.37,1,1,0.9222233315626173,P2
+12,Ambient Enterprises - Johnson Barrow,server,Memory,26.4,285.05,1,1,0.921923076923077,P3
+838,Ambient Enterprises > Ambient Enterprises HCN (HAR),server,CPU,28.2,289.66,1,1,0.9217994417862839,P3
+129,Signorelli Company,network,VPN connectivity changed,21.7,100.28,1,1,0.9217857690706286,P3
+190,Signorelli Company,server,Windows Event Log,38.85,240.31,1,1,0.921758964719491,P2
+732,Ambient Enterprises > Ambient Enterprises HCN (HAR),device,Network Element Offline,56.59,366.8,1,1,0.9217533339676197,P2
+99,Wyffels,network,Uplink status changed,13.82,140.18,1,1,0.9217477570738439,P3
+817,HVP SLHV Data Center,network,Client IP conflict detected,13.87,177.94,1,1,0.9217080849736383,P3
+937,Wedgewood Pharmacy,device,Network Element Offline,44.83,631.97,1,1,0.9212948717948719,P2
+352,Wyffels,network,Uplink status changed,7.99,168.25,1,1,0.9211922015182884,P4
+358,Ambient Enterprises DMG San Luis Obispo,service,Internet Connection is Lost,19.92,264.92,1,1,0.9208376806534702,P3
+653,Wyffels,server,Memory,31.32,214.08,1,1,0.9207510537707907,P2
+827,Wedgewood Pharmacy,server,Disk,14.95,313.04,1,1,0.9204344400008954,P3
+374,Hanover Company Azure,server,CPU,36.0,126.47,1,1,0.9200684943076246,P2
+934,Hanover Company Azure,network,Uplink status changed,17.57,171.29,1,1,0.9200355732464112,P3
+797,Ambient Enterprises - Johnson Barrow,server,Disk,31.79,402.32,1,1,0.9197593632502084,P2
+467,DYOPATH Oakbrook Terrace,service,VPN remote gateway is Lost,23.61,207.13,1,1,0.9197356075837895,P3
+308,Ambient Enterprises - Johnson Barrow,service,Internet Connection is Lost,22.73,168.84,1,1,0.9196420923792938,P3
+890,Ambient Enterprises > Ambient Enterprises HCN (HAR),service,VPN remote gateway is Lost,20.42,188.44,1,1,0.9195898284291735,P3
+867,Wedgewood Pharmacy,interface,Interface Status Mismatch,40.69,247.61,1,1,0.9195446054750402,P2
+636,HVP SLHV Data Center,server,Connectivity,23.89,344.41,1,1,0.9195230139314192,P3
+882,Wedgewood Pharmacy,device,Access Point Offline,41.34,676.55,1,1,0.9194724653146283,P2
+703,Ambient Enterprises,server,Connectivity,33.31,123.65,1,1,0.9192987296123022,P2
+853,Ambient Enterprises > Ambient Enterprises HCN (HAR),network,Rogue AP detected,18.3,158.11,1,1,0.919043029473946,P3
+917,DYOPATH Oakbrook Terrace,server,Connectivity,33.14,216.14,1,1,0.9189340887026508,P2
+910,Signorelli Company,network,Uplink status changed,15.16,189.41,1,1,0.9187541250198411,P3
+545,Ocean Point Terminals (LTB),server,Disk,23.57,324.91,1,1,0.9186132732853206,P3
+120,Hanover Company Azure,network,VPN connectivity changed,23.65,101.92,1,1,0.918561320754717,P3
+845,Ambient Enterprises,service,Internet Connection is Lost,22.61,139.39,1,1,0.918341563263082,P3
+989,DYOPATH Oakbrook Terrace,server,Windows Event Log,33.46,236.78,1,1,0.9183030990173848,P2
+621,Ocean Point Terminals (LTB),device,Access Point Offline,55.45,502.07,1,1,0.9182371794871795,P2
+557,Wedgewood Pharmacy,server,Disk,5.0,294.09,1,1,0.9181175315912157,P4
+343,HVP SLHV Data Center,network,Rogue AP detected,16.27,121.39,1,1,0.9177380952380951,P3
+201,DYOPATH Oakbrook Terrace,network,Client IP conflict detected,13.62,126.4,1,1,0.9175722339675829,P3
+763,Wyffels,server,Disk,31.27,173.9,1,1,0.9175520518711308,P2
+750,Ambient Enterprises DMG San Luis Obispo,server,CPU,26.45,363.58,1,1,0.9174223433522214,P3
+462,Ambient Enterprises DMG San Luis Obispo,server,Windows Event Log,37.82,98.4,1,1,0.9171935229051136,P2
+631,Hanover Company Azure,network,VPN connectivity changed,13.44,175.06,1,1,0.9169742063492063,P3
+74,Wedgewood Pharmacy,device,Access Point Offline,48.32,648.1,1,1,0.91672404248434,P2
+865,Wedgewood Pharmacy,network,Uplink status changed,9.84,193.86,1,1,0.9164053783833466,P4
+977,Ambient Enterprises > Ambient Enterprises HCN (HAR),device,Network Element Offline,61.28,342.45,1,1,0.9163786077046947,P1
+300,Ocean Point Terminals (LTB),network,VPN connectivity changed,17.25,136.47,1,1,0.9162711888273252,P3
+486,Wedgewood Pharmacy,server,Disk,30.26,200.8,1,1,0.9160920960489457,P2
+709,Ambient Enterprises - Johnson Barrow,network,VPN connectivity changed,16.38,118.04,1,1,0.9160173160173158,P3
+651,Ambient Enterprises - Johnson Barrow,server,Agent Status,23.17,430.23,1,1,0.9159083815886199,P3
+565,Wyffels,service,VPN remote gateway is Lost,25.01,183.03,1,1,0.9158391603962751,P3
+862,HVP SLHV Data Center,server,CPU,35.41,182.57,1,1,0.9157604037441709,P2
+35,Ambient Enterprises > Ambient Enterprises HCN (HAR),server,Memory,25.69,305.43,1,1,0.9157539958025587,P3
+502,Wedgewood Pharmacy,network,VPN connectivity changed,19.79,56.71,1,1,0.914895922521402,P3
+434,Signorelli Company,server,Memory,25.58,306.36,1,1,0.9148891712325813,P3
+390,Ambient Enterprises > Ambient Enterprises HCN (HAR),network,Uplink status changed,17.5,125.35,1,1,0.9147191157095249,P3
+38,Signorelli Company,network,Uplink status changed,7.45,134.53,1,1,0.9145068303789234,P4
+411,Wyffels,service,Internet Connection is Lost,15.66,306.57,1,1,0.9142749503683042,P3
+97,HVP SLHV Data Center,network,Client IP conflict detected,16.98,50.1,1,1,0.914047619047619,P3
+143,Ambient Enterprises - Johnson Barrow,server,CPU,34.7,337.69,1,1,0.9138615692153923,P2
+988,Ambient Enterprises - Johnson Barrow,interface,Interface Status Mismatch,38.01,106.97,1,1,0.9135542433110367,P2
+815,Wyffels,service,Internet Connection is Lost,10.14,207.75,1,1,0.9135006862029106,P3
+722,Signorelli Company,interface,Interface Status Mismatch,24.44,305.59,1,1,0.913201196688302,P3
+389,Hanover Company Azure,service,VPN remote gateway is Lost,13.03,220.55,1,1,0.9130807836608628,P3
+288,Signorelli Company,interface,Interface Status Mismatch,40.74,113.07,1,1,0.9130460372042735,P2
+167,Ocean Point Terminals (LTB),network,VPN connectivity changed,20.21,32.92,1,1,0.912907738095238,P3
+708,Ambient Enterprises > Ambient Enterprises HCN (HAR),device,Access Point Offline,47.56,219.0,1,1,0.9128421052631579,P2
+155,Wedgewood Pharmacy,server,Disk,23.61,259.64,1,1,0.9127677444201825,P3
+876,HVP SLHV Data Center,server,Memory,28.34,305.37,1,1,0.9125583566760038,P3
+850,Ocean Point Terminals (LTB),server,Agent Status,28.31,386.15,1,1,0.9125529996727691,P3
+644,Hanover Company Azure,server,Connectivity,26.17,421.46,1,1,0.9124695803883334,P3
+136,Ambient Enterprises,server,Disk,38.41,285.12,1,1,0.9122771417341937,P2
+437,Ambient Enterprises,server,Memory,26.23,264.59,1,1,0.9116303030233642,P3
+523,Wyffels,service,Internet Connection is Lost,18.54,197.16,1,1,0.9114635267759802,P3
+227,Wyffels,server,Disk,25.19,367.39,1,1,0.9113665472599295,P3
+786,Wyffels,service,VPN remote gateway is Lost,22.94,195.62,1,1,0.9109975966439721,P3
+200,DYOPATH Oakbrook Terrace,service,VPN remote gateway is Lost,23.52,187.04,1,1,0.9109283788436433,P3
+793,Ambient Enterprises > Ambient Enterprises HCN (HAR),network,Uplink status changed,18.22,188.25,1,1,0.9108633408477147,P3
+489,Ocean Point Terminals (LTB),network,VPN connectivity changed,15.07,126.6,1,1,0.910817401829449,P3
+857,DYOPATH Oakbrook Terrace,service,VPN remote gateway is Lost,22.76,165.75,1,1,0.9106385318241642,P3
+484,Ambient Enterprises DMG San Luis Obispo,network,Client IP conflict detected,15.71,125.51,1,1,0.9105417065062689,P3
+524,Ambient Enterprises > Ambient Enterprises HCN (HAR),server,CPU,36.85,154.06,1,1,0.9099480025025081,P2
+151,Ambient Enterprises > Ambient Enterprises HCN (HAR),device,Network Element Offline,23.48,854.37,1,1,0.909905386323343,P3
+230,Wyffels,server,Memory,25.84,307.33,1,1,0.909879666300332,P3
+712,Wedgewood Pharmacy,server,Agent Status,30.81,140.82,1,1,0.9098642009063063,P2
+126,Ambient Enterprises > Ambient Enterprises HCN (HAR),server,CPU,14.29,367.02,1,1,0.909715909090909,P3
+29,DYOPATH Oakbrook Terrace,server,CPU,5.0,282.57,1,1,0.9094105753004058,P4
+344,Signorelli Company,server,Connectivity,30.02,311.25,1,1,0.9092555815651037,P2
+983,Ambient Enterprises > Ambient Enterprises HCN (HAR),service,Internet Connection is Lost,23.74,335.04,1,1,0.9092284649997446,P3
+492,HVP SLHV Data Center,server,CPU,35.78,45.78,1,1,0.9091559829059829,P2
+657,Ambient Enterprises > Ambient Enterprises HCN (HAR),device,Network Element Offline,37.57,861.03,1,1,0.9087857142857143,P2
+220,Ocean Point Terminals (LTB),server,Disk,24.06,247.28,1,1,0.9087219592390396,P3
+134,Hanover Company Azure,network,Client IP conflict detected,15.99,124.25,1,1,0.9085714285714286,P3
+751,HVP SLHV Data Center,network,Rogue AP detected,17.72,122.76,1,1,0.9085631913306332,P3
+228,DYOPATH Oakbrook Terrace,service,Internet Connection is Lost,15.99,195.32,1,1,0.9085091230695949,P3
+182,Ambient Enterprises - Johnson Barrow,server,Windows Event Log,37.6,203.19,1,1,0.9080994407030591,P2
+256,Wedgewood Pharmacy,network,Client IP conflict detected,22.42,105.61,1,1,0.9080574707155588,P3
+684,HVP SLHV Data Center,service,Internet Connection is Lost,21.53,143.59,1,1,0.9075734597146985,P3
+84,Signorelli Company,network,Client IP conflict detected,18.4,34.85,1,1,0.9073235294117648,P3
+226,Wedgewood Pharmacy,network,Uplink status changed,20.73,69.1,1,1,0.9070223782090788,P3
+276,Ambient Enterprises > Ambient Enterprises HCN (HAR),service,VPN remote gateway is Lost,24.58,228.86,1,1,0.9065352505751382,P3
+971,DYOPATH Oakbrook Terrace,device,Network Element Offline,59.81,531.86,1,1,0.9058759968102074,P2
+95,Ocean Point Terminals (LTB),device,Network Element Offline,20.53,530.0,1,1,0.9056203142626563,P3
+237,Wyffels,server,Windows Event Log,27.17,281.54,1,1,0.9050081188397421,P3
+324,Ocean Point Terminals (LTB),service,VPN remote gateway is Lost,6.35,219.95,1,1,0.9043979348464913,P4
+592,HVP SLHV Data Center,device,Network Element Offline,28.32,624.05,1,1,0.9039001490035703,P3
+428,Ambient Enterprises,device,Access Point Offline,54.58,355.06,1,1,0.903899470899471,P2
+859,Ambient Enterprises DMG San Luis Obispo,service,VPN remote gateway is Lost,28.64,168.83,1,1,0.9037966090554214,P3
+103,Ocean Point Terminals (LTB),network,VPN connectivity changed,8.05,133.52,1,1,0.9037718774613438,P4
+229,Wedgewood Pharmacy,service,VPN remote gateway is Lost,16.88,219.36,1,1,0.9033833565626687,P3
+959,Hanover Company Azure,interface,Interface Status Mismatch,41.95,122.65,1,1,0.9031839722777221,P2
+669,HVP SLHV Data Center,server,Memory,15.89,248.83,1,1,0.9027765419104705,P3
+431,DYOPATH Oakbrook Terrace,network,Rogue AP detected,19.8,54.28,1,1,0.9020860781730348,P3
+597,Ambient Enterprises DMG San Luis Obispo,device,Access Point Offline,33.29,555.79,1,1,0.9017160325055064,P2
+75,Signorelli Company,device,Access Point Offline,73.78,555.39,1,1,0.9016538461538461,P1
+547,Ambient Enterprises > Ambient Enterprises HCN (HAR),network,Client IP conflict detected,8.3,154.22,1,1,0.9015567765567765,P4
+907,HVP SLHV Data Center,server,Windows Event Log,36.88,151.66,1,1,0.901452313196592,P2
+887,HVP SLHV Data Center,device,Network Element Offline,55.04,425.19,1,1,0.9014157186843523,P2
+360,Ambient Enterprises DMG San Luis Obispo,server,Windows Event Log,32.05,48.36,1,1,0.9013784705632532,P2
+328,Wyffels,server,Disk,41.47,224.29,1,1,0.9012065081181214,P2
+504,Hanover Company Azure,network,Rogue AP detected,22.21,55.02,1,1,0.9010593512767424,P3
+232,HVP SLHV Data Center,service,Internet Connection is Lost,29.11,145.88,1,1,0.9007941887945811,P3
+878,Wedgewood Pharmacy,network,Uplink status changed,16.19,146.82,1,1,0.9007501435762305,P3
+683,Wyffels,network,VPN connectivity changed,15.92,73.91,1,1,0.9005916285213271,P3
+266,Ambient Enterprises DMG San Luis Obispo,server,Disk,27.34,320.88,1,1,0.9003757381731355,P3
+931,Ambient Enterprises,server,Windows Event Log,32.09,86.49,1,1,0.9002086975524475,P2
+50,Wedgewood Pharmacy,device,Access Point Offline,47.28,694.85,1,1,0.8999448531316478,P2
+973,Ambient Enterprises - Johnson Barrow,server,Disk,32.38,211.18,1,1,0.8992875319004457,P2
+654,Wyffels,server,Windows Event Log,23.45,286.01,1,1,0.8990015398314464,P3
+115,DYOPATH Oakbrook Terrace,network,Rogue AP detected,9.67,143.47,1,1,0.8989275491949911,P4
+633,DYOPATH Oakbrook Terrace,network,Uplink status changed,15.24,146.0,1,1,0.8981953601953602,P3
+109,HVP SLHV Data Center,server,Windows Event Log,39.85,127.38,1,1,0.8981687291144528,P2
+847,Hanover Company Azure,server,CPU,44.65,158.77,1,1,0.8981202698204104,P2
+203,HVP SLHV Data Center,service,Internet Connection is Lost,21.52,126.28,1,1,0.8979777669509157,P3
+491,DYOPATH Oakbrook Terrace,network,Rogue AP detected,8.96,131.92,1,1,0.8978036175710593,P4
+756,HVP SLHV Data Center,interface,Interface Status Mismatch,43.25,374.02,1,1,0.8977805433123038,P2
+89,Wyffels,service,VPN remote gateway is Lost,18.94,185.0,1,1,0.8976332106199106,P3
+252,Ambient Enterprises - Johnson Barrow,service,Internet Connection is Lost,16.51,223.28,1,1,0.897547587216705,P3
+981,Ambient Enterprises,service,VPN remote gateway is Lost,34.17,184.36,1,1,0.8969468524251806,P2
+846,Hanover Company Azure,service,VPN remote gateway is Lost,19.18,249.2,1,1,0.8967640760841451,P3
+30,Ocean Point Terminals (LTB),server,Memory,38.22,384.37,1,1,0.8967383449883449,P2
+474,Signorelli Company,device,Access Point Offline,53.09,674.61,1,1,0.8967260056196392,P2
+132,Ambient Enterprises,network,VPN connectivity changed,11.97,154.03,1,1,0.8964141414141414,P3
+701,HVP SLHV Data Center,network,VPN connectivity changed,12.14,175.4,1,1,0.8963400009228498,P3
+972,Ambient Enterprises > Ambient Enterprises HCN (HAR),server,Memory,12.88,276.43,1,1,0.8960869565217391,P3
+941,Signorelli Company,service,VPN remote gateway is Lost,19.52,220.6,1,1,0.8959794205698421,P3
+605,Ambient Enterprises DMG San Luis Obispo,network,Uplink status changed,20.74,107.6,1,1,0.8957511630739252,P3
+46,Wyffels,service,Internet Connection is Lost,28.13,287.37,1,1,0.8956628197991506,P3
+436,Signorelli Company,server,CPU,37.56,47.56,1,1,0.8956458034718905,P2
+593,HVP SLHV Data Center,service,VPN remote gateway is Lost,24.89,207.78,1,1,0.8953661851892513,P3
+278,Hanover Company Azure,device,Access Point Offline,73.61,225.98,1,1,0.8952574898785426,P1
+623,Ambient Enterprises > Ambient Enterprises HCN (HAR),server,Memory,36.73,69.45,1,1,0.8951342821937787,P2
+927,Ocean Point Terminals (LTB),interface,Interface Status Mismatch,36.36,200.84,1,1,0.8950176815937687,P2
+852,Hanover Company Azure,device,Network Element Offline,58.98,357.39,1,1,0.8948989968794536,P2
+472,Wedgewood Pharmacy,network,Rogue AP detected,11.14,149.26,1,1,0.8948313953488374,P3
+670,DYOPATH Oakbrook Terrace,server,Windows Event Log,47.97,233.52,1,1,0.8945685876623376,P2
+131,Hanover Company Azure,device,Network Element Offline,49.45,283.08,1,1,0.894293599257885,P2
+641,Wyffels,server,Connectivity,32.94,61.69,1,1,0.8940294922468836,P2
+191,HVP SLHV Data Center,server,Memory,37.24,162.85,1,1,0.8935319368131869,P2
+725,Signorelli Company,device,Network Element Offline,46.95,337.65,1,1,0.8930016235777106,P2
+929,Ambient Enterprises > Ambient Enterprises HCN (HAR),interface,Interface Status Mismatch,38.65,200.99,1,1,0.8925622773488907,P2
+577,Ambient Enterprises - Johnson Barrow,interface,Interface Status Mismatch,38.55,231.1,1,1,0.8922804478217242,P2
+271,Ambient Enterprises,server,Connectivity,24.68,253.23,1,1,0.8917874497977328,P3
+588,DYOPATH Oakbrook Terrace,server,Disk,27.94,271.4,1,1,0.8914978016866675,P3
+500,Signorelli Company,network,Uplink status changed,12.98,198.71,1,1,0.8910771863514532,P3
+578,Signorelli Company,device,Network Element Offline,43.33,735.1,1,1,0.8905788724294931,P2
+298,Ocean Point Terminals (LTB),server,Windows Event Log,33.74,185.89,1,1,0.8904261828147699,P2
+559,Ambient Enterprises,device,Network Element Offline,54.7,403.99,1,1,0.8900428194993414,P2
+919,HVP SLHV Data Center,server,Memory,25.15,268.1,1,1,0.8899040441853221,P3
+423,DYOPATH Oakbrook Terrace,network,Uplink status changed,18.65,123.32,1,1,0.889375046142488,P3
+3,Ambient Enterprises - Johnson Barrow,service,Internet Connection is Lost,23.34,93.85,1,1,0.8891008682577543,P3
+325,Ambient Enterprises > Ambient Enterprises HCN (HAR),service,Internet Connection is Lost,24.72,142.39,1,1,0.8888650892495354,P3
+856,Wyffels,device,Network Element Offline,41.68,666.72,1,1,0.8888313487338254,P2
+264,HVP SLHV Data Center,device,Access Point Offline,50.24,335.27,1,1,0.8887529975044376,P2
+11,Ambient Enterprises DMG San Luis Obispo,service,VPN remote gateway is Lost,9.5,208.71,1,1,0.8886583184257603,P4
+371,Ambient Enterprises DMG San Luis Obispo,network,Uplink status changed,5.82,161.58,1,1,0.887707052300581,P4
+183,HVP SLHV Data Center,network,Rogue AP detected,14.46,133.99,1,1,0.88705694692904,P3
+563,Ambient Enterprises DMG San Luis Obispo,server,Memory,41.15,280.16,1,1,0.8869796650717703,P2
+1,Ocean Point Terminals (LTB),service,Internet Connection is Lost,17.52,182.27,1,1,0.8867093153679174,P3
+911,Ambient Enterprises > Ambient Enterprises HCN (HAR),service,Internet Connection is Lost,26.8,178.34,1,1,0.8866445326312328,P3
+789,Ambient Enterprises - Johnson Barrow,service,Internet Connection is Lost,26.94,61.66,1,1,0.8864283339724632,P3
+761,Hanover Company Azure,server,CPU,20.7,300.72,1,1,0.8863028566281221,P3
+319,Ambient Enterprises,server,Disk,38.24,134.56,1,1,0.8859223717523446,P2
+738,Signorelli Company,interface,Interface Status Mismatch,38.7,167.27,1,1,0.8859052559282823,P2
+969,Wedgewood Pharmacy,interface,Interface Status Mismatch,38.29,58.05,1,1,0.8858112467242901,P2
+100,Wedgewood Pharmacy,device,Network Element Offline,65.48,386.82,1,1,0.8857652150798604,P1
+334,Hanover Company Azure,interface,Interface Status Mismatch,15.08,405.25,1,1,0.8856720882061663,P3
+674,HVP SLHV Data Center,network,Uplink status changed,19.69,76.41,1,1,0.8855150470086843,P3
+469,Wedgewood Pharmacy,interface,Interface Status Mismatch,16.01,293.68,1,1,0.8854033122020738,P3
+628,Ocean Point Terminals (LTB),network,VPN connectivity changed,12.39,130.22,1,1,0.8850129870129869,P3
+398,Ambient Enterprises - Johnson Barrow,server,Connectivity,33.74,203.16,1,1,0.8849601175606255,P2
+272,Wedgewood Pharmacy,service,VPN remote gateway is Lost,27.35,130.68,1,1,0.8848108268867368,P3
+696,Ambient Enterprises - Johnson Barrow,network,Uplink status changed,22.5,62.45,1,1,0.8839134732012282,P3
+177,Ambient Enterprises,network,Rogue AP detected,19.92,155.23,1,1,0.883404924760602,P3
+754,HVP SLHV Data Center,device,Access Point Offline,32.77,825.19,1,1,0.8831757715968243,P2
+281,Ambient Enterprises > Ambient Enterprises HCN (HAR),network,Uplink status changed,15.05,176.26,1,1,0.8830374396135267,P3
+664,Ambient Enterprises,device,Access Point Offline,62.09,304.35,1,1,0.8829689440993789,P1
+928,Hanover Company Azure,network,Client IP conflict detected,10.57,121.51,1,1,0.8827777777777777,P3
+800,Signorelli Company,service,VPN remote gateway is Lost,12.18,206.5,1,1,0.8827756695208739,P3
+510,Signorelli Company,server,Agent Status,28.72,277.7,1,1,0.8824726680527283,P3
+939,Ambient Enterprises DMG San Luis Obispo,device,Network Element Offline,62.47,305.78,1,1,0.8824372484810226,P1
+217,Ambient Enterprises > Ambient Enterprises HCN (HAR),server,Memory,28.18,266.55,1,1,0.8815613553113554,P3
+329,Ocean Point Terminals (LTB),device,Access Point Offline,68.32,464.45,1,1,0.8815348996391887,P1
+891,Signorelli Company,service,Internet Connection is Lost,24.1,259.36,1,1,0.8813366686448499,P3
+944,Ambient Enterprises,service,Internet Connection is Lost,24.59,175.29,1,1,0.8813211209198252,P3
+257,Wedgewood Pharmacy,server,CPU,51.06,185.71,1,1,0.8806976137897189,P2
+114,Hanover Company Azure,device,Network Element Offline,53.85,345.69,1,1,0.8806640391091599,P2
+277,Signorelli Company,service,VPN remote gateway is Lost,20.3,157.8,1,1,0.8797917492933921,P3
+991,Hanover Company Azure,service,Internet Connection is Lost,25.74,165.12,1,1,0.8796375415562621,P3
+424,Hanover Company Azure,device,Access Point Offline,37.21,583.51,1,1,0.8792737674225088,P2
+263,Signorelli Company,server,Memory,25.74,249.86,1,1,0.878786940466405,P3
+463,Ambient Enterprises,server,Windows Event Log,41.85,133.98,1,1,0.8783719013077566,P2
+564,Signorelli Company,server,Disk,28.86,268.06,1,1,0.8780642092481574,P3
+595,Wedgewood Pharmacy,service,Internet Connection is Lost,23.25,109.69,1,1,0.8779392490869807,P3
+93,Wyffels,service,VPN remote gateway is Lost,21.42,152.45,1,1,0.8773035844482461,P3
+561,Hanover Company Azure,server,Windows Event Log,33.75,195.24,1,1,0.876718474812225,P2
+40,Wedgewood Pharmacy,network,Uplink status changed,19.31,100.81,1,1,0.8766702898550724,P3
+88,Wyffels,device,Network Element Offline,49.13,405.98,1,1,0.8758899101323475,P2
+77,Ambient Enterprises,server,Connectivity,34.0,162.41,1,1,0.8746302142672593,P2
+41,Ambient Enterprises,service,VPN remote gateway is Lost,11.14,217.36,1,1,0.8743876298439772,P3
+138,Ambient Enterprises > Ambient Enterprises HCN (HAR),network,VPN connectivity changed,20.12,155.74,1,1,0.8743644417597907,P3
+866,DYOPATH Oakbrook Terrace,server,CPU,28.28,305.16,1,1,0.872195054945055,P3
+140,Wedgewood Pharmacy,network,Rogue AP detected,12.15,150.07,1,1,0.8717278322452741,P3
+790,Hanover Company Azure,network,Rogue AP detected,18.28,139.82,1,1,0.8712747252747252,P3
+694,Hanover Company Azure,server,Memory,48.1,140.2,1,1,0.8711391101789246,P2
+719,Signorelli Company,network,Rogue AP detected,11.79,121.07,1,1,0.8707710906664395,P3
+296,Ambient Enterprises DMG San Luis Obispo,device,Network Element Offline,46.66,56.66,1,1,0.87,P2
+861,Ambient Enterprises DMG San Luis Obispo,server,Connectivity,31.16,193.95,1,1,0.8699932943658064,P2
+720,HVP SLHV Data Center,server,Memory,28.5,245.96,1,1,0.8698279220779219,P3
+260,Ambient Enterprises DMG San Luis Obispo,network,Uplink status changed,16.92,209.54,1,1,0.8697619047619046,P3
+338,Ocean Point Terminals (LTB),device,Network Element Offline,65.84,308.06,1,1,0.869429905955238,P1
+42,Signorelli Company,server,Connectivity,25.82,271.36,1,1,0.8691728003757048,P3
+766,Ambient Enterprises,device,Network Element Offline,48.42,405.78,1,1,0.8687011104837192,P2
+73,Ambient Enterprises - Johnson Barrow,server,Windows Event Log,39.7,175.85,1,1,0.8682522202641624,P2
+617,Ambient Enterprises - Johnson Barrow,server,Connectivity,36.55,77.11,1,1,0.8681999331615238,P2
+737,Ambient Enterprises - Johnson Barrow,server,Memory,30.7,158.66,1,1,0.8679402221777078,P2
+994,Ocean Point Terminals (LTB),network,Uplink status changed,14.59,120.34,1,1,0.8675661873394455,P3
+156,Ambient Enterprises > Ambient Enterprises HCN (HAR),network,Uplink status changed,24.84,144.64,1,1,0.8673088071348941,P3
+842,Wedgewood Pharmacy,device,Network Element Offline,17.17,485.68,1,1,0.8672885872297635,P3
+699,Ocean Point Terminals (LTB),device,Network Element Offline,31.42,699.01,1,1,0.8670681818181818,P2
+844,Hanover Company Azure,network,Rogue AP detected,9.32,123.67,1,1,0.8665743745918164,P4
+17,Signorelli Company,device,Network Element Offline,29.18,583.21,1,1,0.8662815107597717,P3
+82,Hanover Company Azure,network,Rogue AP detected,16.29,100.33,1,1,0.8661730935127675,P3
+292,HVP SLHV Data Center,device,Access Point Offline,43.07,510.41,1,1,0.8660982814178301,P2
+202,Signorelli Company,device,Access Point Offline,49.26,419.09,1,1,0.8649424214130097,P2
+32,Ambient Enterprises,device,Access Point Offline,62.33,334.51,1,1,0.8641595311546,P1
+254,Ambient Enterprises,interface,Interface Status Mismatch,30.2,198.12,1,1,0.8641466954355669,P2
+942,Signorelli Company,service,VPN remote gateway is Lost,27.24,78.97,1,1,0.8639221033951335,P3
+239,Ambient Enterprises,network,Rogue AP detected,18.42,108.09,1,1,0.8630555555555556,P3
+312,Signorelli Company,server,Disk,30.89,57.26,1,1,0.8628937937062936,P2
+144,Hanover Company Azure,server,CPU,25.26,243.51,1,1,0.8620743421229048,P3
+713,Hanover Company Azure,interface,Interface Status Mismatch,35.51,215.19,1,1,0.8617170392536525,P2
+392,Signorelli Company,server,Connectivity,31.3,169.3,1,1,0.86158487969283,P2
+204,Ambient Enterprises > Ambient Enterprises HCN (HAR),network,Client IP conflict detected,15.15,104.61,1,1,0.8605049628547069,P3
+986,Wyffels,interface,Interface Status Mismatch,43.7,122.21,1,1,0.8601812020394383,P2
+418,Ocean Point Terminals (LTB),device,Network Element Offline,51.76,173.45,1,1,0.8597133758054811,P2
+354,Ambient Enterprises,device,Access Point Offline,13.5,642.86,1,1,0.8595029239766082,P3
+306,Hanover Company Azure,device,Network Element Offline,45.83,474.74,1,1,0.8592938596491229,P2
+466,HVP SLHV Data Center,service,Internet Connection is Lost,14.06,218.06,1,1,0.8591804376123997,P3
+647,Ambient Enterprises > Ambient Enterprises HCN (HAR),server,Connectivity,26.55,308.0,1,1,0.8584173757277205,P3
+600,Hanover Company Azure,network,Client IP conflict detected,15.49,129.01,1,1,0.8582380952380951,P3
+697,Signorelli Company,server,CPU,26.41,248.67,1,1,0.8573599010116868,P3
+337,Ambient Enterprises > Ambient Enterprises HCN (HAR),device,Access Point Offline,49.23,925.05,1,1,0.8571335131306528,P2
+377,Ocean Point Terminals (LTB),server,Windows Event Log,39.3,139.49,1,1,0.8571305606382666,P2
+901,Wedgewood Pharmacy,service,Internet Connection is Lost,13.86,232.89,1,1,0.8560685802870048,P3
+464,Ambient Enterprises,server,Agent Status,34.85,111.53,1,1,0.8557735724923226,P2
+45,Ambient Enterprises > Ambient Enterprises HCN (HAR),service,VPN remote gateway is Lost,37.49,120.99,1,1,0.8552228008603564,P2
+273,Wedgewood Pharmacy,service,Internet Connection is Lost,22.29,160.14,1,1,0.8545574408906056,P3
+62,Hanover Company Azure,device,Access Point Offline,34.43,548.77,1,1,0.8542719843769957,P2
+391,DYOPATH Oakbrook Terrace,interface,Interface Status Mismatch,28.56,257.25,1,1,0.853927079338925,P3
+923,HVP SLHV Data Center,service,Internet Connection is Lost,19.96,135.28,0,1,0.853252635655164,P3
+83,Ocean Point Terminals (LTB),server,Memory,37.43,68.04,1,1,0.8528302528897495,P2
+951,Ambient Enterprises > Ambient Enterprises HCN (HAR),device,Network Element Offline,26.61,832.83,1,1,0.8526319290465633,P3
+560,Hanover Company Azure,device,Network Element Offline,36.43,491.56,1,1,0.8517303921568627,P2
+903,Ambient Enterprises - Johnson Barrow,network,Client IP conflict detected,12.32,123.7,1,1,0.8516341026544516,P3
+525,Ambient Enterprises - Johnson Barrow,service,Internet Connection is Lost,26.33,213.27,1,1,0.8515455000232677,P3
+196,Hanover Company Azure,device,Network Element Offline,62.17,358.64,1,1,0.8515385020522322,P1
+402,HVP SLHV Data Center,server,Memory,33.62,172.12,1,1,0.8506122489416253,P2
+721,Ambient Enterprises - Johnson Barrow,server,Windows Event Log,37.82,78.58,1,1,0.8505930007397257,P2
+624,Ambient Enterprises DMG San Luis Obispo,server,Disk,33.7,141.86,1,1,0.8482080263367449,P2
+881,Wyffels,service,VPN remote gateway is Lost,28.74,113.33,1,1,0.8481058286555729,P3
+387,Ambient Enterprises,server,Windows Event Log,40.81,134.75,1,1,0.8479685585096504,P2
+687,HVP SLHV Data Center,service,Internet Connection is Lost,14.99,217.4,1,1,0.8476247514180555,P3
+822,DYOPATH Oakbrook Terrace,device,Network Element Offline,39.19,601.74,1,1,0.847350067613252,P2
+998,Ambient Enterprises > Ambient Enterprises HCN (HAR),interface,Interface Status Mismatch,33.3,395.89,1,1,0.8455758821716961,P2
+784,Ambient Enterprises - Johnson Barrow,device,Network Element Offline,41.01,768.62,1,1,0.8454318885448915,P2
+267,DYOPATH Oakbrook Terrace,server,Memory,37.93,149.0,1,1,0.8435015808969614,P2
+117,Ocean Point Terminals (LTB),service,VPN remote gateway is Lost,28.03,79.64,1,1,0.8428241443613389,P3
+869,Ambient Enterprises,server,Windows Event Log,12.28,286.5,1,1,0.841275287385706,P3
+269,Wedgewood Pharmacy,service,Internet Connection is Lost,24.76,177.64,1,1,0.839690267335004,P3
+430,DYOPATH Oakbrook Terrace,service,Internet Connection is Lost,20.65,72.51,1,1,0.8392226105243787,P3
+936,DYOPATH Oakbrook Terrace,network,Rogue AP detected,15.68,67.55,1,1,0.8373357919254658,P3
+238,HVP SLHV Data Center,service,Internet Connection is Lost,27.08,85.47,1,1,0.8371823020294045,P3
+529,Ambient Enterprises,server,Agent Status,11.83,317.38,1,1,0.8369424201529465,P3
+214,Wedgewood Pharmacy,network,Uplink status changed,17.45,142.07,1,1,0.8353273431994362,P3
+849,HVP SLHV Data Center,network,Uplink status changed,17.3,27.3,1,1,0.8347870346299053,P3
+736,Signorelli Company,network,Uplink status changed,6.21,157.22,1,1,0.8296244643459001,P4
+586,Ambient Enterprises - Johnson Barrow,device,Network Element Offline,67.13,193.77,1,1,0.8296230283126834,P1
+897,Ocean Point Terminals (LTB),network,Rogue AP detected,16.0,93.8,1,1,0.8291714236054701,P3
+921,Hanover Company Azure,device,Network Element Offline,42.27,714.67,1,1,0.8290001675622554,P2
+895,Ambient Enterprises DMG San Luis Obispo,device,Access Point Offline,40.56,494.28,1,1,0.826493565987569,P2
+718,Ambient Enterprises DMG San Luis Obispo,network,Uplink status changed,11.32,145.5,1,1,0.8252488393249263,P3
+785,Ocean Point Terminals (LTB),network,Uplink status changed,12.77,145.34,1,1,0.8241954243936044,P3
+268,Ambient Enterprises > Ambient Enterprises HCN (HAR),server,Disk,19.62,376.34,1,1,0.8238200869884832,P3
+801,Ambient Enterprises > Ambient Enterprises HCN (HAR),network,Client IP conflict detected,19.37,64.34,1,1,0.8231861471861471,P3
+135,Ambient Enterprises - Johnson Barrow,network,Client IP conflict detected,18.79,110.73,1,1,0.8229733309990663,P3
+741,HVP SLHV Data Center,server,Disk,21.45,245.3,1,1,0.8218912593244562,P3
+839,Ambient Enterprises,server,Connectivity,23.19,252.87,1,1,0.8218259727693689,P3
+858,Signorelli Company,device,Access Point Offline,62.26,423.62,1,1,0.8217938596491227,P1
+724,Wedgewood Pharmacy,server,Connectivity,16.62,249.42,1,1,0.8216980676328502,P3
+206,Ambient Enterprises DMG San Luis Obispo,server,Disk,25.78,270.74,1,1,0.8200019950909657,P3
+704,Hanover Company Azure,interface,Interface Status Mismatch,18.97,323.2,1,1,0.8186343441355974,P3
+284,Ambient Enterprises,network,Uplink status changed,16.63,51.81,1,1,0.818322335214279,P3
+655,Signorelli Company,server,CPU,25.21,268.84,1,1,0.8170833333333334,P3
+832,Ambient Enterprises > Ambient Enterprises HCN (HAR),network,Rogue AP detected,25.85,92.85,1,1,0.8137590187590188,P3
+419,Ambient Enterprises > Ambient Enterprises HCN (HAR),server,Memory,39.22,218.14,1,1,0.8137525807525807,P2
+4,Wyffels,device,Network Element Offline,40.34,565.39,1,1,0.8116800709733042,P2
+515,Hanover Company Azure,network,Uplink status changed,15.71,76.2,1,1,0.8073469289164942,P3
+646,HVP SLHV Data Center,server,Disk,30.91,40.91,1,1,0.8058836298966733,P2
+635,Hanover Company Azure,server,Disk,35.43,188.23,1,1,0.8051232867331868,P2
+341,HVP SLHV Data Center,service,Internet Connection is Lost,19.73,159.7,0,1,0.8050277116765636,P3
+671,Ambient Enterprises > Ambient Enterprises HCN (HAR),network,Rogue AP detected,17.28,34.87,1,1,0.8040909090909091,P3
+739,Ocean Point Terminals (LTB),network,VPN connectivity changed,16.03,109.59,1,1,0.8038958916900093,P3
+599,Signorelli Company,device,Access Point Offline,53.27,578.17,1,1,0.8021303258145365,P2
+234,Hanover Company Azure,server,Disk,15.98,346.68,1,1,0.8007373111830343,P3
+503,Ambient Enterprises > Ambient Enterprises HCN (HAR),network,Rogue AP detected,8.66,120.27,1,1,0.7958023681744613,P4
+811,DYOPATH Oakbrook Terrace,device,Network Element Offline,40.7,582.89,1,1,0.7951907563150755,P2
+372,Ambient Enterprises,network,VPN connectivity changed,12.0,137.58,1,1,0.7932227564102564,P3
+39,Ambient Enterprises - Johnson Barrow,interface,Interface Status Mismatch,15.38,359.24,1,1,0.7925902068843146,P3
+673,HVP SLHV Data Center,server,Connectivity,27.69,246.05,1,1,0.7925630936432936,P3
+187,Ambient Enterprises DMG San Luis Obispo,server,Memory,33.13,114.71,1,1,0.7917967522217378,P2
+212,HVP SLHV Data Center,network,Uplink status changed,12.54,193.53,1,1,0.7891756278072001,P3
+759,DYOPATH Oakbrook Terrace,service,VPN remote gateway is Lost,24.03,104.71,1,1,0.7884794106297025,P3
+225,Hanover Company Azure,service,VPN remote gateway is Lost,26.47,130.14,1,1,0.7877561397117787,P3
+521,Ocean Point Terminals (LTB),server,Connectivity,10.86,421.65,1,1,0.78566296613379,P3
+5,HVP SLHV Data Center,server,Windows Event Log,32.28,174.87,1,1,0.7852729816966659,P2
+91,Ocean Point Terminals (LTB),network,Rogue AP detected,10.62,140.18,1,1,0.7837819097681331,P3
+949,Ambient Enterprises > Ambient Enterprises HCN (HAR),device,Access Point Offline,37.21,744.84,1,1,0.7821666666666667,P2
+693,Ambient Enterprises DMG San Luis Obispo,device,Network Element Offline,27.21,663.09,1,1,0.781142857142857,P3
+978,Hanover Company Azure,network,Rogue AP detected,15.72,111.62,1,1,0.7809245178542165,P3
+975,HVP SLHV Data Center,server,Windows Event Log,21.0,284.24,1,1,0.7804029304029302,P3
+299,Ocean Point Terminals (LTB),service,Internet Connection is Lost,22.42,135.19,1,1,0.7784181547114588,P3
+222,Ambient Enterprises - Johnson Barrow,network,Client IP conflict detected,5.0,120.37,1,1,0.7757609710550887,P4
+886,Ocean Point Terminals (LTB),server,Agent Status,36.08,100.77,1,1,0.774999970138557,P2
+248,Ambient Enterprises > Ambient Enterprises HCN (HAR),device,Access Point Offline,78.03,88.03,1,1,0.7711754385964912,P1
+753,DYOPATH Oakbrook Terrace,server,CPU,30.44,40.44,1,1,0.766639006323789,P2
+943,Signorelli Company,server,Disk,28.26,239.65,0,1,0.7661902490569784,P3
+884,Ambient Enterprises - Johnson Barrow,server,Windows Event Log,32.58,225.75,1,1,0.7659895821268105,P2
+765,Ambient Enterprises - Johnson Barrow,server,Connectivity,57.04,99.57,1,1,0.7637795531674209,P2
+351,HVP SLHV Data Center,server,Memory,36.07,105.74,1,1,0.7577395833333332,P2
+682,Ambient Enterprises DMG San Luis Obispo,server,Disk,17.9,268.36,1,1,0.7553727932634011,P3
+471,Ocean Point Terminals (LTB),service,Internet Connection is Lost,17.78,177.65,0,1,0.753390492159647,P3
+326,HVP SLHV Data Center,server,CPU,13.19,357.96,1,1,0.7503033819628646,P3
+726,Signorelli Company,server,Memory,31.17,211.87,1,1,0.749428819067406,P2
+493,Ambient Enterprises,network,Rogue AP detected,5.85,158.51,1,1,0.7475618309339239,P4
+808,Ambient Enterprises DMG San Luis Obispo,network,Rogue AP detected,15.09,82.25,1,1,0.7471843412914488,P3
+999,Wyffels,service,Internet Connection is Lost,20.86,77.86,1,1,0.734591144689461,P3
+48,Wedgewood Pharmacy,service,VPN remote gateway is Lost,24.26,68.99,1,1,0.7333333333333333,P3
+223,Ambient Enterprises DMG San Luis Obispo,network,Rogue AP detected,16.13,89.89,1,1,0.7264902815165276,P3
+938,HVP SLHV Data Center,server,Agent Status,33.26,43.26,1,1,0.7184787087912088,P2
+348,Hanover Company Azure,server,Disk,31.45,93.82,1,1,0.7180995886661647,P2
+812,Ambient Enterprises > Ambient Enterprises HCN (HAR),service,Internet Connection is Lost,30.97,161.26,1,1,0.7179166666666665,P2
+553,Wedgewood Pharmacy,network,VPN connectivity changed,19.15,29.15,1,1,0.7135952380952381,P3
+364,Ambient Enterprises > Ambient Enterprises HCN (HAR),device,Access Point Offline,18.78,535.08,1,1,0.7087441380935547,P3
+922,Hanover Company Azure,device,Network Element Offline,67.58,371.63,1,1,0.7058973588863462,P1
+159,Signorelli Company,device,Access Point Offline,28.33,666.18,1,1,0.7013771114506409,P3
+677,Wyffels,network,Uplink status changed,16.33,73.1,1,1,0.6975,P3
+68,HVP SLHV Data Center,server,Disk,30.11,178.71,1,1,0.6906180526185763,P2
+848,DYOPATH Oakbrook Terrace,server,Disk,5.63,332.36,1,1,0.6889479414430351,P4
+149,Ambient Enterprises DMG San Luis Obispo,network,VPN connectivity changed,10.36,126.65,1,1,0.6882935923056394,P3
+22,Ocean Point Terminals (LTB),network,Uplink status changed,17.02,90.39,1,1,0.6858096348096347,P3
+259,DYOPATH Oakbrook Terrace,network,Uplink status changed,22.63,51.14,1,1,0.683705774960282,P3
+585,Ocean Point Terminals (LTB),network,VPN connectivity changed,14.99,81.49,0,1,0.6600828301995284,P3
+311,DYOPATH Oakbrook Terrace,service,VPN remote gateway is Lost,6.16,168.31,0,1,0.6599348543897964,P4
+601,Ambient Enterprises - Johnson Barrow,network,Client IP conflict detected,14.69,124.13,1,1,0.6577471405228758,P3
+321,Wedgewood Pharmacy,device,Network Element Offline,32.96,341.76,0,1,0.6541540404040405,P2
+127,Ocean Point Terminals (LTB),server,Connectivity,32.9,42.9,1,1,0.6352601519856955,P2
+70,Wyffels,service,VPN remote gateway is Lost,16.81,83.75,0,1,0.628650099328589,P3
+20,Ambient Enterprises DMG San Luis Obispo,network,Rogue AP detected,12.71,120.4,1,1,0.6202257098157324,P3
+476,Ambient Enterprises,network,Rogue AP detected,7.62,120.62,1,1,0.6123076923076923,P4
+211,Ambient Enterprises - Johnson Barrow,device,Access Point Offline,40.24,446.55,0,1,0.6026391201391202,P2
+446,Hanover Company Azure,service,Internet Connection is Lost,21.31,100.39,1,1,0.6025043546107943,P3
+883,Ambient Enterprises - Johnson Barrow,network,VPN connectivity changed,9.61,120.47,1,1,0.5986363636363637,P4
+638,Wyffels,service,Internet Connection is Lost,20.47,44.99,1,1,0.5980070425332885,P3
+180,Ambient Enterprises > Ambient Enterprises HCN (HAR),server,Disk,17.9,197.9,0,1,0.5781686031867953,P3
+265,Ambient Enterprises - Johnson Barrow,device,Network Element Offline,38.1,441.66,0,1,0.5740068379333086,P2
+336,Signorelli Company,device,Access Point Offline,52.0,299.52,1,1,0.5720476190476191,P2
+315,Signorelli Company,service,VPN remote gateway is Lost,21.06,57.09,1,1,0.5652856652454176,P3
+236,Ambient Enterprises > Ambient Enterprises HCN (HAR),service,VPN remote gateway is Lost,17.84,27.84,0,1,0.5414521131042869,P3
+188,Ambient Enterprises > Ambient Enterprises HCN (HAR),service,Internet Connection is Lost,10.82,136.9,0,1,0.5188313763145067,P3
+556,Ambient Enterprises - Johnson Barrow,server,Agent Status,11.37,217.96,0,1,0.5097017543859649,P3
+768,HVP SLHV Data Center,device,Network Element Offline,23.74,424.73,0,1,0.5081250779590719,P3
+622,Ambient Enterprises DMG San Luis Obispo,server,Agent Status,12.01,192.43,0,1,0.5011210317460317,P3
+997,Ambient Enterprises,server,Windows Event Log,27.83,192.91,0,0,0.4993926305784857,P3
+833,Ambient Enterprises - Johnson Barrow,server,CPU,25.8,181.92,0,0,0.4857472097307902,P3
+519,HVP SLHV Data Center,server,Windows Event Log,14.41,223.47,0,0,0.4837849698610569,P3
+458,Wedgewood Pharmacy,server,Windows Event Log,29.01,158.75,0,0,0.4835411136067105,P3
+799,Ambient Enterprises,server,Disk,20.6,173.46,0,0,0.47580920407028254,P3
+106,Ambient Enterprises > Ambient Enterprises HCN (HAR),server,CPU,27.93,78.83,0,0,0.47567675526228165,P3
+370,Ambient Enterprises > Ambient Enterprises HCN (HAR),device,Network Element Offline,12.86,332.58,0,0,0.47067327599936293,P3
+573,Ambient Enterprises - Johnson Barrow,server,Disk,20.56,195.09,0,0,0.4677972795794216,P3
+984,Ambient Enterprises,server,Memory,27.03,208.64,0,0,0.4545958980794786,P3
+219,DYOPATH Oakbrook Terrace,device,Access Point Offline,27.54,37.54,0,0,0.4528278340080972,P3
+639,Wyffels,server,Windows Event Log,22.84,187.08,0,0,0.4424731844242714,P3
+522,DYOPATH Oakbrook Terrace,server,Connectivity,20.81,214.33,0,0,0.43910362557450994,P3
+357,Signorelli Company,service,VPN remote gateway is Lost,16.13,164.01,0,0,0.4313381671410543,P3
+373,Hanover Company Azure,service,VPN remote gateway is Lost,15.57,154.59,0,0,0.42896577147151854,P3
+717,Ambient Enterprises > Ambient Enterprises HCN (HAR),server,CPU,22.07,180.96,0,0,0.42158781468613105,P3
+67,Wedgewood Pharmacy,server,Agent Status,28.51,38.51,0,0,0.4109370595291648,P3
+175,Ambient Enterprises - Johnson Barrow,server,Connectivity,20.96,151.51,0,0,0.41001258333600993,P3
+427,Wedgewood Pharmacy,service,VPN remote gateway is Lost,17.74,152.25,0,0,0.40460189618658177,P3
+105,Signorelli Company,server,Connectivity,25.52,105.68,0,0,0.4022207703326361,P3
+440,Ambient Enterprises > Ambient Enterprises HCN (HAR),network,VPN connectivity changed,12.93,60.57,0,0,0.3981742424242424,P3
+968,Ambient Enterprises DMG San Luis Obispo,device,Access Point Offline,28.25,467.02,0,0,0.39062626262626265,P3
+627,Ambient Enterprises > Ambient Enterprises HCN (HAR),server,Memory,18.8,124.02,0,0,0.3890686405985319,P3
+181,HVP SLHV Data Center,service,Internet Connection is Lost,17.44,165.42,0,0,0.37283114396623274,P3
+834,Hanover Company Azure,service,VPN remote gateway is Lost,18.1,162.79,0,0,0.3706610383349813,P3
+982,Wyffels,service,Internet Connection is Lost,19.89,102.5,0,0,0.36955080204754376,P3
+544,Ambient Enterprises DMG San Luis Obispo,server,Disk,26.33,230.9,0,0,0.3654481618193723,P3
+323,Ambient Enterprises,server,Memory,23.81,115.45,0,0,0.36403154861442916,P3
+579,Ambient Enterprises,server,Memory,17.93,119.7,0,0,0.35973820307108356,P3
+788,Ambient Enterprises DMG San Luis Obispo,service,VPN remote gateway is Lost,19.61,134.68,0,0,0.34482811105308914,P3
+407,Ocean Point Terminals (LTB),device,Network Element Offline,33.16,472.63,0,0,0.3424461419647756,P2
+305,Ambient Enterprises > Ambient Enterprises HCN (HAR),service,Internet Connection is Lost,14.8,160.06,0,0,0.34013837994638974,P3
+589,Ambient Enterprises > Ambient Enterprises HCN (HAR),service,Internet Connection is Lost,18.15,94.73,0,0,0.33404192851403103,P3
+630,DYOPATH Oakbrook Terrace,server,Windows Event Log,18.75,194.05,0,0,0.3298872294710822,P3
+746,Wedgewood Pharmacy,device,Network Element Offline,34.16,474.0,0,0,0.32783370652336175,P2
+570,Wyffels,server,Agent Status,27.31,194.0,0,0,0.32514677535549086,P3
+871,Ambient Enterprises,server,Connectivity,29.5,162.4,0,0,0.32113625099369086,P3
+57,Wedgewood Pharmacy,service,Internet Connection is Lost,8.9,150.12,0,0,0.3150980649537421,P4
+96,Wedgewood Pharmacy,network,Rogue AP detected,9.79,80.58,0,0,0.3138103308176941,P4
+110,Ambient Enterprises,device,Network Element Offline,33.78,467.61,0,0,0.31035379448453215,P2
+970,Wedgewood Pharmacy,server,Memory,26.46,190.45,0,0,0.30528324244677624,P3
+632,Ocean Point Terminals (LTB),device,Access Point Offline,44.02,374.69,0,0,0.3025182252388135,P2
+25,Wedgewood Pharmacy,service,Internet Connection is Lost,14.5,152.54,0,0,0.30202828115037417,P3
+885,Ambient Enterprises,server,Windows Event Log,16.55,208.01,0,0,0.30196366360089183,P3
+925,Ambient Enterprises,server,Windows Event Log,23.84,137.73,0,0,0.30012052907840947,P3
+309,Ambient Enterprises,service,VPN remote gateway is Lost,9.03,157.62,0,0,0.2990112640282522,P4
+435,Ambient Enterprises DMG San Luis Obispo,interface,Interface Status Mismatch,25.97,229.63,0,0,0.29829436654941344,P3
+163,Signorelli Company,device,Access Point Offline,41.37,307.47,0,0,0.294756072931426,P2
+413,Ambient Enterprises - Johnson Barrow,server,Disk,24.55,124.02,0,0,0.290731026125966,P3
+28,Ambient Enterprises > Ambient Enterprises HCN (HAR),interface,Interface Status Mismatch,21.99,71.51,0,0,0.2896102327624067,P3
+513,Signorelli Company,service,VPN remote gateway is Lost,14.69,128.01,0,0,0.28873931623931626,P3
+415,Hanover Company Azure,server,Connectivity,29.89,81.42,0,0,0.28743601280965414,P3
+831,Signorelli Company,device,Access Point Offline,42.26,293.83,0,0,0.28716388020025163,P2
+495,DYOPATH Oakbrook Terrace,interface,Interface Status Mismatch,19.17,238.79,0,0,0.2871352477818109,P3
+104,Signorelli Company,server,CPU,24.36,223.65,0,0,0.2871310326050015,P3
+946,Signorelli Company,service,VPN remote gateway is Lost,18.35,101.92,0,0,0.28554779916821116,P3
+574,Wedgewood Pharmacy,device,Network Element Offline,25.31,449.35,0,0,0.28524972168354523,P3
+449,HVP SLHV Data Center,server,Memory,18.32,229.52,0,0,0.2830044943482444,P3
+952,Ambient Enterprises - Johnson Barrow,network,Client IP conflict detected,14.23,67.86,0,0,0.2783641456582633,P3
+245,Hanover Company Azure,server,CPU,16.79,221.22,0,0,0.2750117025935942,P3
+209,Ambient Enterprises,device,Access Point Offline,35.42,464.85,0,0,0.2738429321796194,P2
+572,Ambient Enterprises - Johnson Barrow,server,CPU,29.75,172.79,0,0,0.27278888434872445,P3
+900,Wyffels,server,Disk,26.47,182.0,0,0,0.2720346945660856,P3
+905,Ambient Enterprises,device,Network Element Offline,39.87,316.65,0,0,0.26659303066162904,P2
+460,Hanover Company Azure,network,VPN connectivity changed,11.24,77.64,0,0,0.26565476190476195,P3
+530,Ambient Enterprises,device,Network Element Offline,29.14,411.03,0,0,0.26402959916023827,P3
+663,Ambient Enterprises > Ambient Enterprises HCN (HAR),device,Network Element Offline,36.26,191.15,0,0,0.26344647502256197,P2
+607,Ambient Enterprises > Ambient Enterprises HCN (HAR),device,Network Element Offline,40.97,267.38,0,0,0.2623042162553201,P2
+809,Ambient Enterprises DMG San Luis Obispo,server,Disk,24.96,208.67,0,0,0.25932891507664135,P3
+749,Wedgewood Pharmacy,server,Memory,26.48,218.63,0,0,0.25778918124482036,P3
+802,Ocean Point Terminals (LTB),device,Network Element Offline,32.16,450.56,0,0,0.2575132096594272,P2
+612,HVP SLHV Data Center,interface,Interface Status Mismatch,29.23,181.25,0,0,0.25408811327670544,P3
+482,Ambient Enterprises - Johnson Barrow,server,Agent Status,29.17,167.23,0,0,0.25369328515205614,P3
+728,Signorelli Company,service,Internet Connection is Lost,19.96,29.96,0,0,0.2516449605605952,P3
+580,Ambient Enterprises DMG San Luis Obispo,server,Connectivity,28.44,190.43,0,0,0.2500215205281277,P3
+417,Ocean Point Terminals (LTB),service,VPN remote gateway is Lost,16.01,110.96,0,0,0.2499773895425252,P3
+487,Wyffels,device,Access Point Offline,5.0,310.41,0,0,0.2496026565080274,P4
+9,Ambient Enterprises > Ambient Enterprises HCN (HAR),interface,Interface Status Mismatch,23.21,181.82,0,0,0.2484182948323695,P3
+581,Wedgewood Pharmacy,device,Network Element Offline,29.16,450.86,0,0,0.24800741602421886,P3
+168,Hanover Company Azure,server,CPU,29.65,150.75,0,0,0.2476287221336447,P3
+116,Ambient Enterprises > Ambient Enterprises HCN (HAR),server,Memory,25.29,149.74,0,0,0.2441365276879983,P3
+473,Wedgewood Pharmacy,server,Windows Event Log,27.88,218.18,0,0,0.24409395168323733,P3
+819,Signorelli Company,device,Access Point Offline,36.85,303.17,0,0,0.24403941901430773,P2
+505,Wedgewood Pharmacy,server,Agent Status,14.75,203.57,0,0,0.2434375,P3
+445,Ambient Enterprises - Johnson Barrow,device,Network Element Offline,43.46,419.47,0,0,0.2433897672375933,P2
+179,Ambient Enterprises - Johnson Barrow,device,Access Point Offline,35.65,269.72,0,0,0.242019535578763,P2
+770,HVP SLHV Data Center,network,Rogue AP detected,10.39,22.86,0,0,0.2407035330261137,P3
+422,Ocean Point Terminals (LTB),server,CPU,5.0,137.88,0,0,0.23943910256410253,P4
+342,HVP SLHV Data Center,device,Network Element Offline,39.26,407.16,0,0,0.238933600308627,P2
+14,DYOPATH Oakbrook Terrace,server,Windows Event Log,15.58,213.51,0,0,0.23828659188034187,P3
+904,Ocean Point Terminals (LTB),device,Network Element Offline,42.46,188.05,0,0,0.23763178419447764,P2
+678,Signorelli Company,server,Agent Status,23.54,162.02,0,0,0.23660597056099153,P3
+286,Hanover Company Azure,server,Connectivity,23.86,157.85,0,0,0.23630566725013608,P3
+497,HVP SLHV Data Center,server,Disk,17.16,123.99,0,0,0.23628878014289734,P3
+148,Ambient Enterprises,device,Network Element Offline,33.34,343.5,0,0,0.23622565597995654,P2
+59,Ambient Enterprises DMG San Luis Obispo,server,Agent Status,29.5,144.82,0,0,0.23611608638074272,P3
+932,Signorelli Company,service,Internet Connection is Lost,18.2,29.55,0,0,0.2360075600784033,P3
+224,Wedgewood Pharmacy,server,Connectivity,24.69,148.88,0,0,0.23520740930161285,P3
+27,Wedgewood Pharmacy,interface,Interface Status Mismatch,26.91,233.52,0,0,0.2323451161721441,P3
+350,Ambient Enterprises > Ambient Enterprises HCN (HAR),device,Access Point Offline,37.5,288.96,0,0,0.23094592327488747,P2
+915,Wedgewood Pharmacy,device,Access Point Offline,44.07,458.28,0,0,0.2292792580478606,P2
+313,Signorelli Company,interface,Interface Status Mismatch,24.26,202.94,0,0,0.22919042844410492,P3
+414,DYOPATH Oakbrook Terrace,device,Access Point Offline,39.24,372.06,0,0,0.2285622482861098,P2
+34,Ambient Enterprises - Johnson Barrow,service,VPN remote gateway is Lost,10.48,113.19,0,0,0.22718881360185708,P3
+362,HVP SLHV Data Center,network,Rogue AP detected,9.13,87.94,0,0,0.22708695652173916,P4
+475,Ambient Enterprises > Ambient Enterprises HCN (HAR),server,CPU,27.11,184.04,0,0,0.2249549843045879,P3
+119,Ambient Enterprises DMG San Luis Obispo,service,VPN remote gateway is Lost,15.39,84.76,0,0,0.22366010949556606,P3
+330,Ocean Point Terminals (LTB),network,Rogue AP detected,11.13,115.17,0,0,0.22347535842293909,P3
+261,Ambient Enterprises - Johnson Barrow,server,Windows Event Log,9.83,160.52,0,0,0.2224221334221334,P4
+860,HVP SLHV Data Center,network,Rogue AP detected,13.35,100.06,0,0,0.2201634958275399,P3
+787,Ambient Enterprises DMG San Luis Obispo,server,Disk,21.49,140.1,0,0,0.2200880846654095,P3
+477,Ambient Enterprises,network,Rogue AP detected,7.77,60.21,0,0,0.21882783882783882,P4
+958,HVP SLHV Data Center,server,Memory,26.25,114.87,0,0,0.218735150568031,P3
+207,DYOPATH Oakbrook Terrace,server,Memory,29.51,157.53,0,0,0.21808855410893455,P3
+584,Signorelli Company,server,Agent Status,27.5,229.49,0,0,0.2177777362918822,P3
+380,Wyffels,interface,Interface Status Mismatch,21.06,184.41,0,0,0.21712765066187323,P3
+695,Hanover Company Azure,service,VPN remote gateway is Lost,15.44,120.58,0,0,0.21689000683847592,P3
+111,Wyffels,server,Connectivity,28.12,66.29,0,0,0.2168624264234986,P3
+762,Ambient Enterprises - Johnson Barrow,server,Disk,18.68,157.87,0,0,0.21606542119625402,P3
+615,Ocean Point Terminals (LTB),server,Windows Event Log,25.61,201.14,0,0,0.21564304312497884,P3
+386,HVP SLHV Data Center,server,Disk,5.67,107.79,0,0,0.21440033700069386,P4
+393,Wedgewood Pharmacy,network,Rogue AP detected,13.97,75.77,0,0,0.21388573232323235,P3
+18,Ambient Enterprises - Johnson Barrow,server,Windows Event Log,26.82,154.62,0,0,0.21366945311833582,P3
+731,Wedgewood Pharmacy,device,Network Element Offline,25.05,197.16,0,0,0.21364133639349156,P3
+642,Ambient Enterprises - Johnson Barrow,interface,Interface Status Mismatch,25.94,173.31,0,0,0.21357336074343994,P3
+614,Ocean Point Terminals (LTB),device,Network Element Offline,31.21,227.44,0,0,0.21301298701298702,P2
+702,HVP SLHV Data Center,interface,Interface Status Mismatch,13.64,222.7,0,0,0.2127777777777778,P3
+616,Hanover Company Azure,server,Disk,26.19,180.27,0,0,0.2127034363105932,P3
+361,Ambient Enterprises,server,Connectivity,19.93,163.31,0,0,0.21139310995901858,P3
+507,Wyffels,device,Network Element Offline,14.9,325.05,0,0,0.2107326701076701,P3
+137,Wyffels,server,Memory,18.48,64.7,0,0,0.20974415853297843,P3
+123,Wyffels,server,Connectivity,23.6,80.51,0,0,0.20943236442200802,P3
+448,DYOPATH Oakbrook Terrace,network,VPN connectivity changed,13.16,119.23,0,0,0.2093189033189033,P3
+122,Ocean Point Terminals (LTB),service,VPN remote gateway is Lost,15.63,96.23,0,0,0.20791601002187243,P3
+141,Ambient Enterprises - Johnson Barrow,device,Access Point Offline,25.97,383.28,0,0,0.2078482025221156,P3
+835,DYOPATH Oakbrook Terrace,device,Access Point Offline,42.59,416.66,0,0,0.20737693107546046,P2
+496,DYOPATH Oakbrook Terrace,server,Connectivity,24.12,222.9,0,0,0.2069694436464204,P3
+752,Ocean Point Terminals (LTB),network,Rogue AP detected,5.57,92.81,0,0,0.20515873015873015,P4
+587,Hanover Company Azure,server,Disk,27.42,179.89,0,0,0.20479174622605353,P3
+666,Wyffels,device,Access Point Offline,37.81,296.36,0,0,0.20390100250626567,P2
+520,Hanover Company Azure,device,Network Element Offline,33.35,407.05,0,0,0.20229153096832125,P2
+289,Signorelli Company,server,Windows Event Log,28.24,201.43,0,0,0.2019822954822955,P3
+166,Ambient Enterprises > Ambient Enterprises HCN (HAR),server,Agent Status,26.28,45.55,0,0,0.20065752997003,P3
+244,Ambient Enterprises DMG San Luis Obispo,device,Network Element Offline,43.96,285.74,0,0,0.1999702259636737,P2
+316,Ocean Point Terminals (LTB),server,CPU,16.37,136.21,0,0,0.19493029124085026,P3
+933,DYOPATH Oakbrook Terrace,service,VPN remote gateway is Lost,16.3,110.74,0,0,0.19306030487008752,P3
+145,Signorelli Company,device,Access Point Offline,31.39,418.12,0,0,0.1893828557063851,P2
+60,Ambient Enterprises - Johnson Barrow,server,Connectivity,23.78,51.97,0,0,0.18899623606116742,P3
+893,Ambient Enterprises - Johnson Barrow,server,Disk,21.38,59.7,0,0,0.1887863247863248,P3
+698,Ocean Point Terminals (LTB),server,Windows Event Log,26.5,87.9,0,0,0.18708176636165771,P3
+776,Hanover Company Azure,device,Access Point Offline,41.67,370.57,0,0,0.1866086956521739,P2
+583,HVP SLHV Data Center,network,Client IP conflict detected,14.68,98.34,0,0,0.1865753968253968,P3
+652,Ocean Point Terminals (LTB),server,Agent Status,23.88,138.24,0,0,0.18651238788240826,P3
+562,Ambient Enterprises DMG San Luis Obispo,device,Network Element Offline,34.89,443.44,0,0,0.18501116427432215,P2
+94,Signorelli Company,server,Connectivity,20.97,107.49,0,0,0.18481655974866942,P3
+346,Ambient Enterprises > Ambient Enterprises HCN (HAR),network,VPN connectivity changed,13.02,118.3,0,0,0.18420388554534894,P3
+262,Hanover Company Azure,server,Disk,23.68,207.7,0,0,0.18266517655240322,P3
+170,HVP SLHV Data Center,server,Windows Event Log,21.68,120.6,0,0,0.18225407608695654,P3
+855,Ambient Enterprises DMG San Luis Obispo,network,Rogue AP detected,14.9,114.02,0,0,0.17994791935873533,P3
+880,Wyffels,network,Client IP conflict detected,13.08,37.04,0,0,0.17973434535104368,P3
+691,Ocean Point Terminals (LTB),server,Agent Status,28.13,185.14,0,0,0.17877350427350427,P3
+405,Ambient Enterprises > Ambient Enterprises HCN (HAR),network,Uplink status changed,12.97,118.87,0,0,0.1781482744897379,P3
+552,HVP SLHV Data Center,server,Windows Event Log,27.5,150.43,0,0,0.1744264430409845,P3
+775,Ambient Enterprises,server,Agent Status,29.12,67.93,0,0,0.173382591442374,P3
+914,Hanover Company Azure,interface,Interface Status Mismatch,22.76,69.5,0,0,0.17271493580746497,P3
+270,Hanover Company Azure,network,Client IP conflict detected,11.66,115.55,0,0,0.17227867602037436,P3
+478,HVP SLHV Data Center,server,CPU,27.49,194.83,0,0,0.1694774742382413,P3
+162,Ambient Enterprises - Johnson Barrow,device,Access Point Offline,43.76,316.83,0,0,0.16762156144509086,P2
+443,Hanover Company Azure,server,CPU,27.13,180.82,0,0,0.1673806005237205,P3
+92,Signorelli Company,server,CPU,24.71,185.84,0,0,0.16717872405372403,P3
+758,Wedgewood Pharmacy,network,Rogue AP detected,13.81,99.81,0,0,0.16481234697639102,P3
+454,Hanover Company Azure,network,VPN connectivity changed,13.63,86.33,0,0,0.16469385435789846,P3
+139,Ambient Enterprises,server,Memory,17.64,147.39,0,0,0.16436968764258353,P3
+619,Ambient Enterprises > Ambient Enterprises HCN (HAR),device,Access Point Offline,31.91,331.11,0,0,0.16382623079049247,P2
+416,DYOPATH Oakbrook Terrace,server,Memory,12.87,197.05,0,0,0.16378205128205128,P3
+730,Signorelli Company,server,Memory,23.12,127.07,0,0,0.1614741087982776,P3
+990,Ambient Enterprises,server,CPU,14.56,184.53,0,0,0.15918279089331722,P3
+365,Wyffels,server,CPU,26.64,146.1,0,0,0.15863528016101547,P3
+960,Hanover Company Azure,interface,Interface Status Mismatch,25.85,85.29,0,0,0.155785922164421,P3
+26,Wedgewood Pharmacy,network,VPN connectivity changed,5.0,59.85,0,0,0.1552879403794038,P4
+985,HVP SLHV Data Center,server,Windows Event Log,24.94,212.09,0,0,0.1547448650886151,P3
+945,Ambient Enterprises DMG San Luis Obispo,device,Access Point Offline,39.91,308.28,0,0,0.15449465694862113,P2
+575,Hanover Company Azure,device,Access Point Offline,39.89,307.97,0,0,0.15318272629387997,P2
+450,Ambient Enterprises,server,Disk,11.17,179.38,0,0,0.15169093529129213,P3
+764,Ocean Point Terminals (LTB),server,Memory,19.92,29.92,0,0,0.15164053284286333,P3
+174,Wedgewood Pharmacy,network,VPN connectivity changed,13.23,95.8,0,0,0.15073434535104366,P3
+692,Hanover Company Azure,device,Access Point Offline,32.92,269.83,0,0,0.15035061798105276,P2
+251,Ambient Enterprises - Johnson Barrow,server,Windows Event Log,17.6,173.8,0,0,0.1493466550944956,P3
+165,Wyffels,server,Memory,24.64,148.29,0,0,0.14801148514499066,P3
+295,Wedgewood Pharmacy,network,Client IP conflict detected,13.58,118.52,0,0,0.1478225806451613,P3
+481,Hanover Company Azure,network,VPN connectivity changed,14.11,75.52,0,0,0.14482142857142857,P3
+169,Ambient Enterprises,network,Client IP conflict detected,10.95,48.89,0,0,0.144375,P3
+920,DYOPATH Oakbrook Terrace,network,Uplink status changed,13.19,99.6,0,0,0.1440946275946276,P3
+591,Wedgewood Pharmacy,network,VPN connectivity changed,10.69,107.39,0,0,0.14113630613535738,P3
+783,Wyffels,server,CPU,24.29,87.56,0,0,0.13988578088578088,P3
+688,DYOPATH Oakbrook Terrace,server,CPU,23.74,33.74,0,0,0.13803448773448773,P3
+965,Ambient Enterprises DMG San Luis Obispo,network,Rogue AP detected,10.72,85.52,0,0,0.13624712995206353,P3
+355,Ambient Enterprises,network,Client IP conflict detected,9.32,105.01,0,0,0.1357450980392157,P4
+197,HVP SLHV Data Center,network,Rogue AP detected,8.13,87.45,0,0,0.13320353302611368,P4
+121,Ambient Enterprises,service,Internet Connection is Lost,13.87,111.37,0,0,0.13286184829663092,P3
+146,Ambient Enterprises - Johnson Barrow,network,Uplink status changed,13.01,104.61,0,0,0.13249094202898554,P3
+353,Wyffels,network,Rogue AP detected,13.52,64.53,0,0,0.13247252747252747,P3
+195,Hanover Company Azure,network,Uplink status changed,12.56,81.01,0,0,0.1299514856155297,P3
+558,Wyffels,network,Uplink status changed,10.6,67.92,0,0,0.1299187285175552,P3
+829,Ocean Point Terminals (LTB),network,Client IP conflict detected,10.22,75.85,0,0,0.12494198078344422,P3
+536,Ocean Point Terminals (LTB),server,Memory,22.51,100.66,0,0,0.12360135564579144,P3
+645,Ambient Enterprises DMG San Luis Obispo,server,Connectivity,14.23,129.79,0,0,0.12120357441598559,P3
+444,Ambient Enterprises - Johnson Barrow,service,VPN remote gateway is Lost,12.33,116.26,0,0,0.1190951858813701,P3
+514,HVP SLHV Data Center,network,Client IP conflict detected,13.52,118.48,0,0,0.11907258064516128,P3
+602,Ambient Enterprises - Johnson Barrow,network,Client IP conflict detected,7.43,118.15,0,0,0.11883333333333333,P4
+953,Ocean Point Terminals (LTB),network,VPN connectivity changed,8.44,69.68,0,0,0.11759358288770054,P4
+367,DYOPATH Oakbrook Terrace,network,Rogue AP detected,14.57,48.72,0,0,0.11652675711822054,P3
+384,Wedgewood Pharmacy,network,Uplink status changed,8.46,79.58,0,0,0.11629084967320262,P4
+194,HVP SLHV Data Center,network,Uplink status changed,5.43,98.95,0,0,0.11574494949494948,P4
+173,Ambient Enterprises,network,Uplink status changed,11.85,106.7,0,0,0.11516317016317017,P3
+659,Ambient Enterprises,network,VPN connectivity changed,12.07,107.53,0,0,0.115,P3
+527,Hanover Company Azure,network,Client IP conflict detected,14.12,96.7,0,0,0.11285934535104364,P3
+280,Hanover Company Azure,network,Uplink status changed,5.99,83.83,0,0,0.11176948051948052,P4
+274,HVP SLHV Data Center,network,VPN connectivity changed,14.08,115.88,0,0,0.11171428571428571,P3
+538,Ambient Enterprises > Ambient Enterprises HCN (HAR),network,Uplink status changed,13.18,90.75,0,0,0.10719806763285022,P3
+517,Signorelli Company,network,Rogue AP detected,12.02,76.28,0,0,0.10655625539771883,P3
+567,Hanover Company Azure,network,Rogue AP detected,9.28,115.44,0,0,0.10471291253549317,P4
+877,Ambient Enterprises,server,CPU,20.17,30.17,0,0,0.1044730347267112,P3
+792,Wedgewood Pharmacy,network,Uplink status changed,9.24,107.51,0,0,0.1018030303030303,P4
+930,Ocean Point Terminals (LTB),network,Rogue AP detected,8.64,87.86,0,0,0.10147215329473395,P4
+54,Ambient Enterprises DMG San Luis Obispo,network,Uplink status changed,9.32,106.17,0,0,0.10004932775426134,P4
+243,HVP SLHV Data Center,network,VPN connectivity changed,9.41,82.22,0,0,0.09777777777777778,P4
+546,Ambient Enterprises - Johnson Barrow,network,Uplink status changed,6.84,35.59,0,0,0.09754331181955783,P4
+429,Ambient Enterprises,network,Uplink status changed,9.22,116.37,0,0,0.09555555555555556,P4
+395,Signorelli Company,network,Uplink status changed,13.63,98.22,0,0,0.09480026962285025,P3
+317,Ambient Enterprises DMG San Luis Obispo,network,Rogue AP detected,12.76,39.35,0,0,0.09293476577622921,P3
+590,Wyffels,network,Client IP conflict detected,13.78,99.61,0,0,0.09240345031749438,P3
+742,Hanover Company Azure,network,Client IP conflict detected,13.82,23.82,0,0,0.0909962501129484,P3
+394,DYOPATH Oakbrook Terrace,network,Uplink status changed,9.53,66.82,0,0,0.09018812352958695,P4
+340,HVP SLHV Data Center,network,Uplink status changed,9.84,44.01,0,0,0.08528964881589485,P4
+781,Hanover Company Azure,network,VPN connectivity changed,12.56,95.18,0,0,0.08350123403019744,P3
+539,Wyffels,server,Connectivity,11.53,101.49,0,0,0.08265953716690042,P3
+307,Signorelli Company,interface,Interface Status Mismatch,13.8,62.19,0,0,0.08142106549364614,P3
+235,Ambient Enterprises DMG San Luis Obispo,network,Rogue AP detected,11.51,88.79,0,0,0.08083016249420655,P3
+107,Ambient Enterprises - Johnson Barrow,network,Client IP conflict detected,12.51,108.56,0,0,0.08006069094304388,P3
+824,Signorelli Company,server,Agent Status,14.09,24.09,0,0,0.07911252513826043,P3
+125,HVP SLHV Data Center,network,Client IP conflict detected,5.0,52.09,0,0,0.07703794037940379,P4
+837,Ambient Enterprises,network,Uplink status changed,12.22,91.52,0,0,0.07682478632478631,P3
+668,HVP SLHV Data Center,network,Rogue AP detected,13.44,70.34,0,0,0.07272222222222223,P3
+21,Ambient Enterprises,network,Client IP conflict detected,8.41,87.78,0,0,0.07116928210678211,P4
+101,Ambient Enterprises DMG San Luis Obispo,network,Uplink status changed,14.29,102.2,0,0,0.07084074303832369,P3
+609,HVP SLHV Data Center,network,Client IP conflict detected,9.62,62.24,0,0,0.06768253968253968,P4
+676,HVP SLHV Data Center,service,Internet Connection is Lost,13.45,23.45,0,0,0.06236111111111111,P3
+782,Ambient Enterprises DMG San Luis Obispo,server,Windows Event Log,19.33,119.77,0,0,0.058353236246971946,P3
+231,Ambient Enterprises,network,Rogue AP detected,11.56,112.26,0,0,0.05812896825396826,P3
+499,Wyffels,network,Uplink status changed,12.71,95.84,0,0,0.057555555555555554,P3
+152,DYOPATH Oakbrook Terrace,server,Connectivity,12.23,99.29,0,0,0.056520833333333326,P3
+290,Ocean Point Terminals (LTB),network,Rogue AP detected,8.78,100.84,0,0,0.05111546137554202,P4
+947,Ambient Enterprises - Johnson Barrow,network,Uplink status changed,11.7,77.31,0,0,0.04934065934065934,P3
+293,Ambient Enterprises DMG San Luis Obispo,network,Uplink status changed,11.83,74.45,0,0,0.0465452663867298,P3
+964,Ambient Enterprises - Johnson Barrow,network,Uplink status changed,8.61,109.34,0,0,0.046179738562091496,P4
+154,Hanover Company Azure,network,Uplink status changed,12.01,74.16,0,0,0.04375126307384372,P3
+253,HVP SLHV Data Center,service,Internet Connection is Lost,12.9,100.28,0,0,0.03916727761485826,P3
+511,HVP SLHV Data Center,network,Uplink status changed,14.07,97.4,0,0,0.02351307189542484,P3

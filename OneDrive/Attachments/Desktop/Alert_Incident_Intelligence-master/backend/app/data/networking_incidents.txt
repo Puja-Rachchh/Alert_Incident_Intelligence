@@ -1,0 +1,117 @@
+=====================================================
+INCIDENT REPORT: INC-2025-006
+Date: 2025-11-02
+Severity: P1 Critical
+Service: dns-resolver-01 (Internal DNS)
+=====================================================
+
+ALERT: DNS resolution failures detected across multiple services. 40% of internal DNS queries failing.
+
+DESCRIPTION:
+At 08:30 UTC, monitoring detected that internal DNS resolver dns-resolver-01 was failing to resolve
+approximately 40% of queries. Multiple microservices began reporting connection errors as they could
+not resolve internal service hostnames. The DNS resolver handles all internal service discovery for
+the production Kubernetes cluster.
+
+ROOT CAUSE:
+The DNS resolver's cache had become corrupted after an unexpected restart caused by an OOM (Out of Memory)
+kill. The resolver was configured with insufficient memory limits (256MB) while handling DNS queries for
+over 200 microservices. After the restart, the cache was cold, and the resolver was overwhelmed by the
+flood of queries from all services simultaneously reconnecting.
+
+RESOLUTION:
+1. Identified DNS failures: dig @dns-resolver-01 api-service.internal (SERVFAIL response)
+2. Checked resolver status: systemctl status coredns — showed recent restart
+3. Increased memory limit for CoreDNS: kubectl edit deployment coredns -n kube-system (set to 512MB)
+4. Restarted CoreDNS with new limits: kubectl rollout restart deployment/coredns -n kube-system
+5. Verified DNS resolution recovering: dig @dns-resolver-01 api-service.internal (got A record)
+6. Monitored for 30 minutes — DNS failure rate dropped to 0%
+
+IMPACT:
+- Duration: 35 minutes
+- Affected services: All internal microservices (~200)
+- Customer-facing impact: Partial outage, intermittent errors for 35% of users
+
+LESSONS LEARNED:
+- Set DNS resolver memory limits based on number of services
+- Implement DNS resolver redundancy (at least 2 replicas)
+- Add DNS resolution monitoring to core health checks
+- Implement graceful cache warming on DNS restart
+
+=====================================================
+INCIDENT REPORT: INC-2025-007
+Date: 2025-11-15
+Severity: P1 Critical
+Service: lb-prod-01 (Production Load Balancer)
+=====================================================
+
+ALERT: Load balancer lb-prod-01 dropping 30% of incoming connections. Health check failures on 3 of 8 backend servers.
+
+DESCRIPTION:
+At 22:15 UTC, the production load balancer began dropping approximately 30% of incoming connections.
+Investigation revealed that 3 of 8 backend servers were failing health checks due to a network partition
+caused by a faulty switch in rack B. All three affected servers were in the same rack.
+
+ROOT CAUSE:
+A network switch (sw-rack-b-01) experienced a firmware bug that caused intermittent packet loss on ports
+17-24. The switch had been running outdated firmware (v2.1.3) while the recommended version was v2.4.1.
+The packet loss caused health check probes from the load balancer to timeout, marking the servers as unhealthy.
+
+RESOLUTION:
+1. Identified unhealthy backends: curl http://lb-prod-01/admin/status — showed 3 servers DOWN
+2. Confirmed network issue: ping -c 100 backend-05 — 32% packet loss
+3. Traced to switch: show interface status on sw-rack-b-01 — CRC errors on ports 17-24
+4. Temporarily redistributed traffic: removed rack B servers from load balancer pool
+5. Applied firmware update to switch: copy firmware v2.4.1, reload switch
+6. Re-added servers after switch recovery, verified 0% packet loss
+7. Monitored for 2 hours — no recurrence
+
+IMPACT:
+- Duration: 55 minutes
+- Affected users: ~30,000 (30% of traffic capacity lost)
+- Revenue impact: Estimated $15,000
+
+LESSONS LEARNED:
+- Implement network switch firmware auto-update policy
+- Distribute backend servers across multiple racks for redundancy
+- Add switch-level monitoring (CRC errors, packet loss) to alerting
+- Implement automated server draining when health checks fail repeatedly
+
+=====================================================
+INCIDENT REPORT: INC-2025-008
+Date: 2025-12-01
+Severity: P2 High
+Service: network-firewall-01 (Network Firewall)
+=====================================================
+
+ALERT: Unexpected connection resets on network-firewall-01. Outbound API calls to payment provider failing with connection timeout.
+
+DESCRIPTION:
+At 14:00 UTC, the payment processing service began reporting connection timeouts when making API calls
+to the external payment provider. Investigation revealed that the network firewall was resetting these
+connections. Other outbound traffic was unaffected.
+
+ROOT CAUSE:
+A firewall rule update deployed at 13:45 UTC accidentally included an overly broad deny rule that
+blocked traffic to the payment provider's IP range (203.0.113.0/24). The rule was intended to block
+a different IP range (203.0.114.0/24) that had been flagged for suspicious activity.
+
+RESOLUTION:
+1. Identified connection resets: tcpdump -i eth0 host 203.0.113.10 — RST packets from firewall
+2. Reviewed recent firewall rule changes: git log --since='2 hours ago' firewall-rules/
+3. Found the incorrect rule: DENY 203.0.113.0/24 (should have been 203.0.114.0/24)
+4. Corrected the rule: Changed deny target to 203.0.114.0/24
+5. Applied corrected rules: firewall-cmd --reload
+6. Verified payment API connectivity: curl -v https://api.paymentprovider.com/health
+7. Processed backlogged payment transactions
+
+IMPACT:
+- Duration: 20 minutes
+- Affected service: Payment processing only
+- Revenue impact: 45 transactions delayed, no revenue loss (all processed after fix)
+
+LESSONS LEARNED:
+- Implement peer review for all firewall rule changes
+- Add automated validation of critical IP ranges before deploying firewall rules
+- Maintain a whitelist of critical external services that cannot be blocked
+- Add connectivity monitoring for critical external dependencies

@@ -1,0 +1,181 @@
+=====================================================
+INCIDENT REPORT: INC-2025-001
+Date: 2025-06-15
+Severity: P1 Critical
+Service: web-prod-01 (Production Web Server)
+=====================================================
+
+ALERT: CPU usage on web-prod-01 exceeded 95% for over 15 minutes.
+
+DESCRIPTION:
+At 14:32 UTC, monitoring detected sustained CPU usage above 95% on the primary web server web-prod-01.
+The server hosts the main customer-facing application running on Nginx with Node.js backend.
+Response times increased from ~200ms to over 5 seconds, causing customer-facing impact.
+
+ROOT CAUSE:
+A memory leak in the Node.js application caused by an unclosed database connection pool.
+The application was creating new database connections on every request without properly releasing them.
+After approximately 4 hours of operation, the connection pool exhausted available memory, causing the
+OS to swap heavily and driving CPU utilization to critical levels.
+
+RESOLUTION:
+1. Immediately restarted the Node.js application service: sudo systemctl restart node-app
+2. Verified CPU dropped below 30% within 2 minutes
+3. Applied hotfix to close database connections properly in the connection pool manager
+4. Deployed updated code to production
+5. Monitored for 24 hours — no recurrence
+
+IMPACT:
+- Duration: 45 minutes
+- Affected users: ~12,000
+- Revenue impact: Estimated $8,500 in lost transactions
+
+LESSONS LEARNED:
+- Implement connection pool monitoring and alerting
+- Add automated health checks for connection pool exhaustion
+- Set up auto-scaling rules for CPU > 80%
+
+=====================================================
+INCIDENT REPORT: INC-2025-002
+Date: 2025-07-22
+Severity: P2 High
+Service: db-replica-03 (Database Replica)
+=====================================================
+
+ALERT: Database replication lag on db-replica-03 exceeded 120 seconds.
+
+DESCRIPTION:
+At 09:15 UTC, the monitoring system detected that database replica db-replica-03 had a replication lag
+exceeding 120 seconds. The replica is used for read-heavy analytics queries. The primary database
+db-primary-01 was functioning normally. Two other replicas (db-replica-01, db-replica-02) were operating
+within normal parameters (lag < 5 seconds).
+
+ROOT CAUSE:
+A long-running analytical query (running for over 3 hours) was consuming excessive I/O on db-replica-03,
+preventing it from keeping up with the replication stream from the primary. The query was an unindexed
+full table scan on the orders table (450 million rows).
+
+RESOLUTION:
+1. Identified the blocking query: SELECT * FROM orders WHERE created_at > '2024-01-01' (no index on created_at)
+2. Killed the long-running query: CALL mysql.rds_kill(thread_id)
+3. Waited for replication to catch up (took approximately 8 minutes)
+4. Added index on orders.created_at column
+5. Implemented query timeout limits: SET GLOBAL max_execution_time=300000 (5 minutes)
+
+IMPACT:
+- Duration: 25 minutes (from detection to resolution)
+- Affected services: Analytics dashboard showed stale data
+- No customer-facing impact
+
+LESSONS LEARNED:
+- Implement query execution time limits on replica servers
+- Add missing indexes identified by slow query log analysis
+- Create separate read replica dedicated to heavy analytics workloads
+
+=====================================================
+INCIDENT REPORT: INC-2025-003
+Date: 2025-08-10
+Severity: P1 Critical
+Service: api-gateway (API Gateway / Load Balancer)
+=====================================================
+
+ALERT: HTTP 502 Bad Gateway errors exceeding 50% on api-gateway for the last 5 minutes.
+
+DESCRIPTION:
+At 03:45 UTC, the API gateway started returning HTTP 502 errors for approximately 60% of all incoming
+requests. The API gateway handles all traffic routing to backend microservices. Multiple downstream
+services reported as healthy in individual health checks.
+
+ROOT CAUSE:
+An expired TLS certificate on the internal communication channel between the API gateway and backend
+services. The certificate expired at 03:30 UTC. While external-facing certificates were managed by
+an automated renewal system (Let's Encrypt), internal certificates were managed manually and the
+renewal was missed.
+
+RESOLUTION:
+1. Identified the expired certificate: openssl x509 -enddate -noout -in /etc/ssl/internal/api-gateway.crt
+2. Generated a new internal certificate using the internal CA
+3. Deployed the new certificate: sudo cp new-cert.crt /etc/ssl/internal/api-gateway.crt
+4. Reloaded the API gateway: sudo systemctl reload nginx
+5. Verified 502 errors dropped to 0% within 1 minute
+
+IMPACT:
+- Duration: 20 minutes
+- Affected users: All API consumers (~50,000 requests failed)
+- Revenue impact: Estimated $25,000
+
+LESSONS LEARNED:
+- Automate internal certificate renewal using cert-manager
+- Add certificate expiry monitoring (alert 30 days before expiry)
+- Implement certificate rotation without downtime
+
+=====================================================
+INCIDENT REPORT: INC-2025-004
+Date: 2025-09-05
+Severity: P2 High
+Service: redis-cache-01 (Redis Cache Cluster)
+=====================================================
+
+ALERT: Redis cache hit ratio dropped below 40% on redis-cache-01.
+
+DESCRIPTION:
+At 11:20 UTC, monitoring detected that the Redis cache hit ratio dropped from the normal 92% to below
+40%. Application response times increased by 3x as more requests hit the database directly instead
+of being served from cache.
+
+ROOT CAUSE:
+A deployment at 11:00 UTC introduced a bug in the cache key generation logic. The new code was appending
+a timestamp to cache keys, making every cache lookup a miss since the key would never match a previously
+stored value. The change was part of a "cache invalidation improvement" feature.
+
+RESOLUTION:
+1. Identified the faulty deployment via git log: commit abc123 "Improve cache invalidation with timestamps"
+2. Rolled back the deployment: kubectl rollout undo deployment/app-service
+3. Cache hit ratio recovered to 88% within 10 minutes as cache warmed up
+4. Fixed the cache key logic to use a version hash instead of timestamps
+5. Re-deployed with the corrected implementation after code review
+
+IMPACT:
+- Duration: 35 minutes
+- Database load increased by 4x during the incident
+- Increased latency for all users (~200ms to ~600ms average)
+
+LESSONS LEARNED:
+- Cache key changes require explicit review in PR checklist
+- Implement canary deployments to catch cache regression early
+- Add cache hit ratio alerting with automatic rollback trigger
+
+=====================================================
+INCIDENT REPORT: INC-2025-005
+Date: 2025-10-18
+Severity: P3 Medium
+Service: disk-monitor (Storage / Disk Space)
+=====================================================
+
+ALERT: Disk usage on log-server-01 exceeded 90%.
+
+DESCRIPTION:
+At 16:00 UTC, disk utilization on log-server-01 reached 91%. The server stores application logs from
+all production services. Current disk size is 500GB with 455GB used.
+
+ROOT CAUSE:
+Log rotation was configured to retain 90 days of logs, but a recent increase in traffic (3x normal)
+caused log files to grow much faster than expected. Additionally, debug-level logging was accidentally
+left enabled on 3 production services after a troubleshooting session two weeks ago.
+
+RESOLUTION:
+1. Identified large log files: du -sh /var/log/apps/* | sort -rh | head -20
+2. Removed debug logs older than 7 days: find /var/log/apps/ -name "*.debug.log" -mtime +7 -delete
+3. Disabled debug logging on the 3 affected services
+4. Reduced log retention from 90 days to 30 days
+5. Set up log compression: configured logrotate with gzip compression
+6. Freed 180GB of disk space
+
+IMPACT:
+- No immediate customer impact
+- Risk of disk full causing service outages if not addressed
+
+LESSONS LEARNED:
+- Implement automated debug log cleanup after troubleshooting sessions
+- Set disk usage alerts at 70% (warning) and 85% (critical)
+- Move to centralized log management (ELK Stack) to avoid local disk issues

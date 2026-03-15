@@ -1,0 +1,117 @@
+=====================================================
+INCIDENT REPORT: INC-2025-012
+Date: 2025-10-15
+Severity: P1 Critical
+Service: db-primary-01 (AWS RDS PostgreSQL)
+=====================================================
+
+ALERT: Database unreachable. AWS RDS Multi-AZ failover executed but application reconnect failing.
+
+DESCRIPTION:
+At 10:20 UTC, AWS initiated an automatic Multi-AZ failover for the primary RDS PostgreSQL instance due
+to an underlying hardware degradation in the primary availability zone (us-east-1a). While the RDS instance
+successfully failed over to the standby in us-east-1b (taking ~60 seconds), the Node.js application
+failed to reconnect to the new primary.
+
+ROOT CAUSE:
+The Node.js database connection pool (pg-pool) was caching the DNS resolution of the RDS endpoint indefinitely.
+When AWS failed over the instance, the underlying IP address associated with the RDS endpoint changed.
+Because the application did not respect DNS TTLs, it continued attempting to connect to the old, now-dead
+IP address.
+
+RESOLUTION:
+1. Identified app unable to reach DB: curl http://localhost/health — returning DB connection timeout
+2. Verified RDS status in AWS Console: showed "Available" (failover complete)
+3. Restarted Node.js application to force DNS re-resolution and clear connection pool: sudo systemctl restart node-app
+4. Verified application successfully reconnected to database: curl http://localhost/health — OK
+5. Zero downtime deployment of updated DB config setting `idleTimeoutMillis` and respecting DNS TTL
+
+IMPACT:
+- Duration: 12 minutes (including RDS failover time)
+- Application was completely unresponsive to DB queries during this time
+- ~4,500 user requests failed
+
+LESSONS LEARNED:
+- Application connection pools must respect DNS TTL for cloud-managed databases
+- Implement automatic connection pool recycling on connection errors
+- Run periodic simulated failover drills to ensure application recovers automatically
+
+=====================================================
+INCIDENT REPORT: INC-2025-013
+Date: 2025-11-05
+Severity: P2 High
+Service: gke-cluster-prod (GCP Kubernetes Engine)
+=====================================================
+
+ALERT: Pods stuck in Pending state. Cluster Autoscaler failing to provision new nodes.
+
+DESCRIPTION:
+At 14:00 UTC, a sudden burst of traffic caused the Horizontal Pod Autoscaler (HPA) to scale up multiple
+deployments from 10 to 45 replicas. 25 of these new pods were stuck in "Pending" state due to insufficient
+CPU and memory resources on existing nodes. The GKE Cluster Autoscaler attempted to provision new nodes
+but failed.
+
+ROOT CAUSE:
+The GCP project had reached its regional quota limit for N2 CPUs in the us-central1 region. The Cluster
+Autoscaler requested 4 new `n2-standard-8` nodes (32 additional CPUs), but the project only had 8 CPUs
+remaining in its quota. The autoscaler events showed: `scale.up.error.quota.exceeded`.
+
+RESOLUTION:
+1. Checked pod status: kubectl get pods | grep Pending
+2. Described pending pod to confirm resource limits: kubectl describe pod <pod-name> — "Insufficient cpu"
+3. Checked autoscaler logs: kubectl -n kube-system logs deploy/cluster-autoscaler — showed quota exceeded error
+4. Immediate mitigation: Submitted emergency quota increase request via GCP Console Support
+5. Temporary mitigation: Created a new node pool using a different instance family (`e2-standard-8`) where quota was available
+6. Scaled the new e2 node pool to handle the pending pods
+7. GCP granted N2 quota increase 2 hours later
+
+IMPACT:
+- Duration: 25 minutes to mitigate with e2 nodes
+- Delayed scaling caused increased latency (up to 2 seconds) for API endpoints during traffic spike
+- No complete outage, but degraded performance
+
+LESSONS LEARNED:
+- Set up monitoring and alerting for GCP Quota utilization (alert at 80% usage)
+- Configure GKE Node Auto-Provisioning to fall back to different machine families if quota is exhausted
+- Periodically review and request quota increases ahead of anticipated growth
+
+=====================================================
+INCIDENT REPORT: INC-2025-014
+Date: 2025-12-08
+Severity: P1 Critical
+Service: s3-document-processor (AWS IAM / S3)
+=====================================================
+
+ALERT: High error rate (100%) on document-processor service. S3 Access Denied errors.
+
+DESCRIPTION:
+At 09:15 UTC, the background worker service that processes uploaded user documents and stores them in
+AWS S3 began failing completely. All job queues backed up. Application logs showed persistent
+`AccessDenied: Access Denied` errors when attempting to call `s3:PutObject` on the production bucket.
+
+ROOT CAUSE:
+A Terraform deployment at 09:10 UTC updated the AWS IAM Role assigned to the document-processor service.
+While the inline policy still correctly allowed `s3:PutObject`, a newly applied IAM Permissions Boundary
+was attached to the role. The Permissions Boundary was overly restrictive and did not explicitly allow
+the S3 actions, effectively blocking the access despite the inline policy.
+
+RESOLUTION:
+1. Checked application logs: `aws s3api put-object` failing with AccessDenied
+2. Verified IAM Role attached to the EC2 instances running the service
+3. Verified the S3 bucket policy had not changed
+4. Reviewed recent Terraform pipeline changes
+5. Discovered the improperly configured Permissions Boundary attached to the role
+6. Reverted the Terraform commit that introduced the Permissions Boundary
+7. Applied reverted Terraform state: `terraform apply -auto-approve`
+8. Verified document processing resumed successfully
+9. Cleared the backed-up job queue
+
+IMPACT:
+- Duration: 35 minutes
+- 15,000 document processing jobs delayed
+- No data loss, but significant customer notification delay
+
+LESSONS LEARNED:
+- Implement IAM Access Analyzer in CI/CD pipeline to validate effective permissions before deploying
+- Add integration tests that verify actual AWS API access after IAM role updates
+- Understand that Permissions Boundaries set the maximum allowed permissions, overriding inline policies

@@ -1,0 +1,403 @@
+import os
+import re
+import time
+from typing import List
+
+from dotenv import load_dotenv
+from langchain_community.document_loaders import DirectoryLoader, TextLoader, PyPDFLoader
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain.schema import Document
+from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_pinecone import PineconeVectorStore
+from langchain.chains import create_retrieval_chain
+from langchain.chains.combine_documents import create_stuff_documents_chain
+from langchain_core.prompts import ChatPromptTemplate
+from pinecone import Pinecone, ServerlessSpec
+
+# ── Load environment ──────────────────────────────────────────────
+load_dotenv()
+
+PINECONE_API_KEY = os.getenv("PINECONE_API_KEY")
+HUGGINGFACE_API_TOKEN = os.getenv("HUGGINGFACE_API_TOKEN")
+PINECONE_INDEX_NAME = os.getenv("PINECONE_INDEX_NAME", "alertchat")
+
+os.environ["PINECONE_API_KEY"] = PINECONE_API_KEY or ""
+os.environ["HUGGINGFACEHUB_API_TOKEN"] = HUGGINGFACE_API_TOKEN or ""
+
+# ── SRE System Prompt (Hardened for Single-Incident Analysis) ──────
+SYSTEM_PROMPT = """You are an expert SRE AI Copilot for an Alert Incident Intelligence platform.
+Your job is to help IT teams quickly understand, diagnose, and resolve system incidents.
+
+CRITICAL RULES:
+1. ONLY use information from the RETRIEVED CONTEXT DATA below.
+2. If the context is insufficient, state: "⚠️ Limited historical data available — manual investigation recommended."
+3. ABSOLUTE CONSTRAINTS:
+   - Output ONLY THE STRUCTURE BELOW.
+   - Do NOT include "Retrieved Context" headers or raw data in your final answer.
+   - You MUST ONLY list THE SINGLE MOST RELEVANT past incident.
+   - Do NOT repeat sections. provide a SINGLE analysis for the input alert.
+
+Your response MUST follow this structure ONCE:
+
+---
+
+🔴 INCIDENT SUMMARY
+[2-3 sentences explaining the situation, system affected, and severity P1-P4].
+
+---
+
+🔍 ROOT CAUSE ANALYSIS
+- Primary cause: [probable reason from context]
+- Contributing factors: [secondary issues]
+- Confidence level: [High / Medium / Low]
+
+---
+
+🛠️ RESOLUTION STEPS
+1. [First Action]
+2. [Second Action]
+3. [Verification Step]
+
+---
+
+⚠️ ESCALATION ADVICE
+- Should this be escalated? [Yes / No]
+- Reason: [short justification]
+
+---
+
+📚 RELATED PAST INCIDENTS
+One incident only. Format: "Incident ID | Service | Brief description | How it was resolved"
+If none found, write: "No matching incidents found in knowledge base."
+
+---
+
+RETRIEVED CONTEXT DATA (USE THIS ONLY):
+{context}"""
+
+
+# ── Document Loading ─────────────────────────────────────────────
+def load_documents(data_dir: str) -> List[Document]:
+    """Load both PDF and text files from a directory."""
+    all_docs: List[Document] = []
+
+    # Load text files
+    try:
+        txt_loader = DirectoryLoader(
+            data_dir,
+            glob="**/*.txt",
+            loader_cls=TextLoader,
+            loader_kwargs={"encoding": "utf-8"},
+        )
+        all_docs.extend(txt_loader.load())
+    except Exception as e:
+        print(f"[WARN] Text loading: {e}")
+
+    # Load PDF files
+    try:
+        pdf_loader = DirectoryLoader(
+            data_dir,
+            glob="**/*.pdf",
+            loader_cls=PyPDFLoader,
+        )
+        all_docs.extend(pdf_loader.load())
+    except Exception as e:
+        print(f"[WARN] PDF loading: {e}")
+
+    print(f"[INFO] Loaded {len(all_docs)} document(s) from '{data_dir}'")
+    return all_docs
+
+
+# ── Metadata Enrichment ─────────────────────────────────────────
+def _detect_doc_type(text: str) -> str:
+    """Detect document type from content."""
+    text_upper = text[:200].upper()
+    if "INCIDENT REPORT" in text_upper:
+        return "incident_report"
+    elif "RUNBOOK" in text_upper:
+        return "runbook"
+    elif "RESOLUTION DOC" in text_upper:
+        return "resolution_doc"
+    return "general"
+
+
+def _extract_severity(text: str) -> str:
+    """Extract severity level from text."""
+    severity_match = re.search(r'Severity:\s*(P[1-4]\s*\w+)', text, re.IGNORECASE)
+    if severity_match:
+        return severity_match.group(1).strip()
+    if any(kw in text.upper() for kw in ["P1", "CRITICAL"]):
+        return "P1 Critical"
+    elif any(kw in text.upper() for kw in ["P2", "HIGH"]):
+        return "P2 High"
+    elif any(kw in text.upper() for kw in ["P3", "MEDIUM"]):
+        return "P3 Medium"
+    return "Unknown"
+
+
+def _extract_service(text: str) -> str:
+    """Extract service name from text."""
+    service_match = re.search(r'Service:\s*(.+?)(?:\n|$)', text, re.IGNORECASE)
+    if service_match:
+        return service_match.group(1).strip()
+    return "Unknown"
+
+
+def _extract_incident_id(text: str) -> str:
+    """Extract incident/runbook ID from text."""
+    id_match = re.search(r'(INC-\d{4}-\d{3}|RB-\d{3}|RES-\d{4}-\d{3})', text)
+    if id_match:
+        return id_match.group(1)
+    return ""
+
+
+def enrich_metadata(chunks: List[Document]) -> List[Document]:
+    """Add rich metadata to each chunk for better retrieval."""
+    enriched = []
+    for chunk in chunks:
+        text = chunk.page_content
+        # Enrich metadata
+        chunk.metadata["doc_type"] = _detect_doc_type(text)
+        chunk.metadata["severity"] = _extract_severity(text)
+        chunk.metadata["service"] = _extract_service(text)
+        chunk.metadata["incident_id"] = _extract_incident_id(text)
+        enriched.append(chunk)
+
+    type_counts = {}
+    for c in enriched:
+        t = c.metadata["doc_type"]
+        type_counts[t] = type_counts.get(t, 0) + 1
+    print(f"[INFO] Metadata enrichment: {type_counts}")
+
+    return enriched
+
+
+# ── Smart Chunking (Improved) ────────────────────────────────────
+def split_documents(docs: List[Document]) -> List[Document]:
+    """Split documents into larger, context-preserving chunks."""
+    splitter = RecursiveCharacterTextSplitter(
+        chunk_size=800,       # Larger chunks preserve more context
+        chunk_overlap=150,    # More overlap prevents cutting incidents in half
+        separators=[
+            "\n=====================",  # Split on incident boundaries first
+            "\n\n",                     # Then on paragraph breaks
+            "\n",                       # Then line breaks
+            ". ",                       # Then sentences
+            " ",
+            "",
+        ],
+        length_function=len,
+    )
+    chunks = splitter.split_documents(docs)
+    print(f"[INFO] Split into {len(chunks)} chunks (800 char, 150 overlap)")
+    return chunks
+
+
+# ── Embeddings (Upgraded) ────────────────────────────────────────
+def get_embeddings() -> HuggingFaceEmbeddings:
+    """Return upgraded BGE embeddings model (384-dim, better accuracy)."""
+    return HuggingFaceEmbeddings(
+        model_name="BAAI/bge-small-en-v1.5",
+        model_kwargs={"device": "cpu"},
+        encode_kwargs={
+            "normalize_embeddings": True,  # Better cosine similarity
+        },
+    )
+
+
+# ── Pinecone Vector Store ───────────────────────────────────────
+def setup_pinecone(index_name: str | None = None):
+    """Create or connect to a Pinecone index."""
+    index_name = index_name or PINECONE_INDEX_NAME
+    pc = Pinecone(api_key=PINECONE_API_KEY)
+
+    if not pc.has_index(index_name):
+        pc.create_index(
+            name=index_name,
+            dimension=384,
+            metric="cosine",
+            spec=ServerlessSpec(cloud="aws", region="us-east-1"),
+        )
+        print(f"[INFO] Created Pinecone index: {index_name}")
+        time.sleep(10)
+    else:
+        print(f"[INFO] Pinecone index '{index_name}' already exists")
+
+    return pc.Index(index_name)
+
+
+def clear_pinecone_index(index_name: str | None = None):
+    """Delete all vectors from the index (for re-ingestion)."""
+    index_name = index_name or PINECONE_INDEX_NAME
+    pc = Pinecone(api_key=PINECONE_API_KEY)
+    if pc.has_index(index_name):
+        idx = pc.Index(index_name)
+        idx.delete(delete_all=True)
+        print(f"[INFO] Cleared all vectors from '{index_name}'")
+        time.sleep(3)
+
+
+# ── Ingest Pipeline (Enhanced) ──────────────────────────────────
+def ingest_documents(data_dir: str, index_name: str | None = None) -> str:
+    """Full ingest pipeline: load → split → enrich → embed → store."""
+    index_name = index_name or PINECONE_INDEX_NAME
+
+    # Load & split
+    docs = load_documents(data_dir)
+    if not docs:
+        return "No documents found to ingest."
+
+    chunks = split_documents(docs)
+
+    # Enrich metadata
+    chunks = enrich_metadata(chunks)
+
+    # Embeddings
+    embedding = get_embeddings()
+
+    # Ensure index exists & clear old vectors
+    setup_pinecone(index_name)
+    clear_pinecone_index(index_name)
+
+    # Upload to Pinecone
+    PineconeVectorStore.from_documents(
+        documents=chunks,
+        embedding=embedding,
+        index_name=index_name,
+    )
+
+    msg = f"✅ Ingested {len(docs)} document(s) → {len(chunks)} enriched chunks into '{index_name}'"
+    print(f"[INFO] {msg}")
+    return msg
+
+
+# ── Custom HuggingFace Chat LLM ──────────────────────────────────
+from langchain_core.language_models.chat_models import BaseChatModel
+from langchain_core.messages import AIMessage, BaseMessage
+from langchain_core.outputs import ChatResult, ChatGeneration
+from huggingface_hub import InferenceClient
+from typing import Any, Optional
+
+
+class HuggingFaceChatLLM(BaseChatModel):
+    """Custom LangChain ChatModel using HuggingFace InferenceClient."""
+
+    client: Any = None
+    model_id: str = "Qwen/Qwen2.5-72B-Instruct"
+    temperature: float = 0.2       # Lower = more factual, less creative
+    max_tokens: int = 1024         # Cap response length to prevent runaway loops
+    top_p: float = 0.9             # Nucleus sampling for coherence
+
+    class Config:
+        arbitrary_types_allowed = True
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.client = InferenceClient(token=HUGGINGFACE_API_TOKEN)
+
+    @property
+    def _llm_type(self) -> str:
+        return "huggingface-chat"
+
+    def _generate(
+        self,
+        messages: list[BaseMessage],
+        stop: Optional[list[str]] = None,
+        **kwargs,
+    ) -> ChatResult:
+        # Convert LangChain messages to HuggingFace format
+        hf_messages = []
+        for msg in messages:
+            if msg.type == "system":
+                hf_messages.append({"role": "system", "content": msg.content})
+            elif msg.type == "human":
+                hf_messages.append({"role": "user", "content": msg.content})
+            elif msg.type == "ai":
+                hf_messages.append({"role": "assistant", "content": msg.content})
+            else:
+                hf_messages.append({"role": "user", "content": msg.content})
+
+        response = self.client.chat_completion(
+            model=self.model_id,
+            messages=hf_messages,
+            max_tokens=self.max_tokens,
+            temperature=self.temperature,
+            top_p=self.top_p,
+        )
+
+        content = response.choices[0].message.content
+        return ChatResult(
+            generations=[ChatGeneration(message=AIMessage(content=content))]
+        )
+
+
+# ── RAG Chain (Enhanced) ─────────────────────────────────────────
+def get_rag_chain(index_name: str | None = None):
+    """Build and return a high-accuracy RAG chain with k=1 limit."""
+    index_name = index_name or PINECONE_INDEX_NAME
+
+    # Retriever — strictly limited to 1 document to prevent loops
+    embedding = get_embeddings()
+    vectorstore = PineconeVectorStore.from_existing_index(
+        index_name=index_name,
+        embedding=embedding,
+    )
+    retriever = vectorstore.as_retriever(
+        search_type="mmr",              # Maximal Marginal Relevance
+        search_kwargs={
+            "k": 1,                     # Retrieve ONLY the top 1 incident!
+            "fetch_k": 5,               # Narrow selection for speed
+            "lambda_mult": 0.3,         # High relevance focus
+        },
+    )
+
+    # LLM — try models in order of capability
+    models_to_try = [
+        "HuggingFaceH4/zephyr-7b-beta",               # Optimized for structured prompts
+        "Qwen/Qwen2.5-72B-Instruct",                 # Best quality fallback
+        "meta-llama/Llama-3.3-70B-Instruct",          # Robust fallback
+    ]
+
+    llm = None
+    for model_id in models_to_try:
+        try:
+            candidate = HuggingFaceChatLLM(model_id=model_id)
+            # Smoke test
+            candidate.invoke("Hello")
+            llm = candidate
+            print(f"[INFO] ✅ Using HuggingFace model: {model_id}")
+            break
+        except Exception as e:
+            print(f"[WARN] Model {model_id} failed: {str(e)[:120]}")
+            continue
+
+    if llm is None:
+        raise RuntimeError("No HuggingFace model available. Check API token.")
+
+    # Prompt
+    prompt = ChatPromptTemplate.from_messages([
+        ("system", SYSTEM_PROMPT),
+        ("human", "{input}"),
+    ])
+
+    # Chain
+    question_answer_chain = create_stuff_documents_chain(llm, prompt)
+    rag_chain = create_retrieval_chain(retriever, question_answer_chain)
+
+    print("[INFO] RAG chain initialized with k=1 limit")
+    return rag_chain
+
+
+# ── Quick test ───────────────────────────────────────────────────
+if __name__ == "__main__":
+    import sys
+
+    if len(sys.argv) > 1 and sys.argv[1] == "ingest":
+        data_dir = sys.argv[2] if len(sys.argv) > 2 else "./data"
+        ingest_documents(data_dir)
+    else:
+        chain = get_rag_chain()
+        query = "ALERT: Server web-prod-01 CPU usage at 98% for the last 15 minutes"
+        print(f"\n📝 Query: {query}\n")
+        result = chain.invoke({"input": query})
+        print(result["answer"])
